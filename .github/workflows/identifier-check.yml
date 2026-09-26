@@ -1,0 +1,15 @@
+name: identifier-check
+on:
+  push:
+  pull_request:
+permissions:
+  contents: read
+jobs:
+  scan:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Self-test (the scan must be able to fail)
+        run: bash scripts/check-identifiers.sh --self-test
+      - name: Scan tracked files
+        run: bash scripts/check-identifiers.sh
