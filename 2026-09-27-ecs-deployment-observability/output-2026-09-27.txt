@@ -1,0 +1,49 @@
+# Raw output of the run on 2026-09-27 (account ARN and subnet IDs redacted).
+# Follow-up describe-services at 10:40 showed the PRIMARY deployment COMPLETED at 10:38:59,
+# 25 s after services-stable had already returned exit 0.
+
+subnets: subnet-<redacted>,subnet-<redacted>
+## synth + diff
+Template
+[+] Description Description: yopa.page PR #104 PoC: services-stable on a 0-task service. No tasks run.
+
+Parameters
+[+] Parameter BootstrapVersion BootstrapVersion: {"Type":"AWS::SSM::Parameter::Value<String>","Default":"/cdk-bootstrap/hnb659fds/version","Description":"Version of the CDK Bootstrap resources in this environment, automatically retrieved from SSM Parameter Store. [cdk:skip]"}
+
+Resources
+[+] AWS::ECS::Cluster Cluster Cluster
+[+] AWS::ECS::TaskDefinition TaskDef TaskDef
+[+] AWS::ECS::Service Service Service
+
+
+
+✨  Number of stacks with differences: 1
+
+## deploy
+
+✨  Deployment time: 48.38s
+
+Stack ARN:
+arn:aws:cloudformation:us-east-1:123456789012:stack/<stack>/<id>
+
+✨  Total time: 57.56s
+
+task def: ecs-stable-demo:1
+## state before: desired running deployments
+0	0	1
+## force-new-deployment
+PRIMARY	IN_PROGRESS	0	0
+ACTIVE	COMPLETED	0	0
+## wait services-stable (timed)
+services-stable exit=0 after 63s
+0	0	1	IN_PROGRESS
+## check-rollout.sh expecting 1 task
+primary: rolloutState=IN_PROGRESS running=0 desired=0 taskDef=ecs-stable-demo:1
+FAIL: rolloutState is IN_PROGRESS, not COMPLETED
+FAIL: desiredCount is 0, expected at least 1 (IaC reset it?)
+FAIL: runningCount is 0, expected at least 1
+check-rollout exit=1
+## events
+2026-09-27T10:37:07.079000-04:00	(service ecs-stable-demo) has reached a steady state.
+2026-09-27T10:37:07.078000-04:00	(service ecs-stable-demo) (deployment ecs-svc/8836957497656130394) deployment completed.
+## done (stack left in place)

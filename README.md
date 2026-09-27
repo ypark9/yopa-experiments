@@ -7,6 +7,7 @@ One folder per post, named after the post.
 | --- | --- | --- |
 | [`2026-09-26-where-should-agent-refusals-live`](2026-09-26-where-should-agent-refusals-live/) | [Your Agent's Refusal Only Covers the Rules You Wrote Down](https://www.yopa.page/blog/2026-09-26-where-should-agent-refusals-live.html) | 719 tool-calling trials across 5 models, with and without rules in the prompt, scored by a deterministic gate |
 | [`2026-09-26-who-can-start-your-agent-sandbox`](2026-09-26-who-can-start-your-agent-sandbox/) | [Who Is Allowed to Start Your Agent's Sandbox?](https://www.yopa.page/blog/2026-09-26-who-can-start-your-agent-sandbox.html) | a webhook launcher's checks (38 local tests), an IAM secret split, and 50 copies of one webhook at once against DynamoDB |
+| [`2026-09-27-ecs-deployment-observability`](2026-09-27-ecs-deployment-observability/) | [ECS Deployments Can Say 'Completed' With Nothing Running](https://www.yopa.page/blog/2026-09-27-ecs-deployment-observability.html) | `aws ecs wait services-stable` on a service with 0 tasks, and a check that fails |
 | [`2026-09-26-should-your-service-render-inside-the-ai-host`](2026-09-26-should-your-service-render-inside-the-ai-host/) | [Should Your Service Render Inside the AI Host?](https://www.yopa.page/blog/2026-09-26-should-your-service-render-inside-the-ai-host.html) | one MCP App on two hosts (MCP Inspector and Claude Desktop): CSP, handshake, list refresh, widget caching |
 
 ## Rules for this repo

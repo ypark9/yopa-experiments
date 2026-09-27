@@ -1,0 +1,6 @@
+{
+  "name": "ecs-services-stable-poc",
+  "private": true,
+  "dependencies": { "aws-cdk-lib": "^2.175.0", "constructs": "^10.4.0" },
+  "devDependencies": { "aws-cdk": "^2.175.0" }
+}
