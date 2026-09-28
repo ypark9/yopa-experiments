@@ -1,0 +1,5 @@
+boto3>=1.43
+strands-agents
+strands-agents-evals
+bedrock-agentcore
+opentelemetry-sdk
