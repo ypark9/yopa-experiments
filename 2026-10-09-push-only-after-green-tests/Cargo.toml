@@ -1,0 +1,13 @@
+[package]
+name = "push-gate-harness"
+version = "0.1.0"
+edition = "2024"
+publish = false
+
+[dependencies]
+# Pinned to the commit that was tagged as the 1.0.0 crates.io release tree.
+dogwood-local-engine = { git = "https://github.com/dogwood-policy/dogwood-local-engine", rev = "d2cba92a6d33119c1f76e2b01b80802b331c7830" }
+dogwood-language = { git = "https://github.com/dogwood-policy/dogwood", rev = "996d756de1013b7ae209a14f566a80375a59f2f0" }
+
+[profile.release]
+debug = false
