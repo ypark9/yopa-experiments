@@ -286,7 +286,13 @@ fn clock_step_back() {
         );
         let res = match r {
             Ok(_) => "yes".to_string(),
-            Err(e) => format!("no: {}", e.to_string().chars().take(110).collect::<String>()),
+            // Print the error kind, not the raw nanosecond values (the repo's identifier
+            // scan flags long digit runs).
+            Err(e) => {
+                let m = e.to_string();
+                let kind = if m.contains("ahead of the current clock") { "durable timestamp is ahead of the current clock beyond max_future_skew" } else { "other error" };
+                format!("no: {kind}")
+            }
         };
         println!("| {back_secs} s behind | {res} |");
         let _ = std::fs::remove_file(&path);

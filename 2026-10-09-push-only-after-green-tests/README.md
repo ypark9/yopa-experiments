@@ -30,4 +30,4 @@ Needs a Rust toolchain new enough for the engine's dependencies (built here with
 
 ## Output
 
-`results.md` is the full output of the run used in the post (2026-10-09, Linux x86_64, 8 vCPU, `/tmp` on overlayfs). `results-run1.md` is an earlier run of the dense mix only, kept for comparison.
+`results.md` is the full output of the run used in the post (2026-10-09, Linux x86_64, 8 vCPU, `/tmp` on overlayfs). An earlier run of the dense mix gave the same verdicts and latencies within about 10%; its file was dropped because the raw error text tripped the identifier scan.
