@@ -1,0 +1,45 @@
+== AWS pricing-page example (100,000 x 3 KB events, read once, 30-day TTL)
+  ingestion                    $1.2000
+  retrieval                    $0.2400
+  storage_30d_ttl_730h_month   $0.0296
+  storage_one_full_month       $0.0300
+  published                    {'ingestion': 1.2, 'retrieval': 0.24, 'storage': 0.03}
+
+== Per-event unit costs (USD)
+  old flat rate per event          0.0002500
+     1 KB  ingest 0.0000120  retrieve 0.0000024  store 30d 0.0000001  store 365d 0.0000012
+    12 KB  ingest 0.0000120  retrieve 0.0000024  store 30d 0.0000012  store 365d 0.0000144
+    64 KB  ingest 0.0000640  retrieve 0.0000128  store 30d 0.0000063  store 365d 0.0000768
+   256 KB  ingest 0.0000640  retrieve 0.0000128  store 30d 0.0000252  store 365d 0.0003072
+
+== Crossover turn (first session length where new > old); '-' = none up to 2000 turns
+
+-- 2 events per turn, TTL 30 days
+  event size | full_history |      last_40 |      last_10 |  no_readback
+        1 KB |          200 |            - |            - |            -
+       12 KB |          199 |            - |            - |            -
+       64 KB |           30 |           36 |            - |            -
+      256 KB |           27 |           29 |            - |            -
+
+-- 4 events per turn, TTL 30 days
+  event size | full_history |      last_40 |      last_10 |  no_readback
+        1 KB |          200 |            - |            - |            -
+       12 KB |          199 |            - |            - |            -
+       64 KB |           30 |            - |            - |            -
+      256 KB |           27 |            - |            - |            -
+
+-- TTL effect, 2 events per turn, no read-back (storage only matters here)
+     1 KB  TTL   7d new/old  0.048  TTL  30d new/old  0.048  TTL  90d new/old  0.049  TTL 365d new/old  0.053
+    12 KB  TTL   7d new/old  0.049  TTL  30d new/old  0.053  TTL  90d new/old  0.062  TTL 365d new/old  0.106
+    64 KB  TTL   7d new/old  0.262  TTL  30d new/old  0.281  TTL  90d new/old  0.332  TTL 365d new/old  0.563
+   256 KB  TTL   7d new/old  0.280  TTL  30d new/old  0.357  TTL  90d new/old  0.559  TTL 365d new/old  1.485
+
+-- 50-turn session, 2 events/turn, 30-day TTL: cost in USD per session
+   12 KB full_history: old 0.02500  new 0.00720 (ingest 0.00120, retrieve 0.00588, store 0.000118)  retrievals 2450
+   12 KB      last_40: old 0.02500  new 0.00511 (ingest 0.00120, retrieve 0.00379, store 0.000118)  retrievals 1580
+   12 KB      last_10: old 0.02500  new 0.00245 (ingest 0.00120, retrieve 0.00113, store 0.000118)  retrievals 470
+   12 KB  no_readback: old 0.02500  new 0.00132 (ingest 0.00120, retrieve 0.00000, store 0.000118)  retrievals 0
+   64 KB full_history: old 0.02500  new 0.03839 (ingest 0.00640, retrieve 0.03136, store 0.000631)  retrievals 2450
+   64 KB      last_40: old 0.02500  new 0.02726 (ingest 0.00640, retrieve 0.02022, store 0.000631)  retrievals 1580
+   64 KB      last_10: old 0.02500  new 0.01305 (ingest 0.00640, retrieve 0.00602, store 0.000631)  retrievals 470
+   64 KB  no_readback: old 0.02500  new 0.00703 (ingest 0.00640, retrieve 0.00000, store 0.000631)  retrievals 0

@@ -1,0 +1,13 @@
+{
+ "aws_example": {
+  "ingestion": 1.2,
+  "retrieval": 0.24000000000000002,
+  "storage_30d_ttl_730h_month": 0.029589041095890414,
+  "storage_one_full_month": 0.03,
+  "aws_published": {
+   "ingestion": 1.2,
+   "retrieval": 0.24,
+   "storage": 0.03
+  }
+ }
+}
