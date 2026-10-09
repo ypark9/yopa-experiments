@@ -1,0 +1,80 @@
+== 50-turn session, 2 events/turn, 30-day TTL, 100,000 sessions/month
+   memory share = memory / (memory + LLM history input), output tokens ignored
+
+-- stateless
+   KB              model      price | mem new $/mo mem old $/mo LLM hist $/mo | share new share old | peak tok
+    1  claude-sonnet-5.5      input |          709        2,500       196,000 |    0.36%    1.26% | 39,200
+    1  claude-sonnet-5.5 cache_read |          709        2,500         9,800 |    6.75%   20.32% | 39,200
+    1   claude-haiku-5.5      input |          709        2,500         9,800 |    6.75%   20.32% | 39,200
+    1   claude-haiku-5.5 cache_read |          709        2,500           980 |   41.98%   71.84% | 39,200
+    4  claude-sonnet-5.5      input |          712        2,500       784,000 |    0.09%    0.32% | 156,800
+    4  claude-sonnet-5.5 cache_read |          712        2,500        39,200 |    1.78%    6.00% | 156,800
+    4   claude-haiku-5.5      input |          712        2,500        39,200 |    1.78%    6.00% | 156,800
+    4   claude-haiku-5.5 cache_read |          712        2,500         3,920 |   15.37%   38.94% | 156,800
+   12  claude-sonnet-5.5      input |          720        2,500     2,352,000 |    0.03%    0.11% | 470,400
+   12  claude-sonnet-5.5 cache_read |          720        2,500       117,600 |    0.61%    2.08% | 470,400
+   12   claude-haiku-5.5      input |          720        2,500       117,600 |    0.61%    2.08% | 470,400
+   12   claude-haiku-5.5 cache_read |          720        2,500        11,760 |    5.77%   17.53% | 470,400
+   64  claude-sonnet-5.5      input |        3,839        2,500    12,544,000 |    0.03%    0.02% | 2,508,800 OVER 1M
+   64  claude-sonnet-5.5 cache_read |        3,839        2,500       627,200 |    0.61%    0.40% | 2,508,800 OVER 1M
+   64   claude-haiku-5.5      input |        3,839        2,500       627,200 |    0.61%    0.40% | 2,508,800 OVER 1M
+   64   claude-haiku-5.5 cache_read |        3,839        2,500        62,720 |    5.77%    3.83% | 2,508,800 OVER 1M
+
+-- in_process
+   KB              model      price | mem new $/mo mem old $/mo LLM hist $/mo | share new share old | peak tok
+    1  claude-sonnet-5.5      input |          121        2,500       196,000 |    0.06%    1.26% | 39,200
+    1  claude-sonnet-5.5 cache_read |          121        2,500         9,800 |    1.22%   20.32% | 39,200
+    1   claude-haiku-5.5      input |          121        2,500         9,800 |    1.22%   20.32% | 39,200
+    1   claude-haiku-5.5 cache_read |          121        2,500           980 |   10.99%   71.84% | 39,200
+    4  claude-sonnet-5.5      input |          124        2,500       784,000 |    0.02%    0.32% | 156,800
+    4  claude-sonnet-5.5 cache_read |          124        2,500        39,200 |    0.32%    6.00% | 156,800
+    4   claude-haiku-5.5      input |          124        2,500        39,200 |    0.32%    6.00% | 156,800
+    4   claude-haiku-5.5 cache_read |          124        2,500         3,920 |    3.06%   38.94% | 156,800
+   12  claude-sonnet-5.5      input |          132        2,500     2,352,000 |    0.01%    0.11% | 470,400
+   12  claude-sonnet-5.5 cache_read |          132        2,500       117,600 |    0.11%    2.08% | 470,400
+   12   claude-haiku-5.5      input |          132        2,500       117,600 |    0.11%    2.08% | 470,400
+   12   claude-haiku-5.5 cache_read |          132        2,500        11,760 |    1.11%   17.53% | 470,400
+   64  claude-sonnet-5.5      input |          703        2,500    12,544,000 |    0.01%    0.02% | 2,508,800 OVER 1M
+   64  claude-sonnet-5.5 cache_read |          703        2,500       627,200 |    0.11%    0.40% | 2,508,800 OVER 1M
+   64   claude-haiku-5.5      input |          703        2,500       627,200 |    0.11%    0.40% | 2,508,800 OVER 1M
+   64   claude-haiku-5.5 cache_read |          703        2,500        62,720 |    1.11%    3.83% | 2,508,800 OVER 1M
+
+-- window_10
+   KB              model      price | mem new $/mo mem old $/mo LLM hist $/mo | share new share old | peak tok
+    1  claude-sonnet-5.5      input |          234        2,500        37,600 |    0.62%    6.23% | 4,000
+    1  claude-sonnet-5.5 cache_read |          234        2,500         1,880 |   11.06%   57.08% | 4,000
+    1   claude-haiku-5.5      input |          234        2,500         1,880 |   11.06%   57.08% | 4,000
+    1   claude-haiku-5.5 cache_read |          234        2,500           188 |   55.43%   93.01% | 4,000
+    4  claude-sonnet-5.5      input |          237        2,500       150,400 |    0.16%    1.64% | 16,000
+    4  claude-sonnet-5.5 cache_read |          237        2,500         7,520 |    3.05%   24.95% | 16,000
+    4   claude-haiku-5.5      input |          237        2,500         7,520 |    3.05%   24.95% | 16,000
+    4   claude-haiku-5.5 cache_read |          237        2,500           752 |   23.94%   76.88% | 16,000
+   12  claude-sonnet-5.5      input |          245        2,500       451,200 |    0.05%    0.55% | 48,000
+   12  claude-sonnet-5.5 cache_read |          245        2,500        22,560 |    1.07%    9.98% | 48,000
+   12   claude-haiku-5.5      input |          245        2,500        22,560 |    1.07%    9.98% | 48,000
+   12   claude-haiku-5.5 cache_read |          245        2,500         2,256 |    9.78%   52.56% | 48,000
+   64  claude-sonnet-5.5      input |        1,305        2,500     2,406,400 |    0.05%    0.10% | 256,000
+   64  claude-sonnet-5.5 cache_read |        1,305        2,500       120,320 |    1.07%    2.04% | 256,000
+   64   claude-haiku-5.5      input |        1,305        2,500       120,320 |    1.07%    2.04% | 256,000
+   64   claude-haiku-5.5 cache_read |        1,305        2,500        12,032 |    9.78%   17.20% | 256,000
+
+== Max memory share (new pricing) per setup, over all rows within 1M context
+   stateless      input: 11.29% (claude-haiku-5.5, 1 KB, 10 turns, 2 ev/turn)
+   stateless cache_read: 55.99% (claude-haiku-5.5, 1 KB, 10 turns, 2 ev/turn)
+  in_process      input: 6.30% (claude-haiku-5.5, 1 KB, 10 turns, 2 ev/turn)
+  in_process cache_read: 40.20% (claude-haiku-5.5, 1 KB, 10 turns, 2 ev/turn)
+   window_10      input: 17.19% (claude-haiku-5.5, 1 KB, 10 turns, 4 ev/turn)
+   window_10 cache_read: 67.48% (claude-haiku-5.5, 1 KB, 10 turns, 4 ev/turn)
+
+== Does the crossover (new > old) happen inside a 1M-token context?
+   peak = history tokens the LLM would see on the crossover turn if it read what memory returned
+  2 ev/turn   1 KB full_history: crossover turn  200, peak      159,200 tokens fits
+  2 ev/turn  12 KB full_history: crossover turn  199, peak    1,900,800 tokens OVER 1M
+  2 ev/turn  64 KB full_history: crossover turn   30, peak    1,484,800 tokens OVER 1M
+  2 ev/turn  64 KB      last_40: crossover turn   36, peak    1,024,000 tokens OVER 1M
+  2 ev/turn 256 KB full_history: crossover turn   27, peak    5,324,800 tokens OVER 1M
+  2 ev/turn 256 KB      last_40: crossover turn   29, peak    4,096,000 tokens OVER 1M
+  4 ev/turn   1 KB full_history: crossover turn  200, peak      318,400 tokens fits
+  4 ev/turn  12 KB full_history: crossover turn  199, peak    3,801,600 tokens OVER 1M
+  4 ev/turn  64 KB full_history: crossover turn   30, peak    2,969,600 tokens OVER 1M
+  4 ev/turn 256 KB full_history: crossover turn   27, peak   10,649,600 tokens OVER 1M
