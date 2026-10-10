@@ -1,19 +1,23 @@
-# Run 2026-10-09T17:26:09-04:00 on Linux 6.12.94+ x86_64, 8 vCPU, rustc 1.99.0, dogwood-local-engine d2cba92
-# /tmp filesystem: overlay; /dev/shm: tmpfs
+# Run 2026-10-09T20:12:33-04:00 on Linux 6.12.94+ x86_64, 8 vCPU, rustc 1.99.0, dogwood-local-engine d2cba92
+# /tmp filesystem: overlayfs; /dev/shm: tmpfs
+# Revision after review: push policy now correlated on repo + tested commit (C); C0 = the uncorrelated policy from the AWS post, run on the same traces. Traces T10-T12 are new. Latency tables time the whole push submit() (persist + evaluate) and report the median / p90 of the last 10 pushes in each checkpoint hour.
 
 ## Verdict table
 
-| Trace | What happens | Rule says | A stateless | B in-memory | C Dogwood |
-| --- | --- | --- | --- | --- | --- |
-| T1 | tests fail, push 5s later | DENY | DENY | DENY | DENY |
-| T2 | tests pass, push 5s later | ALLOW | ALLOW | ALLOW | ALLOW |
-| T3 | tests pass, push 17 min later | DENY | ALLOW (wrong) | DENY | DENY |
-| T4 | pass, then fail, push | DENY | ALLOW (wrong) | DENY | DENY |
-| T5 | no test run, agent claims tests passed | DENY | ALLOW (wrong) | DENY | DENY |
-| T6 | tests pass, harness restarts, push | ALLOW | ALLOW | DENY (wrong) | ALLOW |
-| T7 | tests pass, owner re-runs install() with same policies, push | ALLOW | ALLOW | ALLOW | DENY (wrong) |
-| T8 | tests pass, owner widens push window 15m->30m via batch(Update), push | ALLOW | ALLOW | ALLOW | DENY (wrong) |
-| T9 | same as T8, then tests re-run and push | ALLOW | ALLOW | ALLOW | ALLOW |
+| Trace | What happens | Rule says | A stateless | B in-memory (repo+sha) | C Dogwood (correlated) | C0 Dogwood (AWS post policy, uncorrelated) |
+| --- | --- | --- | --- | --- | --- | --- |
+| T1 | tests fail, push 5s later | DENY | DENY | DENY | DENY | DENY |
+| T2 | tests pass, push 5s later | ALLOW | ALLOW | ALLOW | ALLOW | ALLOW |
+| T3 | tests pass, push 17 min later | DENY | ALLOW (wrong) | DENY | DENY | DENY |
+| T4 | pass, then fail, push | DENY | ALLOW (wrong) | DENY | DENY | DENY |
+| T5 | no test run, agent claims tests passed | DENY | ALLOW (wrong) | DENY | DENY | DENY |
+| T6 | tests pass, harness restarts, push | ALLOW | ALLOW | DENY (wrong) | ALLOW | ALLOW |
+| T7 | tests pass, owner re-runs install() with same policies, push | ALLOW | ALLOW | ALLOW | DENY (wrong) | DENY (wrong) |
+| T8 | tests pass, owner widens push window 15m->30m via batch(Update), push | ALLOW | ALLOW | ALLOW | DENY (wrong) | DENY (wrong) |
+| T9 | same as T8, then tests re-run and push | ALLOW | ALLOW | ALLOW | ALLOW | ALLOW |
+| T10 | tests pass on repo A, push on repo B | DENY | ALLOW (wrong) | DENY | DENY | ALLOW (wrong) |
+| T11 | tests pass on commit X, push commit Y (same repo) | DENY | ALLOW (wrong) | DENY | DENY | ALLOW (wrong) |
+| T12 | tests pass on repo A, fail on repo B, push repo A | ALLOW | ALLOW | ALLOW | ALLOW | DENY (wrong) |
 
 ## Restart with the host clock stepped back
 
@@ -24,45 +28,65 @@
 | 301 s behind | no: durable timestamp is ahead of the current clock beyond max_future_skew |
 | 600 s behind | no: durable timestamp is ahead of the current clock beyond max_future_skew |
 
-B in-memory gate: 1.0 ns per decision (1,000,000 decisions, 1000000 allowed)
+B in-memory gate: 42.3 ns per decision (1,000,000 decisions, 1000000 allowed)
 
-## Push decision latency, disk (/tmp, fsync per event), 360 events/hour, dense: 180 green test runs/hour
-
-| Session length | 15m: push p50 / p90 (ms) | 15m: mean per event that hour (ms) | 24h: push p50 / p90 (ms) | 24h: mean per event that hour (ms) |
-| --- | --- | --- | --- | --- |
-| 1 h | 0.601 / 0.807 | 0.388 | 1.442 / 2.188 | 0.417 |
-| 2 h | 0.554 / 0.680 | 0.405 | 6.884 / 7.328 | 0.585 |
-| 4 h | 0.669 / 0.962 | 0.387 | 25.644 / 29.633 | 1.179 |
-| 8 h | 0.640 / 0.724 | 0.478 | 114.972 / 119.585 | 4.229 |
-| 12 h | 0.709 / 0.787 | 0.445 | 242.510 / 262.072 | 8.500 |
-
-## Push decision latency, RAM (/dev/shm), 360 events/hour, dense: 180 green test runs/hour
+## Push submit latency (persist + evaluate), correlated policy, disk (/tmp, fsync per event), 360 events/hour, dense: per hour 180 tests requests + 168 passing responses + 12 pushes
 
 | Session length | 15m: push p50 / p90 (ms) | 15m: mean per event that hour (ms) | 24h: push p50 / p90 (ms) | 24h: mean per event that hour (ms) |
 | --- | --- | --- | --- | --- |
-| 1 h | 0.247 / 0.273 | 0.080 | 0.990 / 1.704 | 0.094 |
-| 2 h | 0.246 / 0.254 | 0.076 | 5.157 / 6.565 | 0.224 |
-| 4 h | 0.236 / 0.253 | 0.077 | 23.264 / 27.223 | 0.833 |
-| 8 h | 0.253 / 0.277 | 0.088 | 106.068 / 113.689 | 3.473 |
-| 12 h | 0.244 / 0.267 | 0.079 | 243.184 / 251.396 | 7.922 |
+| 1 h | 0.779 / 0.888 | 0.437 | 1.896 / 3.134 | 0.562 |
+| 2 h | 0.777 / 1.151 | 0.406 | 8.163 / 9.556 | 0.673 |
+| 4 h | 0.853 / 1.173 | 0.480 | 33.197 / 39.644 | 1.807 |
+| 8 h | 0.734 / 0.962 | 0.524 | 143.905 / 170.434 | 5.453 |
+| 12 h | 0.704 / 0.984 | 0.504 | 330.490 / 346.846 | 11.292 |
 
-## Push decision latency, disk (/tmp, fsync per event), 360 events/hour, sparse: 12 test runs/hour, rest file reads
-
-| Session length | 15m: push p50 / p90 (ms) | 15m: mean per event that hour (ms) | 24h: push p50 / p90 (ms) | 24h: mean per event that hour (ms) |
-| --- | --- | --- | --- | --- |
-| 1 h | 0.386 / 0.735 | 0.408 | 0.632 / 0.836 | 0.457 |
-| 2 h | 0.391 / 0.407 | 0.414 | 1.238 / 1.354 | 0.491 |
-| 4 h | 0.370 / 0.435 | 0.381 | 2.398 / 3.337 | 0.509 |
-| 8 h | 0.445 / 0.723 | 0.462 | 8.208 / 8.874 | 0.783 |
-| 12 h | 0.456 / 0.577 | 0.497 | 18.317 / 19.871 | 1.051 |
-
-## Push decision latency, RAM (/dev/shm), 360 events/hour, sparse: 12 test runs/hour, rest file reads
+## Push submit latency (persist + evaluate), correlated policy, RAM (/dev/shm), 360 events/hour, dense: per hour 180 tests requests + 168 passing responses + 12 pushes
 
 | Session length | 15m: push p50 / p90 (ms) | 15m: mean per event that hour (ms) | 24h: push p50 / p90 (ms) | 24h: mean per event that hour (ms) |
 | --- | --- | --- | --- | --- |
-| 1 h | 0.110 / 0.127 | 0.094 | 0.184 / 0.234 | 0.099 |
-| 2 h | 0.123 / 0.213 | 0.105 | 0.445 / 0.602 | 0.100 |
-| 4 h | 0.200 / 0.206 | 0.155 | 1.969 / 2.172 | 0.154 |
-| 8 h | 0.173 / 0.191 | 0.134 | 7.553 / 8.041 | 0.334 |
-| 12 h | 0.189 / 0.201 | 0.121 | 17.421 / 17.970 | 0.660 |
+| 1 h | 0.313 / 0.326 | 0.082 | 1.251 / 2.082 | 0.108 |
+| 2 h | 0.334 / 0.339 | 0.089 | 7.421 / 8.847 | 0.288 |
+| 4 h | 0.331 / 0.346 | 0.085 | 31.939 / 36.337 | 1.080 |
+| 8 h | 0.314 / 0.327 | 0.086 | 141.405 / 149.206 | 4.662 |
+| 12 h | 0.307 / 0.331 | 0.083 | 331.441 / 341.048 | 10.944 |
+
+## Push submit latency (persist + evaluate), correlated policy, disk (/tmp, fsync per event), 360 events/hour, sparse: per hour 12 tests requests + 12 passing responses + 324 file reads + 12 pushes
+
+| Session length | 15m: push p50 / p90 (ms) | 15m: mean per event that hour (ms) | 24h: push p50 / p90 (ms) | 24h: mean per event that hour (ms) |
+| --- | --- | --- | --- | --- |
+| 1 h | 0.535 / 0.652 | 0.519 | 0.603 / 1.092 | 0.464 |
+| 2 h | 0.646 / 0.958 | 0.535 | 0.912 / 1.135 | 0.468 |
+| 4 h | 0.475 / 0.596 | 0.609 | 2.751 / 3.344 | 0.537 |
+| 8 h | 0.522 / 0.598 | 0.479 | 11.070 / 13.458 | 0.854 |
+| 12 h | 0.535 / 0.728 | 0.580 | 23.732 / 24.980 | 1.483 |
+
+## Push submit latency (persist + evaluate), correlated policy, RAM (/dev/shm), 360 events/hour, sparse: per hour 12 tests requests + 12 passing responses + 324 file reads + 12 pushes
+
+| Session length | 15m: push p50 / p90 (ms) | 15m: mean per event that hour (ms) | 24h: push p50 / p90 (ms) | 24h: mean per event that hour (ms) |
+| --- | --- | --- | --- | --- |
+| 1 h | 0.134 / 0.139 | 0.092 | 0.229 / 0.433 | 0.111 |
+| 2 h | 0.140 / 0.146 | 0.097 | 1.009 / 1.184 | 0.154 |
+| 4 h | 0.140 / 0.171 | 0.099 | 2.355 / 2.677 | 0.164 |
+| 8 h | 0.145 / 0.153 | 0.105 | 10.689 / 11.478 | 0.438 |
+| 12 h | 0.131 / 0.143 | 0.091 | 22.022 / 23.327 | 0.843 |
+
+## Push submit latency (persist + evaluate), uncorrelated policy (AWS post), disk (/tmp, fsync per event), 360 events/hour, dense: per hour 180 tests requests + 168 passing responses + 12 pushes
+
+| Session length | 15m: push p50 / p90 (ms) | 15m: mean per event that hour (ms) | 24h: push p50 / p90 (ms) | 24h: mean per event that hour (ms) |
+| --- | --- | --- | --- | --- |
+| 1 h | 0.512 / 0.817 | 0.378 | 1.356 / 2.010 | 0.394 |
+| 2 h | 0.721 / 0.792 | 0.525 | 5.906 / 7.138 | 0.582 |
+| 4 h | 0.635 / 0.863 | 0.723 | 25.261 / 34.011 | 1.284 |
+| 8 h | 0.705 / 0.755 | 0.444 | 115.464 / 121.110 | 4.300 |
+| 12 h | 0.588 / 0.663 | 0.438 | 249.577 / 259.699 | 8.838 |
+
+## Push submit latency (persist + evaluate), uncorrelated policy (AWS post), disk (/tmp, fsync per event), 360 events/hour, sparse: per hour 12 tests requests + 12 passing responses + 324 file reads + 12 pushes
+
+| Session length | 15m: push p50 / p90 (ms) | 15m: mean per event that hour (ms) | 24h: push p50 / p90 (ms) | 24h: mean per event that hour (ms) |
+| --- | --- | --- | --- | --- |
+| 1 h | 0.391 / 0.594 | 0.365 | 0.538 / 0.907 | 0.416 |
+| 2 h | 0.388 / 0.561 | 0.413 | 0.759 / 1.133 | 0.458 |
+| 4 h | 0.506 / 0.599 | 0.495 | 2.351 / 2.989 | 0.460 |
+| 8 h | 0.448 / 0.511 | 0.420 | 9.481 / 9.940 | 0.850 |
+| 12 h | 0.434 / 0.603 | 0.452 | 20.106 / 28.648 | 1.174 |
 
