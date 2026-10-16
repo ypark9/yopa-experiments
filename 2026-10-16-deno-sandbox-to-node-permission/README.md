@@ -55,7 +55,8 @@ See `results/matrix.md` (3 runs, identical). Summary:
 - Node allowed, on all three versions: reading the env secret, `node:sqlite` read and write outside the granted paths, reading the inherited fd, and turning on another Node process's inspector (both `_debugProcess` and plain `SIGUSR1`).
 - Network: allowed on Node 22 and 24 (they have no network permission), blocked on Node 26.
 - Probes Deno blocks and Node allows: 7 of 13 on Node 22 and 24, 5 of 13 on Node 26, in both P0 and P1.
-- Same in both runtimes: a symlink inside a granted directory reads a file outside it (P1), and a 128 MB heap cap kills heap growth but lets 512 MB of `Uint8Array` through (peak RSS 549-557 MB).
+- Same in both runtimes: a symlink inside a granted directory reads a file outside it (P1), and a 128 MB heap cap kills heap growth (non-zero exit in all runs, peak RSS 201-258 MB) but lets 512 MB of `Uint8Array` through (peak RSS 549-557 MB across 3 runs).
+- Note: the `heap_oom_message` flag for Deno came back False in run 3 although the process died the same way (exit -5, nothing allocated); the message capture is unreliable for Deno, the exit code is not.
 
 ## Not tested
 
