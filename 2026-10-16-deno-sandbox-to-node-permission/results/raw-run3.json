@@ -1,0 +1,965 @@
+{
+ "versions": {
+  "deno": "deno 2.9.7 (stable, release, x86_64-unknown-linux-gnu)",
+  "node22": "v22.23.3",
+  "node24": "v24.22.0",
+  "node26": "v26.12.0"
+ },
+ "matrix": {
+  "deno/control": {
+   "cmd": [
+    "deno",
+    "run",
+    "-A",
+    "--ext=js",
+    "--no-config",
+    "--no-lock",
+    "-"
+   ],
+   "probes": {
+    "fs_read_outside": {
+     "result": "allowed",
+     "detail": "outside-file-content"
+    },
+    "fs_write_outside": {
+     "result": "allowed",
+     "detail": "wrote"
+    },
+    "fs_write_workdir": {
+     "result": "allowed",
+     "detail": "wrote"
+    },
+    "fs_read_via_symlink_in_workdir": {
+     "result": "allowed",
+     "detail": "outside-file-content"
+    },
+    "env_secret": {
+     "result": "allowed",
+     "detail": "fake-secret-not-real-0000"
+    },
+    "net_fetch_localhost": {
+     "result": "allowed",
+     "detail": "local-server-reply"
+    },
+    "net_tcp_localhost": {
+     "result": "allowed",
+     "detail": "local-server-reply\n"
+    },
+    "child_process": {
+     "result": "allowed",
+     "detail": "child-ran"
+    },
+    "sqlite_read_outside": {
+     "result": "allowed",
+     "detail": "outside-db-row"
+    },
+    "sqlite_write_outside": {
+     "result": "allowed",
+     "detail": "inserted"
+    },
+    "inherited_fd_read": {
+     "result": "blocked",
+     "detail": "EBADF: EBADF: bad file descriptor, read"
+    },
+    "debug_process_sibling": {
+     "result": "allowed",
+     "detail": "called",
+     "sibling_inspector_opened": true
+    },
+    "signal_sibling_sigusr1": {
+     "result": "allowed",
+     "detail": "sent",
+     "sibling_inspector_opened": true
+    },
+    "_disk": {
+     "outside_written": true,
+     "work_written": true,
+     "db_rows": 2
+    }
+   }
+  },
+  "deno/P0": {
+   "cmd": [
+    "deno",
+    "run",
+    "--ext=js",
+    "--no-code-cache",
+    "--no-prompt",
+    "--no-remote",
+    "--no-lock",
+    "--node-modules-dir=none",
+    "--no-config",
+    "--no-npm",
+    "--cached-only",
+    "-"
+   ],
+   "probes": {
+    "fs_read_outside": {
+     "result": "blocked",
+     "detail": "NotCapable: Requires read access to \"<base>/outside/secret.txt\", run again with the --allow-read flag"
+    },
+    "fs_write_outside": {
+     "result": "blocked",
+     "detail": "NotCapable: Requires write access to \"<base>/outside/written.txt\", run again with the --allow-write flag"
+    },
+    "fs_write_workdir": {
+     "result": "blocked",
+     "detail": "NotCapable: Requires write access to \"<base>/work/written.txt\", run again with the --allow-write flag"
+    },
+    "fs_read_via_symlink_in_workdir": {
+     "result": "blocked",
+     "detail": "NotCapable: Requires read access to \"<base>/work/link-to-outside.txt\", run again with the --allow-read flag"
+    },
+    "env_secret": {
+     "result": "blocked",
+     "detail": "NotCapable: Requires env access to \"PROBE_FAKE_SECRET\", run again with the --allow-env flag"
+    },
+    "net_fetch_localhost": {
+     "result": "blocked",
+     "detail": "NotCapable: Requires net access to \"127.0.0.1:33709\", run again with the --allow-net flag"
+    },
+    "net_tcp_localhost": {
+     "result": "blocked",
+     "detail": "NotCapable: Requires net access to \"127.0.0.1:33709\", run again with the --allow-net flag"
+    },
+    "child_process": {
+     "result": "blocked",
+     "detail": "NotCapable: Requires env access, run again with the --allow-env flag"
+    },
+    "sqlite_read_outside": {
+     "result": "blocked",
+     "detail": "ERR_SQLITE_ERROR: Requires read access to \"<base>/outside/app.db\", run again with the --allow-read flag"
+    },
+    "sqlite_write_outside": {
+     "result": "blocked",
+     "detail": "ERR_SQLITE_ERROR: Requires read access to \"<base>/outside/app.db\", run again with the --allow-read flag"
+    },
+    "inherited_fd_read": {
+     "result": "blocked",
+     "detail": "EBADF: EBADF: bad file descriptor, read"
+    },
+    "debug_process_sibling": {
+     "result": "blocked",
+     "detail": "NotCapable: Requires run access, run again with the --allow-run flag",
+     "sibling_inspector_opened": false
+    },
+    "signal_sibling_sigusr1": {
+     "result": "blocked",
+     "detail": "NotCapable: Requires run access, run again with the --allow-run flag",
+     "sibling_inspector_opened": false
+    },
+    "_disk": {
+     "outside_written": false,
+     "work_written": false,
+     "db_rows": 1
+    }
+   }
+  },
+  "deno/P1": {
+   "cmd": [
+    "deno",
+    "run",
+    "--ext=js",
+    "--no-code-cache",
+    "--no-prompt",
+    "--no-remote",
+    "--no-lock",
+    "--node-modules-dir=none",
+    "--no-config",
+    "--no-npm",
+    "--cached-only",
+    "--allow-read=<base>/work",
+    "--allow-write=<base>/work",
+    "-"
+   ],
+   "probes": {
+    "fs_read_outside": {
+     "result": "blocked",
+     "detail": "NotCapable: Requires read access to \"<base>/outside/secret.txt\", run again with the --allow-read flag"
+    },
+    "fs_write_outside": {
+     "result": "blocked",
+     "detail": "NotCapable: Requires write access to \"<base>/outside/written.txt\", run again with the --allow-write flag"
+    },
+    "fs_write_workdir": {
+     "result": "allowed",
+     "detail": "wrote"
+    },
+    "fs_read_via_symlink_in_workdir": {
+     "result": "allowed",
+     "detail": "outside-file-content"
+    },
+    "env_secret": {
+     "result": "blocked",
+     "detail": "NotCapable: Requires env access to \"PROBE_FAKE_SECRET\", run again with the --allow-env flag"
+    },
+    "net_fetch_localhost": {
+     "result": "blocked",
+     "detail": "NotCapable: Requires net access to \"127.0.0.1:33709\", run again with the --allow-net flag"
+    },
+    "net_tcp_localhost": {
+     "result": "blocked",
+     "detail": "NotCapable: Requires net access to \"127.0.0.1:33709\", run again with the --allow-net flag"
+    },
+    "child_process": {
+     "result": "blocked",
+     "detail": "NotCapable: Requires env access, run again with the --allow-env flag"
+    },
+    "sqlite_read_outside": {
+     "result": "blocked",
+     "detail": "ERR_SQLITE_ERROR: Requires read access to \"<base>/outside/app.db\", run again with the --allow-read flag"
+    },
+    "sqlite_write_outside": {
+     "result": "blocked",
+     "detail": "ERR_SQLITE_ERROR: Requires read access to \"<base>/outside/app.db\", run again with the --allow-read flag"
+    },
+    "inherited_fd_read": {
+     "result": "blocked",
+     "detail": "EBADF: EBADF: bad file descriptor, read"
+    },
+    "debug_process_sibling": {
+     "result": "blocked",
+     "detail": "NotCapable: Requires run access, run again with the --allow-run flag",
+     "sibling_inspector_opened": false
+    },
+    "signal_sibling_sigusr1": {
+     "result": "blocked",
+     "detail": "NotCapable: Requires run access, run again with the --allow-run flag",
+     "sibling_inspector_opened": false
+    },
+    "_disk": {
+     "outside_written": false,
+     "work_written": true,
+     "db_rows": 1
+    }
+   }
+  },
+  "node22/control": {
+   "cmd": [
+    "node",
+    "-"
+   ],
+   "probes": {
+    "fs_read_outside": {
+     "result": "allowed",
+     "detail": "outside-file-content"
+    },
+    "fs_write_outside": {
+     "result": "allowed",
+     "detail": "wrote"
+    },
+    "fs_write_workdir": {
+     "result": "allowed",
+     "detail": "wrote"
+    },
+    "fs_read_via_symlink_in_workdir": {
+     "result": "allowed",
+     "detail": "outside-file-content"
+    },
+    "env_secret": {
+     "result": "allowed",
+     "detail": "fake-secret-not-real-0000"
+    },
+    "net_fetch_localhost": {
+     "result": "allowed",
+     "detail": "local-server-reply"
+    },
+    "net_tcp_localhost": {
+     "result": "allowed",
+     "detail": "local-server-reply\n"
+    },
+    "child_process": {
+     "result": "allowed",
+     "detail": "child-ran"
+    },
+    "sqlite_read_outside": {
+     "result": "allowed",
+     "detail": "outside-db-row"
+    },
+    "sqlite_write_outside": {
+     "result": "allowed",
+     "detail": "inserted"
+    },
+    "inherited_fd_read": {
+     "result": "allowed",
+     "detail": "outside-file-content"
+    },
+    "debug_process_sibling": {
+     "result": "allowed",
+     "detail": "called",
+     "sibling_inspector_opened": true
+    },
+    "signal_sibling_sigusr1": {
+     "result": "allowed",
+     "detail": "sent",
+     "sibling_inspector_opened": true
+    },
+    "_disk": {
+     "outside_written": true,
+     "work_written": true,
+     "db_rows": 2
+    }
+   }
+  },
+  "node22/P0": {
+   "cmd": [
+    "node",
+    "--experimental-permission",
+    "--no-warnings=ExperimentalWarning",
+    "-"
+   ],
+   "probes": {
+    "fs_read_outside": {
+     "result": "blocked",
+     "detail": "ERR_ACCESS_DENIED: Access to this API has been restricted. Use --allow-fs-read to manage permissions."
+    },
+    "fs_write_outside": {
+     "result": "blocked",
+     "detail": "ERR_ACCESS_DENIED: Access to this API has been restricted. Use --allow-fs-write to manage permissions."
+    },
+    "fs_write_workdir": {
+     "result": "blocked",
+     "detail": "ERR_ACCESS_DENIED: Access to this API has been restricted. Use --allow-fs-write to manage permissions."
+    },
+    "fs_read_via_symlink_in_workdir": {
+     "result": "blocked",
+     "detail": "ERR_ACCESS_DENIED: Access to this API has been restricted. Use --allow-fs-read to manage permissions."
+    },
+    "env_secret": {
+     "result": "allowed",
+     "detail": "fake-secret-not-real-0000"
+    },
+    "net_fetch_localhost": {
+     "result": "allowed",
+     "detail": "local-server-reply"
+    },
+    "net_tcp_localhost": {
+     "result": "allowed",
+     "detail": "local-server-reply\n"
+    },
+    "child_process": {
+     "result": "blocked",
+     "detail": "ERR_ACCESS_DENIED: Access to this API has been restricted. Use --allow-child-process to manage permissions."
+    },
+    "sqlite_read_outside": {
+     "result": "allowed",
+     "detail": "outside-db-row"
+    },
+    "sqlite_write_outside": {
+     "result": "allowed",
+     "detail": "inserted"
+    },
+    "inherited_fd_read": {
+     "result": "allowed",
+     "detail": "outside-file-content"
+    },
+    "debug_process_sibling": {
+     "result": "allowed",
+     "detail": "called",
+     "sibling_inspector_opened": true
+    },
+    "signal_sibling_sigusr1": {
+     "result": "allowed",
+     "detail": "sent",
+     "sibling_inspector_opened": true
+    },
+    "_disk": {
+     "outside_written": false,
+     "work_written": false,
+     "db_rows": 2
+    }
+   }
+  },
+  "node22/P1": {
+   "cmd": [
+    "node",
+    "--experimental-permission",
+    "--no-warnings=ExperimentalWarning",
+    "--allow-fs-read=<base>/work",
+    "--allow-fs-write=<base>/work",
+    "-"
+   ],
+   "probes": {
+    "fs_read_outside": {
+     "result": "blocked",
+     "detail": "ERR_ACCESS_DENIED: Access to this API has been restricted. Use --allow-fs-read to manage permissions."
+    },
+    "fs_write_outside": {
+     "result": "blocked",
+     "detail": "ERR_ACCESS_DENIED: Access to this API has been restricted. Use --allow-fs-write to manage permissions."
+    },
+    "fs_write_workdir": {
+     "result": "allowed",
+     "detail": "wrote"
+    },
+    "fs_read_via_symlink_in_workdir": {
+     "result": "allowed",
+     "detail": "outside-file-content"
+    },
+    "env_secret": {
+     "result": "allowed",
+     "detail": "fake-secret-not-real-0000"
+    },
+    "net_fetch_localhost": {
+     "result": "allowed",
+     "detail": "local-server-reply"
+    },
+    "net_tcp_localhost": {
+     "result": "allowed",
+     "detail": "local-server-reply\n"
+    },
+    "child_process": {
+     "result": "blocked",
+     "detail": "ERR_ACCESS_DENIED: Access to this API has been restricted. Use --allow-child-process to manage permissions."
+    },
+    "sqlite_read_outside": {
+     "result": "allowed",
+     "detail": "outside-db-row"
+    },
+    "sqlite_write_outside": {
+     "result": "allowed",
+     "detail": "inserted"
+    },
+    "inherited_fd_read": {
+     "result": "allowed",
+     "detail": "outside-file-content"
+    },
+    "debug_process_sibling": {
+     "result": "allowed",
+     "detail": "called",
+     "sibling_inspector_opened": true
+    },
+    "signal_sibling_sigusr1": {
+     "result": "allowed",
+     "detail": "sent",
+     "sibling_inspector_opened": true
+    },
+    "_disk": {
+     "outside_written": false,
+     "work_written": true,
+     "db_rows": 2
+    }
+   }
+  },
+  "node24/control": {
+   "cmd": [
+    "node",
+    "-"
+   ],
+   "probes": {
+    "fs_read_outside": {
+     "result": "allowed",
+     "detail": "outside-file-content"
+    },
+    "fs_write_outside": {
+     "result": "allowed",
+     "detail": "wrote"
+    },
+    "fs_write_workdir": {
+     "result": "allowed",
+     "detail": "wrote"
+    },
+    "fs_read_via_symlink_in_workdir": {
+     "result": "allowed",
+     "detail": "outside-file-content"
+    },
+    "env_secret": {
+     "result": "allowed",
+     "detail": "fake-secret-not-real-0000"
+    },
+    "net_fetch_localhost": {
+     "result": "allowed",
+     "detail": "local-server-reply"
+    },
+    "net_tcp_localhost": {
+     "result": "allowed",
+     "detail": "local-server-reply\n"
+    },
+    "child_process": {
+     "result": "allowed",
+     "detail": "child-ran"
+    },
+    "sqlite_read_outside": {
+     "result": "allowed",
+     "detail": "outside-db-row"
+    },
+    "sqlite_write_outside": {
+     "result": "allowed",
+     "detail": "inserted"
+    },
+    "inherited_fd_read": {
+     "result": "allowed",
+     "detail": "outside-file-content"
+    },
+    "debug_process_sibling": {
+     "result": "allowed",
+     "detail": "called",
+     "sibling_inspector_opened": true
+    },
+    "signal_sibling_sigusr1": {
+     "result": "allowed",
+     "detail": "sent",
+     "sibling_inspector_opened": true
+    },
+    "_disk": {
+     "outside_written": true,
+     "work_written": true,
+     "db_rows": 2
+    }
+   }
+  },
+  "node24/P0": {
+   "cmd": [
+    "node",
+    "--permission",
+    "-"
+   ],
+   "probes": {
+    "fs_read_outside": {
+     "result": "blocked",
+     "detail": "ERR_ACCESS_DENIED: Access to this API has been restricted. Use --allow-fs-read to manage permissions."
+    },
+    "fs_write_outside": {
+     "result": "blocked",
+     "detail": "ERR_ACCESS_DENIED: Access to this API has been restricted. Use --allow-fs-write to manage permissions."
+    },
+    "fs_write_workdir": {
+     "result": "blocked",
+     "detail": "ERR_ACCESS_DENIED: Access to this API has been restricted. Use --allow-fs-write to manage permissions."
+    },
+    "fs_read_via_symlink_in_workdir": {
+     "result": "blocked",
+     "detail": "ERR_ACCESS_DENIED: Access to this API has been restricted. Use --allow-fs-read to manage permissions."
+    },
+    "env_secret": {
+     "result": "allowed",
+     "detail": "fake-secret-not-real-0000"
+    },
+    "net_fetch_localhost": {
+     "result": "allowed",
+     "detail": "local-server-reply"
+    },
+    "net_tcp_localhost": {
+     "result": "allowed",
+     "detail": "local-server-reply\n"
+    },
+    "child_process": {
+     "result": "blocked",
+     "detail": "ERR_ACCESS_DENIED: Access to this API has been restricted. Use --allow-child-process to manage permissions."
+    },
+    "sqlite_read_outside": {
+     "result": "allowed",
+     "detail": "outside-db-row"
+    },
+    "sqlite_write_outside": {
+     "result": "allowed",
+     "detail": "inserted"
+    },
+    "inherited_fd_read": {
+     "result": "allowed",
+     "detail": "outside-file-content"
+    },
+    "debug_process_sibling": {
+     "result": "allowed",
+     "detail": "called",
+     "sibling_inspector_opened": true
+    },
+    "signal_sibling_sigusr1": {
+     "result": "allowed",
+     "detail": "sent",
+     "sibling_inspector_opened": true
+    },
+    "_disk": {
+     "outside_written": false,
+     "work_written": false,
+     "db_rows": 2
+    }
+   }
+  },
+  "node24/P1": {
+   "cmd": [
+    "node",
+    "--permission",
+    "--allow-fs-read=<base>/work",
+    "--allow-fs-write=<base>/work",
+    "-"
+   ],
+   "probes": {
+    "fs_read_outside": {
+     "result": "blocked",
+     "detail": "ERR_ACCESS_DENIED: Access to this API has been restricted. Use --allow-fs-read to manage permissions."
+    },
+    "fs_write_outside": {
+     "result": "blocked",
+     "detail": "ERR_ACCESS_DENIED: Access to this API has been restricted. Use --allow-fs-write to manage permissions."
+    },
+    "fs_write_workdir": {
+     "result": "allowed",
+     "detail": "wrote"
+    },
+    "fs_read_via_symlink_in_workdir": {
+     "result": "allowed",
+     "detail": "outside-file-content"
+    },
+    "env_secret": {
+     "result": "allowed",
+     "detail": "fake-secret-not-real-0000"
+    },
+    "net_fetch_localhost": {
+     "result": "allowed",
+     "detail": "local-server-reply"
+    },
+    "net_tcp_localhost": {
+     "result": "allowed",
+     "detail": "local-server-reply\n"
+    },
+    "child_process": {
+     "result": "blocked",
+     "detail": "ERR_ACCESS_DENIED: Access to this API has been restricted. Use --allow-child-process to manage permissions."
+    },
+    "sqlite_read_outside": {
+     "result": "allowed",
+     "detail": "outside-db-row"
+    },
+    "sqlite_write_outside": {
+     "result": "allowed",
+     "detail": "inserted"
+    },
+    "inherited_fd_read": {
+     "result": "allowed",
+     "detail": "outside-file-content"
+    },
+    "debug_process_sibling": {
+     "result": "allowed",
+     "detail": "called",
+     "sibling_inspector_opened": true
+    },
+    "signal_sibling_sigusr1": {
+     "result": "allowed",
+     "detail": "sent",
+     "sibling_inspector_opened": true
+    },
+    "_disk": {
+     "outside_written": false,
+     "work_written": true,
+     "db_rows": 2
+    }
+   }
+  },
+  "node26/control": {
+   "cmd": [
+    "node",
+    "-"
+   ],
+   "probes": {
+    "fs_read_outside": {
+     "result": "allowed",
+     "detail": "outside-file-content"
+    },
+    "fs_write_outside": {
+     "result": "allowed",
+     "detail": "wrote"
+    },
+    "fs_write_workdir": {
+     "result": "allowed",
+     "detail": "wrote"
+    },
+    "fs_read_via_symlink_in_workdir": {
+     "result": "allowed",
+     "detail": "outside-file-content"
+    },
+    "env_secret": {
+     "result": "allowed",
+     "detail": "fake-secret-not-real-0000"
+    },
+    "net_fetch_localhost": {
+     "result": "allowed",
+     "detail": "local-server-reply"
+    },
+    "net_tcp_localhost": {
+     "result": "allowed",
+     "detail": "local-server-reply\n"
+    },
+    "child_process": {
+     "result": "allowed",
+     "detail": "child-ran"
+    },
+    "sqlite_read_outside": {
+     "result": "allowed",
+     "detail": "outside-db-row"
+    },
+    "sqlite_write_outside": {
+     "result": "allowed",
+     "detail": "inserted"
+    },
+    "inherited_fd_read": {
+     "result": "allowed",
+     "detail": "outside-file-content"
+    },
+    "debug_process_sibling": {
+     "result": "allowed",
+     "detail": "called",
+     "sibling_inspector_opened": true
+    },
+    "signal_sibling_sigusr1": {
+     "result": "allowed",
+     "detail": "sent",
+     "sibling_inspector_opened": true
+    },
+    "_disk": {
+     "outside_written": true,
+     "work_written": true,
+     "db_rows": 2
+    }
+   }
+  },
+  "node26/P0": {
+   "cmd": [
+    "node",
+    "--permission",
+    "-"
+   ],
+   "probes": {
+    "fs_read_outside": {
+     "result": "blocked",
+     "detail": "ERR_ACCESS_DENIED: Access to this API has been restricted. Use --allow-fs-read to manage permissions."
+    },
+    "fs_write_outside": {
+     "result": "blocked",
+     "detail": "ERR_ACCESS_DENIED: Access to this API has been restricted. Use --allow-fs-write to manage permissions."
+    },
+    "fs_write_workdir": {
+     "result": "blocked",
+     "detail": "ERR_ACCESS_DENIED: Access to this API has been restricted. Use --allow-fs-write to manage permissions."
+    },
+    "fs_read_via_symlink_in_workdir": {
+     "result": "blocked",
+     "detail": "ERR_ACCESS_DENIED: Access to this API has been restricted. Use --allow-fs-read to manage permissions."
+    },
+    "env_secret": {
+     "result": "allowed",
+     "detail": "fake-secret-not-real-0000"
+    },
+    "net_fetch_localhost": {
+     "result": "blocked",
+     "detail": "TypeError: fetch failed (cause: ERR_ACCESS_DENIED connect ERR_ACCESS_DENIED Access to this API has been restricted. Use --allow-net to manage permissions.)"
+    },
+    "net_tcp_localhost": {
+     "result": "blocked",
+     "detail": "ERR_ACCESS_DENIED: connect ERR_ACCESS_DENIED Access to this API has been restricted. Use --allow-net to manage permissions."
+    },
+    "child_process": {
+     "result": "blocked",
+     "detail": "ERR_ACCESS_DENIED: Access to this API has been restricted. Use --allow-child-process to manage permissions."
+    },
+    "sqlite_read_outside": {
+     "result": "allowed",
+     "detail": "outside-db-row"
+    },
+    "sqlite_write_outside": {
+     "result": "allowed",
+     "detail": "inserted"
+    },
+    "inherited_fd_read": {
+     "result": "allowed",
+     "detail": "outside-file-content"
+    },
+    "debug_process_sibling": {
+     "result": "allowed",
+     "detail": "called",
+     "sibling_inspector_opened": true
+    },
+    "signal_sibling_sigusr1": {
+     "result": "allowed",
+     "detail": "sent",
+     "sibling_inspector_opened": true
+    },
+    "_disk": {
+     "outside_written": false,
+     "work_written": false,
+     "db_rows": 2
+    }
+   }
+  },
+  "node26/P1": {
+   "cmd": [
+    "node",
+    "--permission",
+    "--allow-fs-read=<base>/work",
+    "--allow-fs-write=<base>/work",
+    "-"
+   ],
+   "probes": {
+    "fs_read_outside": {
+     "result": "blocked",
+     "detail": "ERR_ACCESS_DENIED: Access to this API has been restricted. Use --allow-fs-read to manage permissions."
+    },
+    "fs_write_outside": {
+     "result": "blocked",
+     "detail": "ERR_ACCESS_DENIED: Access to this API has been restricted. Use --allow-fs-write to manage permissions."
+    },
+    "fs_write_workdir": {
+     "result": "allowed",
+     "detail": "wrote"
+    },
+    "fs_read_via_symlink_in_workdir": {
+     "result": "allowed",
+     "detail": "outside-file-content"
+    },
+    "env_secret": {
+     "result": "allowed",
+     "detail": "fake-secret-not-real-0000"
+    },
+    "net_fetch_localhost": {
+     "result": "blocked",
+     "detail": "TypeError: fetch failed (cause: ERR_ACCESS_DENIED connect ERR_ACCESS_DENIED Access to this API has been restricted. Use --allow-net to manage permissions.)"
+    },
+    "net_tcp_localhost": {
+     "result": "blocked",
+     "detail": "ERR_ACCESS_DENIED: connect ERR_ACCESS_DENIED Access to this API has been restricted. Use --allow-net to manage permissions."
+    },
+    "child_process": {
+     "result": "blocked",
+     "detail": "ERR_ACCESS_DENIED: Access to this API has been restricted. Use --allow-child-process to manage permissions."
+    },
+    "sqlite_read_outside": {
+     "result": "allowed",
+     "detail": "outside-db-row"
+    },
+    "sqlite_write_outside": {
+     "result": "allowed",
+     "detail": "inserted"
+    },
+    "inherited_fd_read": {
+     "result": "allowed",
+     "detail": "outside-file-content"
+    },
+    "debug_process_sibling": {
+     "result": "allowed",
+     "detail": "called",
+     "sibling_inspector_opened": true
+    },
+    "signal_sibling_sigusr1": {
+     "result": "allowed",
+     "detail": "sent",
+     "sibling_inspector_opened": true
+    },
+    "_disk": {
+     "outside_written": false,
+     "work_written": true,
+     "db_rows": 2
+    }
+   }
+  }
+ },
+ "memory_cap_128mb_try_512mb": {
+  "deno/heap": {
+   "exit_code": -5,
+   "stdout": "",
+   "heap_oom_message": false,
+   "peak_rss_mb": 211,
+   "cmd": [
+    "deno",
+    "run",
+    "--v8-flags=--max-old-space-size=128",
+    "--ext=js",
+    "--no-code-cache",
+    "--no-prompt",
+    "--no-remote",
+    "--no-lock",
+    "--node-modules-dir=none",
+    "--no-config",
+    "--no-npm",
+    "--cached-only",
+    "-"
+   ]
+  },
+  "deno/arraybuffer": {
+   "exit_code": 0,
+   "stdout": "{\"allocated_mb\":512}",
+   "heap_oom_message": false,
+   "peak_rss_mb": 549,
+   "cmd": [
+    "deno",
+    "run",
+    "--v8-flags=--max-old-space-size=128",
+    "--ext=js",
+    "--no-code-cache",
+    "--no-prompt",
+    "--no-remote",
+    "--no-lock",
+    "--node-modules-dir=none",
+    "--no-config",
+    "--no-npm",
+    "--cached-only",
+    "-"
+   ]
+  },
+  "node22/heap": {
+   "exit_code": -6,
+   "stdout": "",
+   "heap_oom_message": true,
+   "peak_rss_mb": 201,
+   "cmd": [
+    "node",
+    "--max-old-space-size=128",
+    "-"
+   ]
+  },
+  "node22/arraybuffer": {
+   "exit_code": 0,
+   "stdout": "{\"allocated_mb\":512}",
+   "heap_oom_message": false,
+   "peak_rss_mb": 557,
+   "cmd": [
+    "node",
+    "--max-old-space-size=128",
+    "-"
+   ]
+  },
+  "node24/heap": {
+   "exit_code": -6,
+   "stdout": "",
+   "heap_oom_message": true,
+   "peak_rss_mb": 258,
+   "cmd": [
+    "node",
+    "--max-old-space-size=128",
+    "-"
+   ]
+  },
+  "node24/arraybuffer": {
+   "exit_code": 0,
+   "stdout": "{\"allocated_mb\":512}",
+   "heap_oom_message": false,
+   "peak_rss_mb": 557,
+   "cmd": [
+    "node",
+    "--max-old-space-size=128",
+    "-"
+   ]
+  },
+  "node26/heap": {
+   "exit_code": -6,
+   "stdout": "",
+   "heap_oom_message": true,
+   "peak_rss_mb": 226,
+   "cmd": [
+    "node",
+    "--max-old-space-size=128",
+    "-"
+   ]
+  },
+  "node26/arraybuffer": {
+   "exit_code": 0,
+   "stdout": "{\"allocated_mb\":512}",
+   "heap_oom_message": false,
+   "peak_rss_mb": 557,
+   "cmd": [
+    "node",
+    "--max-old-space-size=128",
+    "-"
+   ]
+  }
+ }
+}
