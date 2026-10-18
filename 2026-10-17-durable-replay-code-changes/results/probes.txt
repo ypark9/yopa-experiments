@@ -1,0 +1,21 @@
+=== RUN   TestInvocationsPerExecution
+    probes_test.go:31: A03 succeeded execution: 2 invocations
+    probes_test.go:36: B v1 workflow fresh execution: 2 invocations
+--- PASS: TestInvocationsPerExecution (1.05s)
+=== RUN   TestWaitDurationAfterChange
+    probes_test.go:47: resumed on v2: WaitStarted recorded duration 3600s
+    probes_test.go:53: fresh v2: WaitStarted recorded duration 86400s
+--- PASS: TestWaitDurationAfterChange (0.06s)
+=== RUN   TestRequestIDLocal
+    probes_test.go:72: ctx.RequestID() per invocation: ["" ""]
+    probes_test.go:74: runner-recorded invocation RequestID: local-request-1
+    probes_test.go:74: runner-recorded invocation RequestID: local-request-2
+--- PASS: TestRequestIDLocal (0.02s)
+=== RUN   TestInvocationsResumePath
+    probes_test.go:85: Resume path (unchanged v1): 3 invocations, status SUCCEEDED
+--- PASS: TestInvocationsResumePath (0.04s)
+=== RUN   TestResumeCheckDuration
+    probes_test.go:97: resume check (v1 -> v1, 3 invocations): 200 runs, mean 41.190208ms per run
+--- PASS: TestResumeCheckDuration (8.24s)
+PASS
+ok  	replaylab/probes	9.421s

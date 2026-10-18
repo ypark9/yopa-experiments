@@ -1,0 +1,7 @@
+cases/a08_goroutine/case.go:20:13: durable.Step runs on a goroutine started by the go statement; use durable.Go so the goroutine owns a Context
+cases/a08_goroutine/case.go:24:13: durable.Step runs on a goroutine started by the go statement; use durable.Go so the goroutine owns a Context
+cases/a01_time_now/case.go:16:9: time.Now is nondeterministic and is called outside a step body; move it into a durable.Step or use durable.ExecutionStartTime
+cases/a02_rand_key/case.go:17:9: rand.Uint64 is nondeterministic and is called outside a step body; move it into a durable.Step so the value is checkpointed
+cases/a03_rand_branch/case.go:14:5: rand.IntN is nondeterministic and is called outside a step body; move it into a durable.Step so the value is checkpointed
+cases/a04_map_range/case.go:16:2: range over a map creates durable operation durable.Step in a randomized order; sort the keys and range over the slice
+cases/a07_request_id/case.go:16:9: Context.RequestID changes on every invocation of an execution; read it only inside a step body

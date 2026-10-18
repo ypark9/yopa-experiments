@@ -1,0 +1,61 @@
+{
+	"replaylab/cases/a01_time_now": {
+		"durablenondeterminism": [
+			{
+				"posn": "cases/a01_time_now/case.go:16:9",
+				"end": "cases/a01_time_now/case.go:16:19",
+				"message": "time.Now is nondeterministic and is called outside a step body; move it into a durable.Step or use durable.ExecutionStartTime"
+			}
+		]
+	},
+	"replaylab/cases/a02_rand_key": {
+		"durablenondeterminism": [
+			{
+				"posn": "cases/a02_rand_key/case.go:17:9",
+				"end": "cases/a02_rand_key/case.go:17:22",
+				"message": "rand.Uint64 is nondeterministic and is called outside a step body; move it into a durable.Step so the value is checkpointed"
+			}
+		]
+	},
+	"replaylab/cases/a03_rand_branch": {
+		"durablenondeterminism": [
+			{
+				"posn": "cases/a03_rand_branch/case.go:14:5",
+				"end": "cases/a03_rand_branch/case.go:14:17",
+				"message": "rand.IntN is nondeterministic and is called outside a step body; move it into a durable.Step so the value is checkpointed"
+			}
+		]
+	},
+	"replaylab/cases/a04_map_range": {
+		"durablenondeterminism": [
+			{
+				"posn": "cases/a04_map_range/case.go:16:2",
+				"end": "cases/a04_map_range/case.go:22:3",
+				"message": "range over a map creates durable operation durable.Step in a randomized order; sort the keys and range over the slice"
+			}
+		]
+	},
+	"replaylab/cases/a07_request_id": {
+		"durablenondeterminism": [
+			{
+				"posn": "cases/a07_request_id/case.go:16:9",
+				"end": "cases/a07_request_id/case.go:16:24",
+				"message": "Context.RequestID changes on every invocation of an execution; read it only inside a step body"
+			}
+		]
+	},
+	"replaylab/cases/a08_goroutine": {
+		"durablegoroutine": [
+			{
+				"posn": "cases/a08_goroutine/case.go:20:13",
+				"end": "cases/a08_goroutine/case.go:20:102",
+				"message": "durable.Step runs on a goroutine started by the go statement; use durable.Go so the goroutine owns a Context"
+			},
+			{
+				"posn": "cases/a08_goroutine/case.go:24:13",
+				"end": "cases/a08_goroutine/case.go:24:100",
+				"message": "durable.Step runs on a goroutine started by the go statement; use durable.Go so the goroutine owns a Context"
+			}
+		]
+	}
+}

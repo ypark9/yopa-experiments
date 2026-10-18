@@ -1,0 +1,24 @@
+go go1.24.4 linux/amd64
+A01 time.Now() outside a step, used as idempotency key      silent=20 golden_fail=0
+A02 rand key outside a step                                 silent=20 golden_fail=0
+A03 random branch adds a step before the wait               nde=17 ok=3 golden_fail=17
+A04 range over a map creates steps                          nde=12 ok=8 golden_fail=3
+A05 map keys copied to an unsorted slice, then steps        nde=13 ok=7 golden_fail=15
+A06 clock read inside a helper without a Context            silent=20 golden_fail=0
+A07 ctx.RequestID() used as a key                           ok=20 golden_fail=0
+A08 plain goroutines call Step on the parent context        first-run-error:Error=20 golden_fail=0
+A09 control: key in a step, ExecutionStartTime, sorted keys ok=20 golden_fail=0
+B01 rename a completed step                                 nde=20 golden_fail=20
+B02 swap two completed steps                                nde=20 golden_fail=20
+B03 insert a step before the wait                           nde=20 golden_fail=20
+B04 insert a step after the wait                            ok=20 golden_fail=20
+B05 remove a completed step                                 nde=20 golden_fail=20
+B06 remove a step that has not run                          ok=20 golden_fail=20
+B07 change a completed step's return type                   error:SerdesError=20 golden_fail=0
+B08 rename a JSON tag in a completed step's result          silent=20 golden_fail=0
+B09 change the logic inside a completed step                silent=20 golden_fail=0
+B10 change the wait duration                                ok=20 golden_fail=0
+B11 rename the wait the execution is paused on              nde=20 golden_fail=20
+B12 wrap a completed step in a child context                nde=20 golden_fail=20
+B13 add a field to a completed step's result                silent=20 golden_fail=0
+B14 env var read between operations flips while paused      nde=20 golden_fail=0

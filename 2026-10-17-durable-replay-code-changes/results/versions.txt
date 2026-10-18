@@ -1,0 +1,7 @@
+go version go1.24.4 linux/amd64
+github.com/aws/aws-durable-execution-sdk-go v1.0.0
+durablelint: go1.26.9
+	mod	github.com/aws/aws-durable-execution-sdk-go/analysis	v0.0.0-20261015184945-e8c24d2a81bb	h1:p4p0UFlJo5b+FO+dAjh+PEEK2Lz/2XB9SDOU6WqYP4E=
+	dep	golang.org/x/mod	v0.38.0	h1:MECBjubtXD7yj4HrhIUcywNaGeNVUdfVnxmPajOk4yk=
+	build	-buildmode=exe
+network isolation: unshare -rn
