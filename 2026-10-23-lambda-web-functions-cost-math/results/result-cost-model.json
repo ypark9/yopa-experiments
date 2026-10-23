@@ -1,0 +1,68 @@
+{
+ "examples": [
+  {
+   "example": "1 SSR web app",
+   "web_aws_assumption": 25.77,
+   "event_arm": 17.7,
+   "event_arm_cpu_scaled": 27.6,
+   "scaled_duration_ms": 251,
+   "event_x86": 21.38,
+   "event_x86_cpu_scaled": 33.75,
+   "web_memory_one_env": 4.66,
+   "web_with_3_envs": 35.09
+  },
+  {
+   "example": "2 I/O-heavy API",
+   "web_aws_assumption": 19.6,
+   "event_arm": 9.73,
+   "event_arm_cpu_scaled": 19.32,
+   "scaled_duration_ms": 448,
+   "event_x86": 11.67,
+   "event_x86_cpu_scaled": 23.65,
+   "web_memory_one_env": 2.76,
+   "web_with_3_envs": 25.12
+  },
+  {
+   "example": "3 Auth middleware",
+   "web_aws_assumption": 64.56,
+   "event_arm": 29.33,
+   "event_arm_cpu_scaled": 54.73,
+   "scaled_duration_ms": 186,
+   "event_x86": 31.67,
+   "event_x86_cpu_scaled": 63.42,
+   "web_memory_one_env": 1.33,
+   "web_with_3_envs": 67.22
+  },
+  {
+   "example": "4 LLM streaming",
+   "web_aws_assumption": 33.95,
+   "event_arm": 101.0,
+   "event_arm_cpu_scaled": 117.37,
+   "scaled_duration_ms": 3491,
+   "event_x86": 126.0,
+   "event_x86_cpu_scaled": 146.46,
+   "web_memory_one_env": 4.75,
+   "web_with_3_envs": 43.45
+  }
+ ],
+ "request_fee_floor_event_cheaper_if_duration_below": {
+  "arm_128MB_ms": 58.6,
+  "arm_500MB_ms": 15.0,
+  "arm_1000MB_ms": 7.5,
+  "x86_128MB_ms": 46.9,
+  "x86_500MB_ms": 12.0,
+  "x86_1000MB_ms": 6.0
+ },
+ "cpu_share_breakeven_web_cheaper_below__memory_ignored": {
+  "128MB": 0.062,
+  "500MB": 0.241,
+  "1000MB": 0.481,
+  "2000MB": 0.963
+ },
+ "one_env_memory_per_month": {
+  "0.25GB": 2.38,
+  "0.5GB": 4.75,
+  "1.0GB": 9.5,
+  "2.0GB": 19.01
+ }
+}
