@@ -39,6 +39,7 @@ desc = json.loads(json.dumps(base)); desc["properties"]["reason"]["description"]
 out.append(call("3 description-only change", desc))
 struct = json.loads(json.dumps(base)); struct["properties"]["urgent"] = {"type": "boolean"}; struct["required"].append("urgent")
 out.append(call("4 structure change", struct))
-out.append(call("5 raw pydantic schema with ge/le (no SDK transform)", WithGe.model_json_schema()))
+out.append(call("5a raw pydantic Baseline: only additionalProperties missing", Baseline.model_json_schema()))
+out.append(call("5b raw pydantic schema with ge/le (no SDK transform)", WithGe.model_json_schema()))
 out.append(call("6 SDK-transformed dict[str,str] field", transform_schema(WithMap)))
 json.dump(out, open("result-owner-run.json", "w"), indent=1)

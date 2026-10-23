@@ -19,4 +19,4 @@ aws sts get-caller-identity --query Arn --output text           # read-only: rig
 AWS_REGION=us-east-1 python owner_run.py --i-understand-this-uses-my-aws-account
 ```
 
-Estimated cost: ~10 calls × (~150 input + ≤200 output tokens). At Anthropic's list price for Claude Haiku 5.5 ($0.10 / MTok input, $0.50 / MTok output, global routing) that is about $0.001. Confirm the Bedrock price for your Region on https://aws.amazon.com/bedrock/pricing/ (regional endpoints cost more). Nothing to tear down.
+Estimated cost: ~11 calls × (~150 input + ≤200 output tokens). At Anthropic's list price for Claude Haiku 5.5 ($0.10 / MTok input, $0.50 / MTok output, global routing) that is about $0.001. Confirm the Bedrock price for your Region on https://aws.amazon.com/bedrock/pricing/ (regional endpoints cost more). Nothing to tear down.
