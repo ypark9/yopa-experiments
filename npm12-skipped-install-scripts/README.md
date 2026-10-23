@@ -16,6 +16,7 @@ says, and whether `require()` works afterwards.
 | `scripts/build_tarballs.sh` | Packs nativedemo 1.0.0, nativedemo 1.0.1, postdemo 1.0.0 into `registry/`. |
 | `scripts/registry_server.mjs` | Read-only npm registry on `127.0.0.1:4873` that serves only those tarballs. |
 | `scripts/run_matrix.sh` | 9 fixture cases + 4 real public packages on npm 11 and npm 12; writes `results/`. |
+| `scripts/run_gate_checks.sh` | 5 cases for the recommended CI gate; writes `results/gate.tsv`. |
 
 Real packages (downloaded from the public npm registry, nothing published): `sqlite3@6.0.1`,
 `better-sqlite3@13.0.3`, `esbuild@0.28.2`, `bcrypt@6.0.0`.
@@ -36,6 +37,7 @@ npm install -g --prefix "$PWD/.npm1200" npm@12.0.0
 npm install -g --prefix "$PWD/.npm12"   npm@12.2.1
 ./scripts/build_tarballs.sh
 NPM11=$PWD/.npm11/bin/npm NPM1200=$PWD/.npm1200/bin/npm NPM12=$PWD/.npm12/bin/npm ./scripts/run_matrix.sh
+NPM11=$PWD/.npm11/bin/npm NPM12=$PWD/.npm12/bin/npm ./scripts/run_gate_checks.sh
 ```
 
 ## Results (`results/matrix.tsv`)
@@ -58,6 +60,20 @@ Columns: case, npm version, command, exit code, count of `install-scripts` warni
 | real | 11.21.1 / 12.2.1 | `esbuild@0.28.2` | 0 / 0 | ok / ok (postinstall blocked, binary comes from an optional platform package) |
 | real | 11.21.1 / 12.2.1 | `bcrypt@6.0.0` | 0 / 0 | ok / ok (install script blocked, ships `prebuilds/`) |
 | real | 12.2.1 | `npm install-scripts approve sqlite3` + `npm rebuild` | 0 | ok |
+
+### CI gate checks (`scripts/run_gate_checks.sh`, `results/gate.tsv`)
+
+The gate the post recommends is `npm ci --strict-allow-scripts` followed by `require()` of the native dependencies.
+
+| Case | What | Exit |
+|---|---|---|
+| g1 | npm 12.2.1, lockfile with no approvals, gate | 1 (`ESTRICTALLOWSCRIPTS`) |
+| g2 | npm 12.2.1, `allowScripts` committed, gate | 0, both modules load |
+| g3 | npm 12.2.1, `strict-allow-scripts=true` in project `.npmrc`, plain `npm ci` | 1 |
+| g4 | npm 11.21.1, `npm ci --strict-allow-scripts` | 1 (the flag already exists on 11.21.1) |
+| g5 | npm 12.2.1, `npm install-scripts ls` on a fresh checkout before any install | 0, prints `No packages with unreviewed install scripts.` |
+
+g5 matters: the listing reads what is installed in `node_modules`, so on a clean CI checkout it reports nothing.
 
 Raw logs: `results/*.log` (local paths replaced by `npm` and `$TMP`).
 
