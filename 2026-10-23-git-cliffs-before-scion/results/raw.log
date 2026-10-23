@@ -1,0 +1,61 @@
+{"test": "push", "agents": 1, "trial": 1, "first_round": {"ok": 1}, "landed": 1, "commits_added": 1, "total_push_attempts": 1, "max_attempts_one_agent": 1, "retry_wall_s": 0.0}
+{"test": "push", "agents": 1, "trial": 2, "first_round": {"ok": 1}, "landed": 1, "commits_added": 1, "total_push_attempts": 1, "max_attempts_one_agent": 1, "retry_wall_s": 0.0}
+{"test": "push", "agents": 1, "trial": 3, "first_round": {"ok": 1}, "landed": 1, "commits_added": 1, "total_push_attempts": 1, "max_attempts_one_agent": 1, "retry_wall_s": 0.0}
+{"test": "push", "agents": 2, "trial": 1, "first_round": {"lock": 1, "ok": 1}, "landed": 2, "commits_added": 2, "total_push_attempts": 3, "max_attempts_one_agent": 2, "retry_wall_s": 0.23}
+{"test": "push", "agents": 2, "trial": 2, "first_round": {"lock": 1, "ok": 1}, "landed": 2, "commits_added": 2, "total_push_attempts": 3, "max_attempts_one_agent": 2, "retry_wall_s": 0.24}
+{"test": "push", "agents": 2, "trial": 3, "first_round": {"lock": 1, "ok": 1}, "landed": 2, "commits_added": 2, "total_push_attempts": 3, "max_attempts_one_agent": 2, "retry_wall_s": 0.14}
+{"test": "push", "agents": 4, "trial": 1, "first_round": {"lock": 3, "ok": 1}, "landed": 4, "commits_added": 4, "total_push_attempts": 10, "max_attempts_one_agent": 4, "retry_wall_s": 0.43}
+{"test": "push", "agents": 4, "trial": 2, "first_round": {"lock": 3, "ok": 1}, "landed": 4, "commits_added": 4, "total_push_attempts": 10, "max_attempts_one_agent": 4, "retry_wall_s": 0.39}
+{"test": "push", "agents": 4, "trial": 3, "first_round": {"lock": 3, "ok": 1}, "landed": 4, "commits_added": 4, "total_push_attempts": 9, "max_attempts_one_agent": 3, "retry_wall_s": 0.58}
+{"test": "push", "agents": 8, "trial": 1, "first_round": {"lock": 7, "ok": 1}, "landed": 8, "commits_added": 8, "total_push_attempts": 36, "max_attempts_one_agent": 8, "retry_wall_s": 1.16}
+{"test": "push", "agents": 8, "trial": 2, "first_round": {"lock": 7, "ok": 1}, "landed": 8, "commits_added": 8, "total_push_attempts": 36, "max_attempts_one_agent": 8, "retry_wall_s": 1.23}
+{"test": "push", "agents": 8, "trial": 3, "first_round": {"lock": 7, "ok": 1}, "landed": 8, "commits_added": 8, "total_push_attempts": 35, "max_attempts_one_agent": 7, "retry_wall_s": 1.13}
+{"test": "push", "agents": 16, "trial": 1, "first_round": {"fetch first": 8, "lock": 7, "ok": 1}, "landed": 16, "commits_added": 16, "total_push_attempts": 135, "max_attempts_one_agent": 16, "retry_wall_s": 3.06}
+{"test": "push", "agents": 16, "trial": 2, "first_round": {"lock": 15, "ok": 1}, "landed": 16, "commits_added": 16, "total_push_attempts": 135, "max_attempts_one_agent": 16, "retry_wall_s": 2.97}
+{"test": "push", "agents": 16, "trial": 3, "first_round": {"lock": 15, "ok": 1}, "landed": 16, "commits_added": 16, "total_push_attempts": 136, "max_attempts_one_agent": 16, "retry_wall_s": 2.86}
+{"test": "push", "agents": 32, "trial": 1, "first_round": {"lock": 31, "ok": 1}, "landed": 32, "commits_added": 32, "total_push_attempts": 528, "max_attempts_one_agent": 32, "retry_wall_s": 10.8}
+{"test": "push", "agents": 32, "trial": 2, "first_round": {"lock": 31, "ok": 1}, "landed": 32, "commits_added": 32, "total_push_attempts": 519, "max_attempts_one_agent": 32, "retry_wall_s": 9.98}
+{"test": "push", "agents": 32, "trial": 3, "first_round": {"lock": 31, "ok": 1}, "landed": 32, "commits_added": 32, "total_push_attempts": 525, "max_attempts_one_agent": 32, "retry_wall_s": 10.16}
+{"test": "status", "repo": "r10k.git", "files_on_disk": 10000, "clone_checkout_s": 0.63, "index_bytes": 1023271, "status_default_s": 0.036, "status_uno_s": 0.016, "status_untracked_cache_s": 0.026, "fsmonitor_daemon_start": "exit=128 fatal: fsmonitor--daemon not supported on this platform", "status_one_edit_s": 0.026, "sparse_set_s": 0.21, "sparse_files_on_disk": 100, "status_sparse_s": 0.005}
+{"test": "status", "repo": "r100k.git", "files_on_disk": 100000, "clone_checkout_s": 2.7, "index_bytes": 8948372, "status_default_s": 0.088, "status_uno_s": 0.034, "status_untracked_cache_s": 0.038, "fsmonitor_daemon_start": "exit=128 fatal: fsmonitor--daemon not supported on this platform", "status_one_edit_s": 0.038, "sparse_set_s": 1.52, "sparse_files_on_disk": 1000, "status_sparse_s": 0.061}
+{"test": "status", "repo": "r300k.git", "files_on_disk": 300000, "clone_checkout_s": 7.97, "index_bytes": 26548372, "status_default_s": 0.206, "status_uno_s": 0.086, "status_untracked_cache_s": 0.096, "fsmonitor_daemon_start": "exit=128 fatal: fsmonitor--daemon not supported on this platform", "status_one_edit_s": 0.084, "sparse_set_s": 4.87, "sparse_files_on_disk": 3000, "status_sparse_s": 0.172}
+{"test": "status", "repo": "r1000k.git", "files_on_disk": 1000000, "clone_checkout_s": 30.16, "index_bytes": 88153473, "status_default_s": 0.908, "status_uno_s": 0.285, "status_untracked_cache_s": 0.308, "fsmonitor_daemon_start": "exit=128 fatal: fsmonitor--daemon not supported on this platform", "status_one_edit_s": 0.301, "sparse_set_s": 17.12, "sparse_files_on_disk": 10000, "status_sparse_s": 0.187}
+{"test": "clone", "repo": "r100k.git", "variant": "full", "clone_s": 2.69, "sparse_set_s": 0.0, "git_dir_bytes": 31368461, "objects_in_pack": 135139, "files_on_disk": 100000}
+{"test": "clone", "repo": "r100k.git", "variant": "depth1", "clone_s": 2.55, "sparse_set_s": 0.0, "git_dir_bytes": 27789340, "objects_in_pack": 105102, "files_on_disk": 100000}
+{"test": "clone", "repo": "r100k.git", "variant": "blob_none", "clone_s": 11.42, "sparse_set_s": 0.0, "git_dir_bytes": 37988463, "objects_in_pack": 125139, "files_on_disk": 100000}
+{"test": "clone", "repo": "r100k.git", "variant": "blob_none_sparse_d000", "clone_s": 0.49, "sparse_set_s": 0.17, "git_dir_bytes": 14210876, "objects_in_pack": 26139, "files_on_disk": 1000}
+{"test": "clone", "repo": "r100k.git", "variant": "tree0", "clone_s": 11.13, "sparse_set_s": 0.0, "git_dir_bytes": 36084952, "objects_in_pack": 105602, "files_on_disk": 100000}
+{"test": "clone", "repo": "r1000k.git", "variant": "full", "clone_s": 29.88, "sparse_set_s": 0.0, "git_dir_bytes": 274256699, "objects_in_pack": 1035217, "files_on_disk": 1000000}
+{"test": "clone", "repo": "r1000k.git", "variant": "depth1", "clone_s": 29.04, "sparse_set_s": 0.0, "git_dir_bytes": 270662547, "objects_in_pack": 1005102, "files_on_disk": 1000000}
+{"test": "note", "text": "first run killed by hand: r1000k blob:none clone still running after 13 min (fetch --stdin child at 99% CPU); rerun with CLONE_TIMEOUT=900"}
+{"test": "lazy", "repo": "r100k.git", "clone": "full", "cmd": "log -p -n 100", "hot_file_changes": "", "time_s": 0.073, "fetch_processes": 0, "new_packs": 0, "stdout_bytes": 1065293}
+{"test": "lazy", "repo": "r100k.git", "clone": "full", "cmd": "log --oneline -- d000", "hot_file_changes": "", "time_s": 0.01, "fetch_processes": 0, "new_packs": 0, "stdout_bytes": 1618}
+{"test": "lazy", "repo": "r100k.git", "clone": "full", "cmd": "blame d001/s22/f0017201.txt", "hot_file_changes": 4, "time_s": 0.027, "fetch_processes": 0, "new_packs": 0, "stdout_bytes": 531}
+{"test": "lazy", "repo": "r100k.git", "clone": "full", "cmd": "diff --stat HEAD~200 HEAD", "hot_file_changes": "", "time_s": 0.087, "fetch_processes": 0, "new_packs": 0, "stdout_bytes": 168836}
+{"test": "lazy", "repo": "r100k.git", "clone": "blob_none", "cmd": "log -p -n 100", "hot_file_changes": "", "time_s": 1.901, "fetch_processes": 0, "new_packs": 50, "stdout_bytes": 1066691}
+{"test": "lazy", "repo": "r100k.git", "clone": "blob_none", "cmd": "log --oneline -- d000", "hot_file_changes": "", "time_s": 0.008, "fetch_processes": 0, "new_packs": 0, "stdout_bytes": 1618}
+{"test": "lazy", "repo": "r100k.git", "clone": "blob_none", "cmd": "blame d001/s22/f0017201.txt", "hot_file_changes": 4, "time_s": 0.048, "fetch_processes": 0, "new_packs": 1, "stdout_bytes": 531}
+{"test": "lazy", "repo": "r100k.git", "clone": "blob_none", "cmd": "diff --stat HEAD~200 HEAD", "hot_file_changes": "", "time_s": 0.184, "fetch_processes": 0, "new_packs": 1, "stdout_bytes": 168836}
+{"test": "lazy", "repo": "r100k.git", "clone": "tree0", "cmd": "log -p -n 100", "hot_file_changes": "", "time_s": 28.69, "fetch_processes": 0, "new_packs": 50, "stdout_bytes": 1068293}
+{"test": "lazy", "repo": "r100k.git", "clone": "tree0", "cmd": "log --oneline -- d000", "hot_file_changes": "", "time_s": 104.753, "fetch_processes": 0, "new_packs": 50, "stdout_bytes": 1746}
+{"test": "lazy", "repo": "r100k.git", "clone": "tree0", "cmd": "blame d001/s22/f0017201.txt", "hot_file_changes": 4, "time_s": 17.087, "fetch_processes": 0, "new_packs": 13, "stdout_bytes": 538}
+{"test": "lazy", "repo": "r100k.git", "clone": "tree0", "cmd": "diff --stat HEAD~200 HEAD", "hot_file_changes": "", "time_s": 0.445, "fetch_processes": 0, "new_packs": 2, "stdout_bytes": 168836}
+{"test": "repack", "repo": "r100k.git", "bytes_after_clone": 22419343, "repack_adf_s": 1.55, "bytes_after_repack": 23442346, "commit_graph_s": 0.01, "gc_s": 0.69, "bytes_after_gc": 23473518}
+{"test": "repack", "repo": "r1000k.git", "bytes_after_clone": 186102477, "repack_adf_s": 13.27, "bytes_after_repack": 192215667, "commit_graph_s": 0.01, "gc_s": 5.61, "bytes_after_gc": 192246839}
+{"test": "note", "text": "lazy rows above counted 0 fetch processes (trace2 argv filter bug) and new_packs capped at 50 by auto-gc; rerun below with gc.auto=0 and fixed filter"}
+{"test": "lazy", "repo": "r100k.git", "clone": "full", "cmd": "log -p -n 100", "hot_file_changes": "", "time_s": 0.068, "fetch_processes": 0, "new_packs": 0, "stdout_bytes": 1065293}
+{"test": "lazy", "repo": "r100k.git", "clone": "full", "cmd": "log --oneline -- d000", "hot_file_changes": "", "time_s": 0.008, "fetch_processes": 0, "new_packs": 0, "stdout_bytes": 1618}
+{"test": "lazy", "repo": "r100k.git", "clone": "full", "cmd": "blame d001/s22/f0017201.txt", "hot_file_changes": 4, "time_s": 0.027, "fetch_processes": 0, "new_packs": 0, "stdout_bytes": 531}
+{"test": "lazy", "repo": "r100k.git", "clone": "full", "cmd": "diff --stat HEAD~200 HEAD", "hot_file_changes": "", "time_s": 0.107, "fetch_processes": 0, "new_packs": 0, "stdout_bytes": 168836}
+{"test": "lazy", "repo": "r100k.git", "clone": "blob_none", "cmd": "log -p -n 100", "hot_file_changes": "", "time_s": 1.801, "fetch_processes": 100, "new_packs": 100, "stdout_bytes": 1065293}
+{"test": "lazy", "repo": "r100k.git", "clone": "blob_none", "cmd": "log --oneline -- d000", "hot_file_changes": "", "time_s": 0.007, "fetch_processes": 0, "new_packs": 0, "stdout_bytes": 1618}
+{"test": "lazy", "repo": "r100k.git", "clone": "blob_none", "cmd": "blame d001/s22/f0017201.txt", "hot_file_changes": 4, "time_s": 0.065, "fetch_processes": 1, "new_packs": 1, "stdout_bytes": 531}
+{"test": "lazy", "repo": "r100k.git", "clone": "blob_none", "cmd": "diff --stat HEAD~200 HEAD", "hot_file_changes": "", "time_s": 0.215, "fetch_processes": 1, "new_packs": 1, "stdout_bytes": 168836}
+{"test": "lazy", "repo": "r100k.git", "clone": "tree0", "cmd": "log -p -n 100", "hot_file_changes": "", "time_s": 29.349, "fetch_processes": 200, "new_packs": 200, "stdout_bytes": 1068093}
+{"test": "lazy", "repo": "r100k.git", "clone": "tree0", "cmd": "log --oneline -- d000", "hot_file_changes": "", "time_s": 109.954, "fetch_processes": 500, "new_packs": 500, "stdout_bytes": 1742}
+{"test": "lazy", "repo": "r100k.git", "clone": "tree0", "cmd": "blame d001/s22/f0017201.txt", "hot_file_changes": 4, "time_s": 17.017, "fetch_processes": 63, "new_packs": 63, "stdout_bytes": 538}
+{"test": "lazy", "repo": "r100k.git", "clone": "tree0", "cmd": "diff --stat HEAD~200 HEAD", "hot_file_changes": "", "time_s": 0.403, "fetch_processes": 2, "new_packs": 2, "stdout_bytes": 168836}
+{"test": "clone", "repo": "r300k.git", "variant": "full", "clone_s": 9.32, "sparse_set_s": 0.0, "git_dir_bytes": 85412169, "objects_in_pack": 335193, "files_on_disk": 300000}
+{"test": "clone", "repo": "r300k.git", "variant": "blob_none", "clone_s": 92.55, "sparse_set_s": 0.0, "git_dir_bytes": 108432275, "objects_in_pack": 325193, "files_on_disk": 300000}
+{"test": "clone", "repo": "r1000k.git", "variant": "blob_none", "clone_s": "timeout>900", "git_dir_bytes": 26407577}
+{"test": "clone", "repo": "r1000k.git", "variant": "blob_none_sparse_d000", "clone_s": 3.31, "sparse_set_s": 1.96, "git_dir_bytes": 116963119, "objects_in_pack": 35217, "files_on_disk": 10000}

@@ -1,0 +1,8 @@
+date: 2026-10-23T14:15:50-04:00
+Linux 6.12.94+
+git version 2.47.3
+Python 3.13.5
+cpus: 8
+memory_gb: 15
+filesystem: ext4 on local virtual disk
+transport: file:// (pack protocol v2), server and client on the same machine

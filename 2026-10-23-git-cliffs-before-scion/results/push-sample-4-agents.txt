@@ -1,0 +1,14 @@
+To file://$WORK/srv.git
+   c817c4f6..91d2bd2d  HEAD -> main
+remote: error: cannot lock ref 'refs/heads/main': is at 91d2bd2dfdd1985a077ec63a6d4b82328cd1e45b but expected c817c4f605fb5500aa3917a7ee26bae961774454        
+To file://$WORK/srv.git
+ ! [remote rejected]   HEAD -> main (failed to update ref)
+error: failed to push some refs to 'file://$WORK/srv.git'
+remote: error: cannot lock ref 'refs/heads/main': is at 91d2bd2dfdd1985a077ec63a6d4b82328cd1e45b but expected c817c4f605fb5500aa3917a7ee26bae961774454        
+To file://$WORK/srv.git
+ ! [remote rejected]   HEAD -> main (failed to update ref)
+error: failed to push some refs to 'file://$WORK/srv.git'
+remote: error: cannot lock ref 'refs/heads/main': is at 91d2bd2dfdd1985a077ec63a6d4b82328cd1e45b but expected c817c4f605fb5500aa3917a7ee26bae961774454        
+To file://$WORK/srv.git
+ ! [remote rejected]   HEAD -> main (failed to update ref)
+error: failed to push some refs to 'file://$WORK/srv.git'
