@@ -1,0 +1,1 @@
+{"name":"app","version":"1.0.0","private":true,"dependencies":{"nativedemo":"^1.0.1","postdemo":"1.0.0"},"allowScripts":{"nativedemo@1.0.0":true,"postdemo@1.0.0":true}}

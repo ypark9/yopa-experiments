@@ -1,0 +1,4 @@
+$ npm ci --registry http://127.0.0.1:4873/ --no-audit --no-fund --cache $TMP/cache12
+
+added 2 packages in 486ms
+[exit 0]

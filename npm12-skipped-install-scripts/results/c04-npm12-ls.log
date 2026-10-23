@@ -1,0 +1,7 @@
+$ npm install-scripts ls --registry http://127.0.0.1:4873/ --no-audit --no-fund
+2 packages have install scripts blocked because they are not covered by allowScripts:
+  nativedemo@1.0.0 (install: node-gyp rebuild)
+  postdemo@1.0.0 (postinstall: node gen.js)
+
+Run `npm install-scripts approve <pkg>` to allow, or `npm install-scripts deny <pkg>` to deny.
+[exit 0]

@@ -1,0 +1,4 @@
+$ npm install --no-audit --no-fund --cache $TMP/cache-real12
+
+added 2 packages in 586ms
+[exit 0]

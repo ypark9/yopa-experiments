@@ -1,0 +1,8 @@
+{
+  "name": "postdemo",
+  "version": "1.0.0",
+  "description": "Stand-in codegen package: postinstall writes generated.js (the shape of ORM clients and asset downloaders)",
+  "main": "index.js",
+  "scripts": { "postinstall": "node gen.js" },
+  "license": "MIT"
+}

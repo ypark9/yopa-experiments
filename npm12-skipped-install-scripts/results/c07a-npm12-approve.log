@@ -1,0 +1,6 @@
+$ npm install-scripts approve nativedemo postdemo --registry http://127.0.0.1:4873/ --no-audit --no-fund
+Approved nativedemo:
+  added nativedemo@1.0.0
+Approved postdemo:
+  added postdemo@1.0.0
+[exit 0]

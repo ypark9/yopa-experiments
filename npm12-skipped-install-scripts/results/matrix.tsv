@@ -1,0 +1,18 @@
+c01	11.21.1	npm install	0	5	{"native":"native ok","post":"generated ok"}
+c02	12.2.1	npm install	0	5	{"native":"FAIL: Cannot find module './build/Release/nativedemo.node'","post":"FAIL: Cannot find module './generated.js'"}
+c03	12.2.1	npm ci --silent (npm 11 lockfile)	0	0	{"native":"FAIL: Cannot find module './build/Release/nativedemo.node'","post":"FAIL: Cannot find module './generated.js'"}
+c04	12.2.1	npm install-scripts ls (2 pending)	0	-	-
+c05	12.2.1	npm install --strict-allow-scripts	1	-	{"node_modules":"absent"}
+c06	12.0.0	npm install (.npmrc strict-allow-scripts=true)	1	-	{"node_modules":"absent"}
+c07	12.2.1	install-scripts approve + rebuild	0	-	{"native":"native ok","post":"generated ok"}
+c08	12.2.1	npm ci (allowScripts committed)	0	0	{"native":"native ok","post":"generated ok"}
+c09	12.2.1	npm install nativedemo@1.0.1 (approval pinned to 1.0.0)	0	4	{"native":"FAIL: Cannot find module './build/Release/nativedemo.node'","post":"generated ok"}
+real-sqlite3-npm11	11.21.1	npm install sqlite3@6.0.1	0	4	ok
+real-sqlite3-npm12	12.2.1	npm install sqlite3@6.0.1	0	4	FAIL: Could not locate the bindings file. Tried:
+real-better-sqlite3-npm11	11.21.1	npm install better-sqlite3@13.0.3	0	0	ok
+real-better-sqlite3-npm12	12.2.1	npm install better-sqlite3@13.0.3	0	0	ok
+real-esbuild-npm11	11.21.1	npm install esbuild@0.28.2	0	4	ok
+real-esbuild-npm12	12.2.1	npm install esbuild@0.28.2	0	4	ok
+real-bcrypt-npm11	11.21.1	npm install bcrypt@6.0.0	0	4	ok
+real-bcrypt-npm12	12.2.1	npm install bcrypt@6.0.0	0	4	ok
+real-sqlite3-npm12-fixed	12.2.1	install-scripts approve sqlite3 + rebuild	0	-	ok

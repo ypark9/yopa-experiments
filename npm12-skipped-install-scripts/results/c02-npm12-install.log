@@ -1,0 +1,9 @@
+$ npm install --registry http://127.0.0.1:4873/ --no-audit --no-fund --cache $TMP/cache12
+
+added 2 packages in 206ms
+npm warn install-scripts 2 packages had install scripts blocked because they are not covered by allowScripts:
+npm warn install-scripts   nativedemo@1.0.0 (install: node-gyp rebuild)
+npm warn install-scripts   postdemo@1.0.0 (postinstall: node gen.js)
+npm warn install-scripts
+npm warn install-scripts Run `npm install-scripts ls` to review, or `npm install-scripts approve <pkg>` to allow.
+[exit 0]

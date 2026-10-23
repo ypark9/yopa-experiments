@@ -1,0 +1,8 @@
+$ npm install --registry http://127.0.0.1:4873/ --no-audit --no-fund --cache $TMP/cache1200
+npm error code ESTRICTALLOWSCRIPTS
+npm error --strict-allow-scripts: 2 package(s) have install scripts not covered by allowScripts:
+npm error   nativedemo@1.0.0 (install: (install scripts present))
+npm error   postdemo@1.0.0 (postinstall: node gen.js)
+npm error Approve them with `npm install-scripts approve`, deny them with `npm install-scripts deny`, or bypass this check with `--dangerously-allow-all-scripts`.
+npm error A complete log of this run can be found in: $TMP/cache1200/_logs/2026-10-23T17_06_08_172Z-debug-0.log
+[exit 1]

@@ -1,0 +1,2 @@
+$ npm ci --silent --registry http://127.0.0.1:4873/ --no-audit --no-fund --cache $TMP/cache12
+[exit 0]
