@@ -1,0 +1,105 @@
+{
+ "anthropic": "2.2.0",
+ "ge_violation": {
+  "error": "ValidationError",
+  "detail": [
+   "1 validation error for WithGe",
+   "confidence",
+   "  Input should be less than or equal to 1 [type=less_than_equal, input_value=1.4, input_type=float]"
+  ],
+  "wire_schema": {
+   "type": "object",
+   "title": "WithGe",
+   "properties": {
+    "category": {
+     "type": "string",
+     "enum": [
+      "billing",
+      "technical",
+      "account"
+     ],
+     "title": "Category"
+    },
+    "confidence": {
+     "type": "number",
+     "title": "Confidence",
+     "description": "{maximum: 1, minimum: 0}"
+    }
+   },
+   "additionalProperties": false,
+   "required": [
+    "category",
+    "confidence"
+   ]
+  },
+  "url_path": "/model/global.anthropic.claude-haiku-5-5/invoke"
+ },
+ "pattern_violation": {
+  "error": "ValidationError",
+  "detail": [
+   "1 validation error for WithPattern",
+   "ticket",
+   "  String should match pattern '^TCK-\\d{6}$' [type=string_pattern_mismatch, input_value='ticket 42', input_type=str]"
+  ],
+  "wire_schema": {
+   "type": "object",
+   "title": "WithPattern",
+   "properties": {
+    "ticket": {
+     "type": "string",
+     "title": "Ticket",
+     "description": "{pattern: ^TCK-\\d{6}$}"
+    }
+   },
+   "additionalProperties": false,
+   "required": [
+    "ticket"
+   ]
+  },
+  "url_path": "/model/global.anthropic.claude-haiku-5-5/invoke"
+ },
+ "map_empty": {
+  "parsed": {
+   "category": "billing",
+   "tags": {}
+  },
+  "wire_schema": {
+   "type": "object",
+   "title": "WithMap",
+   "properties": {
+    "category": {
+     "type": "string",
+     "enum": [
+      "billing",
+      "technical",
+      "account"
+     ],
+     "title": "Category"
+    },
+    "tags": {
+     "type": "object",
+     "title": "Tags",
+     "properties": {},
+     "additionalProperties": false
+    }
+   },
+   "additionalProperties": false,
+   "required": [
+    "category",
+    "tags"
+   ]
+  },
+  "url_path": "/model/global.anthropic.claude-haiku-5-5/invoke"
+ },
+ "map_check": {
+  "sample": {
+   "category": "billing",
+   "tags": {
+    "priority": "high"
+   }
+  },
+  "valid_under_original_pydantic_schema": true,
+  "valid_under_wire_schema": false,
+  "empty_map_valid_under_wire_schema": true
+ }
+}

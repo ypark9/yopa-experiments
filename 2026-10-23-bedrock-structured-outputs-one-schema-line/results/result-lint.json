@@ -1,0 +1,471 @@
+[
+ {
+  "model": "Baseline",
+  "raw_problems": [
+   "$: additionalProperties=<missing>"
+  ],
+  "transformed_problems": [],
+  "raw": {
+   "properties": {
+    "category": {
+     "enum": [
+      "billing",
+      "technical",
+      "account"
+     ],
+     "title": "Category",
+     "type": "string"
+    },
+    "escalate": {
+     "title": "Escalate",
+     "type": "boolean"
+    },
+    "reason": {
+     "title": "Reason",
+     "type": "string"
+    }
+   },
+   "required": [
+    "category",
+    "escalate",
+    "reason"
+   ],
+   "title": "Baseline",
+   "type": "object"
+  },
+  "transformed": {
+   "type": "object",
+   "title": "Baseline",
+   "properties": {
+    "category": {
+     "type": "string",
+     "enum": [
+      "billing",
+      "technical",
+      "account"
+     ],
+     "title": "Category"
+    },
+    "escalate": {
+     "type": "boolean",
+     "title": "Escalate"
+    },
+    "reason": {
+     "type": "string",
+     "title": "Reason"
+    }
+   },
+   "additionalProperties": false,
+   "required": [
+    "category",
+    "escalate",
+    "reason"
+   ]
+  }
+ },
+ {
+  "model": "WithGe",
+  "raw_problems": [
+   "$: additionalProperties=<missing>",
+   "$.confidence: maximum=1",
+   "$.confidence: minimum=0"
+  ],
+  "transformed_problems": [],
+  "raw": {
+   "properties": {
+    "category": {
+     "enum": [
+      "billing",
+      "technical",
+      "account"
+     ],
+     "title": "Category",
+     "type": "string"
+    },
+    "confidence": {
+     "maximum": 1,
+     "minimum": 0,
+     "title": "Confidence",
+     "type": "number"
+    }
+   },
+   "required": [
+    "category",
+    "confidence"
+   ],
+   "title": "WithGe",
+   "type": "object"
+  },
+  "transformed": {
+   "type": "object",
+   "title": "WithGe",
+   "properties": {
+    "category": {
+     "type": "string",
+     "enum": [
+      "billing",
+      "technical",
+      "account"
+     ],
+     "title": "Category"
+    },
+    "confidence": {
+     "type": "number",
+     "title": "Confidence",
+     "description": "{maximum: 1, minimum: 0}"
+    }
+   },
+   "additionalProperties": false,
+   "required": [
+    "category",
+    "confidence"
+   ]
+  }
+ },
+ {
+  "model": "WithMaxLength",
+  "raw_problems": [
+   "$: additionalProperties=<missing>",
+   "$.summary: maxLength=200"
+  ],
+  "transformed_problems": [],
+  "raw": {
+   "properties": {
+    "summary": {
+     "maxLength": 200,
+     "title": "Summary",
+     "type": "string"
+    }
+   },
+   "required": [
+    "summary"
+   ],
+   "title": "WithMaxLength",
+   "type": "object"
+  },
+  "transformed": {
+   "type": "object",
+   "title": "WithMaxLength",
+   "properties": {
+    "summary": {
+     "type": "string",
+     "title": "Summary",
+     "description": "{maxLength: 200}"
+    }
+   },
+   "additionalProperties": false,
+   "required": [
+    "summary"
+   ]
+  }
+ },
+ {
+  "model": "WithOptional",
+  "raw_problems": [
+   "$: additionalProperties=<missing>"
+  ],
+  "transformed_problems": [],
+  "raw": {
+   "properties": {
+    "category": {
+     "enum": [
+      "billing",
+      "technical",
+      "account"
+     ],
+     "title": "Category",
+     "type": "string"
+    },
+    "order_id": {
+     "anyOf": [
+      {
+       "type": "string"
+      },
+      {
+       "type": "null"
+      }
+     ],
+     "default": null,
+     "title": "Order Id"
+    }
+   },
+   "required": [
+    "category"
+   ],
+   "title": "WithOptional",
+   "type": "object"
+  },
+  "transformed": {
+   "type": "object",
+   "title": "WithOptional",
+   "properties": {
+    "category": {
+     "type": "string",
+     "enum": [
+      "billing",
+      "technical",
+      "account"
+     ],
+     "title": "Category"
+    },
+    "order_id": {
+     "anyOf": [
+      {
+       "type": "string"
+      },
+      {
+       "type": "null"
+      }
+     ],
+     "title": "Order Id",
+     "description": "{default: None}"
+    }
+   },
+   "additionalProperties": false,
+   "required": [
+    "category"
+   ]
+  }
+ },
+ {
+  "model": "WithMap",
+  "raw_problems": [
+   "$: additionalProperties=<missing>",
+   "$.tags: additionalProperties=schema"
+  ],
+  "transformed_problems": [],
+  "raw": {
+   "properties": {
+    "category": {
+     "enum": [
+      "billing",
+      "technical",
+      "account"
+     ],
+     "title": "Category",
+     "type": "string"
+    },
+    "tags": {
+     "additionalProperties": {
+      "type": "string"
+     },
+     "title": "Tags",
+     "type": "object"
+    }
+   },
+   "required": [
+    "category",
+    "tags"
+   ],
+   "title": "WithMap",
+   "type": "object"
+  },
+  "transformed": {
+   "type": "object",
+   "title": "WithMap",
+   "properties": {
+    "category": {
+     "type": "string",
+     "enum": [
+      "billing",
+      "technical",
+      "account"
+     ],
+     "title": "Category"
+    },
+    "tags": {
+     "type": "object",
+     "title": "Tags",
+     "properties": {},
+     "additionalProperties": false
+    }
+   },
+   "additionalProperties": false,
+   "required": [
+    "category",
+    "tags"
+   ]
+  }
+ },
+ {
+  "model": "WithMinItems",
+  "raw_problems": [
+   "$: additionalProperties=<missing>",
+   "$.steps: minItems=2"
+  ],
+  "transformed_problems": [],
+  "raw": {
+   "properties": {
+    "steps": {
+     "items": {
+      "type": "string"
+     },
+     "minItems": 2,
+     "title": "Steps",
+     "type": "array"
+    }
+   },
+   "required": [
+    "steps"
+   ],
+   "title": "WithMinItems",
+   "type": "object"
+  },
+  "transformed": {
+   "type": "object",
+   "title": "WithMinItems",
+   "properties": {
+    "steps": {
+     "type": "array",
+     "title": "Steps",
+     "items": {
+      "type": "string"
+     },
+     "description": "{minItems: 2}"
+    }
+   },
+   "additionalProperties": false,
+   "required": [
+    "steps"
+   ]
+  }
+ },
+ {
+  "model": "Node",
+  "raw_problems": [
+   "$->Node: additionalProperties=<missing>",
+   "$->Node.children[]: recursive $ref to Node"
+  ],
+  "transformed_problems": [
+   "$->Node.children[]: recursive $ref to Node"
+  ],
+  "raw": {
+   "$defs": {
+    "Node": {
+     "properties": {
+      "label": {
+       "title": "Label",
+       "type": "string"
+      },
+      "children": {
+       "default": [],
+       "items": {
+        "$ref": "#/$defs/Node"
+       },
+       "title": "Children",
+       "type": "array"
+      }
+     },
+     "required": [
+      "label"
+     ],
+     "title": "Node",
+     "type": "object"
+    }
+   },
+   "$ref": "#/$defs/Node"
+  },
+  "transformed": {
+   "$defs": {
+    "Node": {
+     "type": "object",
+     "title": "Node",
+     "properties": {
+      "label": {
+       "type": "string",
+       "title": "Label"
+      },
+      "children": {
+       "type": "array",
+       "title": "Children",
+       "items": {
+        "$ref": "#/$defs/Node"
+       },
+       "description": "{default: []}"
+      }
+     },
+     "additionalProperties": false,
+     "required": [
+      "label"
+     ]
+    }
+   },
+   "$ref": "#/$defs/Node"
+  }
+ },
+ {
+  "model": "WithPattern",
+  "raw_problems": [
+   "$: additionalProperties=<missing>"
+  ],
+  "transformed_problems": [],
+  "raw": {
+   "properties": {
+    "ticket": {
+     "pattern": "^TCK-\\d{6}$",
+     "title": "Ticket",
+     "type": "string"
+    }
+   },
+   "required": [
+    "ticket"
+   ],
+   "title": "WithPattern",
+   "type": "object"
+  },
+  "transformed": {
+   "type": "object",
+   "title": "WithPattern",
+   "properties": {
+    "ticket": {
+     "type": "string",
+     "title": "Ticket",
+     "description": "{pattern: ^TCK-\\d{6}$}"
+    }
+   },
+   "additionalProperties": false,
+   "required": [
+    "ticket"
+   ]
+  }
+ },
+ {
+  "model": "WithFormat",
+  "raw_problems": [
+   "$: additionalProperties=<missing>",
+   "$.link: minLength=1"
+  ],
+  "transformed_problems": [],
+  "raw": {
+   "properties": {
+    "link": {
+     "format": "uri",
+     "minLength": 1,
+     "title": "Link",
+     "type": "string"
+    }
+   },
+   "required": [
+    "link"
+   ],
+   "title": "WithFormat",
+   "type": "object"
+  },
+  "transformed": {
+   "type": "object",
+   "title": "WithFormat",
+   "properties": {
+    "link": {
+     "type": "string",
+     "title": "Link",
+     "format": "uri",
+     "description": "{minLength: 1}"
+    }
+   },
+   "additionalProperties": false,
+   "required": [
+    "link"
+   ]
+  }
+ }
+]
