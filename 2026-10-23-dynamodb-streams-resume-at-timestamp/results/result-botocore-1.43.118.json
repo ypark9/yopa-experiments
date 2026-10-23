@@ -1,0 +1,109 @@
+{
+ "botocore": "1.43.118",
+ "writes_client_time": [
+  [
+   0,
+   1792775189.287948
+  ],
+  [
+   1,
+   1792775189.44611
+  ],
+  [
+   2,
+   1792775189.6031172
+  ],
+  [
+   3,
+   1792775189.7599962
+  ],
+  [
+   4,
+   1792775189.9165368
+  ],
+  [
+   5,
+   1792775190.073008
+  ],
+  [
+   6,
+   1792775192.4309871
+  ],
+  [
+   7,
+   1792775192.589246
+  ],
+  [
+   8,
+   1792775192.7475963
+  ],
+  [
+   9,
+   1792775192.905053
+  ],
+  [
+   10,
+   1792775193.06231
+  ],
+  [
+   11,
+   1792775193.219452
+  ]
+ ],
+ "TRIM_HORIZON": {
+  "keys": [
+   "item-000",
+   "item-001",
+   "item-002",
+   "item-003",
+   "item-004",
+   "item-005",
+   "item-006",
+   "item-007",
+   "item-008",
+   "item-009",
+   "item-010",
+   "item-011"
+  ],
+  "approx": [
+   1792775160.0,
+   1792775160.0,
+   1792775160.0,
+   1792775160.0,
+   1792775160.0,
+   1792775160.0,
+   1792775160.0,
+   1792775160.0,
+   1792775160.0,
+   1792775160.0,
+   1792775160.0,
+   1792775160.0
+  ]
+ },
+ "approx_has_fraction": false,
+ "LATEST": {
+  "keys": [],
+  "approx": []
+ },
+ "resume_at_last_seen": {
+  "ts": 1792775160.0,
+  "error": "ClientError: An error occurred (InternalFailure) when calling the GetShardIterator operation (reached max retries: 4): The request processing has failed because of an unknown error, exception or failure."
+ },
+ "resume_at_last_seen_plus_1ms": {
+  "ts": 1792775160.001,
+  "error": "ClientError: An error occurred (InternalFailure) when calling the GetShardIterator operation (reached max retries: 4): The request processing has failed because of an unknown error, exception or failure."
+ },
+ "resume_at_client_write_time_of_item3": {
+  "ts": 1792775189.7599962,
+  "error": "ClientError: An error occurred (InternalFailure) when calling the GetShardIterator operation (reached max retries: 4): The request processing has failed because of an unknown error, exception or failure."
+ },
+ "AT_TIMESTAMP_old_1970": {
+  "error": "ClientError: An error occurred (InternalFailure) when calling the GetShardIterator operation (reached max retries: 4): The request processing has failed because of an unknown error, exception or failure."
+ },
+ "AT_TIMESTAMP_future_+1h": {
+  "error": "ClientError: An error occurred (InternalFailure) when calling the GetShardIterator operation (reached max retries: 4): The request processing has failed because of an unknown error, exception or failure."
+ },
+ "AT_TIMESTAMP_no_Timestamp": {
+  "error": "ClientError: An error occurred (InternalFailure) when calling the GetShardIterator operation (reached max retries: 4): The request processing has failed because of an unknown error, exception or failure."
+ }
+}

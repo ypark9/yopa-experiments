@@ -1,0 +1,85 @@
+{
+ "records": 71799,
+ "rate_per_s": 20.0,
+ "downtime_s": 60,
+ "table": [
+  {
+   "strategy": "LATEST",
+   "crashes": 200,
+   "runs_with_loss": 200,
+   "mean_lost": 1194.0,
+   "max_lost": 1308,
+   "runs_with_dups": 0,
+   "mean_dup": 0.0,
+   "max_dup": 0
+  },
+  {
+   "strategy": "TRIM_HORIZON",
+   "crashes": 200,
+   "runs_with_loss": 0,
+   "mean_lost": 0.0,
+   "max_lost": 0,
+   "runs_with_dups": 200,
+   "mean_dup": 34119.2,
+   "max_dup": 67888
+  },
+  {
+   "strategy": "AT_TIMESTAMP(last approx)",
+   "crashes": 200,
+   "runs_with_loss": 0,
+   "mean_lost": 0.0,
+   "max_lost": 0,
+   "runs_with_dups": 200,
+   "mean_dup": 11.6,
+   "max_dup": 28
+  },
+  {
+   "strategy": "AT_TIMESTAMP(last approx + 1 ms)",
+   "crashes": 200,
+   "runs_with_loss": 187,
+   "mean_lost": 9.9,
+   "max_lost": 28,
+   "runs_with_dups": 0,
+   "mean_dup": 0.0,
+   "max_dup": 0
+  },
+  {
+   "strategy": "AT_TIMESTAMP(wall clock at checkpoint)",
+   "crashes": 200,
+   "runs_with_loss": 191,
+   "mean_lost": 10.5,
+   "max_lost": 28,
+   "runs_with_dups": 0,
+   "mean_dup": 0.0,
+   "max_dup": 0
+  },
+  {
+   "strategy": "AFTER_SEQUENCE_NUMBER",
+   "crashes": 200,
+   "runs_with_loss": 0,
+   "mean_lost": 0.0,
+   "max_lost": 0,
+   "runs_with_dups": 0,
+   "mean_dup": 0.0,
+   "max_dup": 0
+  }
+ ],
+ "example": {
+  "last_processed": {
+   "seq": 39252,
+   "true": 1792771961.55257,
+   "approx": 1792771961
+  },
+  "records_in_same_second": 24,
+  "after_last_in_same_second": 11,
+  "before_last_in_same_second": 12
+ },
+ "stale_checkpoint": {
+  "checkpoint_T": 1792770004,
+  "trim_horizon": 1792771800,
+  "first_record_returned_approx": 1792771800,
+  "records_between_checkpoint_and_horizon_lost": 35940,
+  "error_raised": false
+ },
+ "future_timestamp": "ValidationException: timestamp in the future"
+}
