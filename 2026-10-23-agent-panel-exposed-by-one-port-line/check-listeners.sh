@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 # Read-only. Lists TCP listeners that accept connections from beyond loopback,
 # plus Docker published ports that are not bound to 127.0.0.1.
-# Exit 1 if any of them (or any of the given ports) is exposed.
+# Exit 1 if it finds one. With port arguments, only those ports are checked.
 # usage: check-listeners.sh [port ...]   (no ports = report every port)
 set -euo pipefail
 ports=" $* "
