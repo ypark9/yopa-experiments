@@ -1,0 +1,11 @@
+{
+ "botocore": "1.43.118",
+ "create_gateway": "valid",
+ "create_target": "valid",
+ "rule_fbt50": "valid",
+ "rule_fbt30000": "valid",
+ "neg_fbt49": "Invalid value for parameter actions[0].routeToTarget.staticRoute.fallback.firstByteTimeoutMilliseconds, value: 49, valid min value: 50",
+ "neg_3_fallbacks_model_max_2": "valid",
+ "neg_breaker_threshold": "Unknown parameter in actions[0].routeToTarget.staticRoute.fallback.circuitBreaker: \"failureThreshold\", must be one of: mode",
+ "neg_error_not_in_enum": "valid"
+}

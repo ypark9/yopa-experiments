@@ -1,0 +1,981 @@
+{
+ "assumed": {
+  "window": 20,
+  "min_calls": 10,
+  "fail_rate_open": 0.5,
+  "open_s": 30.0,
+  "probe_fraction": 0.1,
+  "probes_to_close": 3,
+  "all_open_policy": "try_last",
+  "abandoned_attempt_bills_input": true,
+  "body_reports_served_model": true
+ },
+ "gateway_price_per_invocation_usd": 5e-06,
+ "scenarios": [
+  {
+   "scenario": "A_primary_throttled",
+   "breaker": "ENABLED",
+   "requests": 1500,
+   "caller_ok": 1500,
+   "caller_errors": 0,
+   "served_by": {
+    "bedrock/big": 853,
+    "openai/big": 647
+   },
+   "gateway_invocations_billed": 1513,
+   "gateway_cost_usd": 0.007565,
+   "attempts_skipped_by_breaker": 634,
+   "model_cost_units": 1500.0,
+   "latency_ms_p50": 1303.2,
+   "latency_ms_p95": 1686.1,
+   "latency_ms_max": 1789.6,
+   "served_off_primary_after_recovery": 47,
+   "schema_invalid_among_200s": 0,
+   "flagged_by_model_field": 0,
+   "breaker_transitions": [
+    {
+     "t": 61.8,
+     "dest": "bedrock/big",
+     "from": "closed",
+     "to": "open",
+     "why": "10/20 recent attempts failed (last: 429)"
+    },
+    {
+     "t": 91.8,
+     "dest": "bedrock/big",
+     "from": "open",
+     "to": "half_open",
+     "why": "30s open timer elapsed"
+    },
+    {
+     "t": 92.4,
+     "dest": "bedrock/big",
+     "from": "half_open",
+     "to": "open",
+     "why": "probe failed (429)"
+    },
+    {
+     "t": 122.4,
+     "dest": "bedrock/big",
+     "from": "open",
+     "to": "half_open",
+     "why": "30s open timer elapsed"
+    },
+    {
+     "t": 123.2,
+     "dest": "bedrock/big",
+     "from": "half_open",
+     "to": "open",
+     "why": "probe failed (429)"
+    },
+    {
+     "t": 153.4,
+     "dest": "bedrock/big",
+     "from": "open",
+     "to": "half_open",
+     "why": "30s open timer elapsed"
+    },
+    {
+     "t": 154.0,
+     "dest": "bedrock/big",
+     "from": "half_open",
+     "to": "open",
+     "why": "probe failed (429)"
+    },
+    {
+     "t": 184.0,
+     "dest": "bedrock/big",
+     "from": "open",
+     "to": "half_open",
+     "why": "30s open timer elapsed"
+    },
+    {
+     "t": 189.8,
+     "dest": "bedrock/big",
+     "from": "half_open",
+     "to": "closed",
+     "why": "3 probe successes"
+    }
+   ]
+  },
+  {
+   "scenario": "A_primary_throttled",
+   "breaker": "DISABLED",
+   "requests": 1500,
+   "caller_ok": 1500,
+   "caller_errors": 0,
+   "served_by": {
+    "bedrock/big": 900,
+    "openai/big": 600
+   },
+   "gateway_invocations_billed": 2100,
+   "gateway_cost_usd": 0.0105,
+   "attempts_skipped_by_breaker": 0,
+   "model_cost_units": 1500.0,
+   "latency_ms_p50": 1319.2,
+   "latency_ms_p95": 1742.5,
+   "latency_ms_max": 1809.2,
+   "served_off_primary_after_recovery": 0,
+   "schema_invalid_among_200s": 0,
+   "flagged_by_model_field": 0,
+   "breaker_transitions": []
+  },
+  {
+   "scenario": "B_primary_stalls_fbt5000",
+   "breaker": "ENABLED",
+   "requests": 1500,
+   "caller_ok": 1500,
+   "caller_errors": 0,
+   "served_by": {
+    "bedrock/big": 853,
+    "openai/big": 647
+   },
+   "gateway_invocations_billed": 1513,
+   "gateway_cost_usd": 0.007565,
+   "attempts_skipped_by_breaker": 634,
+   "model_cost_units": 1503.9,
+   "latency_ms_p50": 1303.7,
+   "latency_ms_p95": 1697.4,
+   "latency_ms_max": 6729.6,
+   "served_off_primary_after_recovery": 47,
+   "schema_invalid_among_200s": 0,
+   "flagged_by_model_field": 0,
+   "breaker_transitions": [
+    {
+     "t": 61.8,
+     "dest": "bedrock/big",
+     "from": "closed",
+     "to": "open",
+     "why": "10/20 recent attempts failed (last: FIRST_BYTE_TIMEOUT)"
+    },
+    {
+     "t": 91.8,
+     "dest": "bedrock/big",
+     "from": "open",
+     "to": "half_open",
+     "why": "30s open timer elapsed"
+    },
+    {
+     "t": 92.4,
+     "dest": "bedrock/big",
+     "from": "half_open",
+     "to": "open",
+     "why": "probe failed (FIRST_BYTE_TIMEOUT)"
+    },
+    {
+     "t": 122.4,
+     "dest": "bedrock/big",
+     "from": "open",
+     "to": "half_open",
+     "why": "30s open timer elapsed"
+    },
+    {
+     "t": 123.2,
+     "dest": "bedrock/big",
+     "from": "half_open",
+     "to": "open",
+     "why": "probe failed (FIRST_BYTE_TIMEOUT)"
+    },
+    {
+     "t": 153.4,
+     "dest": "bedrock/big",
+     "from": "open",
+     "to": "half_open",
+     "why": "30s open timer elapsed"
+    },
+    {
+     "t": 154.0,
+     "dest": "bedrock/big",
+     "from": "half_open",
+     "to": "open",
+     "why": "probe failed (FIRST_BYTE_TIMEOUT)"
+    },
+    {
+     "t": 184.0,
+     "dest": "bedrock/big",
+     "from": "open",
+     "to": "half_open",
+     "why": "30s open timer elapsed"
+    },
+    {
+     "t": 189.8,
+     "dest": "bedrock/big",
+     "from": "half_open",
+     "to": "closed",
+     "why": "3 probe successes"
+    }
+   ]
+  },
+  {
+   "scenario": "B_primary_stalls_fbt5000",
+   "breaker": "DISABLED",
+   "requests": 1500,
+   "caller_ok": 1500,
+   "caller_errors": 0,
+   "served_by": {
+    "bedrock/big": 900,
+    "openai/big": 600
+   },
+   "gateway_invocations_billed": 2100,
+   "gateway_cost_usd": 0.0105,
+   "attempts_skipped_by_breaker": 0,
+   "model_cost_units": 1680.0,
+   "latency_ms_p50": 1406.3,
+   "latency_ms_p95": 6682.5,
+   "latency_ms_max": 6749.2,
+   "served_off_primary_after_recovery": 0,
+   "schema_invalid_among_200s": 0,
+   "flagged_by_model_field": 0,
+   "breaker_transitions": []
+  },
+  {
+   "scenario": "B_primary_stalls_fbt1000",
+   "breaker": "ENABLED",
+   "requests": 1500,
+   "caller_ok": 1500,
+   "caller_errors": 0,
+   "served_by": {
+    "bedrock/big": 853,
+    "openai/big": 647
+   },
+   "gateway_invocations_billed": 1513,
+   "gateway_cost_usd": 0.007565,
+   "attempts_skipped_by_breaker": 634,
+   "model_cost_units": 1503.9,
+   "latency_ms_p50": 1303.7,
+   "latency_ms_p95": 1697.4,
+   "latency_ms_max": 2729.6,
+   "served_off_primary_after_recovery": 47,
+   "schema_invalid_among_200s": 0,
+   "flagged_by_model_field": 0,
+   "breaker_transitions": [
+    {
+     "t": 61.8,
+     "dest": "bedrock/big",
+     "from": "closed",
+     "to": "open",
+     "why": "10/20 recent attempts failed (last: FIRST_BYTE_TIMEOUT)"
+    },
+    {
+     "t": 91.8,
+     "dest": "bedrock/big",
+     "from": "open",
+     "to": "half_open",
+     "why": "30s open timer elapsed"
+    },
+    {
+     "t": 92.4,
+     "dest": "bedrock/big",
+     "from": "half_open",
+     "to": "open",
+     "why": "probe failed (FIRST_BYTE_TIMEOUT)"
+    },
+    {
+     "t": 122.4,
+     "dest": "bedrock/big",
+     "from": "open",
+     "to": "half_open",
+     "why": "30s open timer elapsed"
+    },
+    {
+     "t": 123.2,
+     "dest": "bedrock/big",
+     "from": "half_open",
+     "to": "open",
+     "why": "probe failed (FIRST_BYTE_TIMEOUT)"
+    },
+    {
+     "t": 153.4,
+     "dest": "bedrock/big",
+     "from": "open",
+     "to": "half_open",
+     "why": "30s open timer elapsed"
+    },
+    {
+     "t": 154.0,
+     "dest": "bedrock/big",
+     "from": "half_open",
+     "to": "open",
+     "why": "probe failed (FIRST_BYTE_TIMEOUT)"
+    },
+    {
+     "t": 184.0,
+     "dest": "bedrock/big",
+     "from": "open",
+     "to": "half_open",
+     "why": "30s open timer elapsed"
+    },
+    {
+     "t": 189.8,
+     "dest": "bedrock/big",
+     "from": "half_open",
+     "to": "closed",
+     "why": "3 probe successes"
+    }
+   ]
+  },
+  {
+   "scenario": "B_primary_stalls_fbt1000",
+   "breaker": "DISABLED",
+   "requests": 1500,
+   "caller_ok": 1500,
+   "caller_errors": 0,
+   "served_by": {
+    "bedrock/big": 900,
+    "openai/big": 600
+   },
+   "gateway_invocations_billed": 2100,
+   "gateway_cost_usd": 0.0105,
+   "attempts_skipped_by_breaker": 0,
+   "model_cost_units": 1680.0,
+   "latency_ms_p50": 1406.3,
+   "latency_ms_p95": 2682.5,
+   "latency_ms_max": 2749.2,
+   "served_off_primary_after_recovery": 0,
+   "schema_invalid_among_200s": 0,
+   "flagged_by_model_field": 0,
+   "breaker_transitions": []
+  },
+  {
+   "scenario": "C_silent_degrade",
+   "breaker": "ENABLED",
+   "requests": 1500,
+   "caller_ok": 1500,
+   "caller_errors": 0,
+   "served_by": {
+    "bedrock/big": 838,
+    "bedrock/small": 655,
+    "openai/big": 7
+   },
+   "gateway_invocations_billed": 1526,
+   "gateway_cost_usd": 0.00763,
+   "attempts_skipped_by_breaker": 1291,
+   "model_cost_units": 1008.75,
+   "latency_ms_p50": 1023.8,
+   "latency_ms_p95": 1444.7,
+   "latency_ms_max": 1496.3,
+   "served_off_primary_after_recovery": 62,
+   "schema_invalid_among_200s": 655,
+   "flagged_by_model_field": 655,
+   "breaker_transitions": [
+    {
+     "t": 61.8,
+     "dest": "bedrock/big",
+     "from": "closed",
+     "to": "open",
+     "why": "10/20 recent attempts failed (last: 429)"
+    },
+    {
+     "t": 61.8,
+     "dest": "openai/big",
+     "from": "closed",
+     "to": "open",
+     "why": "10/10 recent attempts failed (last: 503)"
+    },
+    {
+     "t": 91.8,
+     "dest": "bedrock/big",
+     "from": "open",
+     "to": "half_open",
+     "why": "30s open timer elapsed"
+    },
+    {
+     "t": 91.8,
+     "dest": "openai/big",
+     "from": "open",
+     "to": "half_open",
+     "why": "30s open timer elapsed"
+    },
+    {
+     "t": 92.2,
+     "dest": "bedrock/big",
+     "from": "half_open",
+     "to": "open",
+     "why": "probe failed (429)"
+    },
+    {
+     "t": 94.0,
+     "dest": "openai/big",
+     "from": "half_open",
+     "to": "open",
+     "why": "probe failed (503)"
+    },
+    {
+     "t": 122.2,
+     "dest": "bedrock/big",
+     "from": "open",
+     "to": "half_open",
+     "why": "30s open timer elapsed"
+    },
+    {
+     "t": 123.6,
+     "dest": "bedrock/big",
+     "from": "half_open",
+     "to": "open",
+     "why": "probe failed (429)"
+    },
+    {
+     "t": 124.0,
+     "dest": "openai/big",
+     "from": "open",
+     "to": "half_open",
+     "why": "30s open timer elapsed"
+    },
+    {
+     "t": 124.2,
+     "dest": "openai/big",
+     "from": "half_open",
+     "to": "open",
+     "why": "probe failed (503)"
+    },
+    {
+     "t": 153.6,
+     "dest": "bedrock/big",
+     "from": "open",
+     "to": "half_open",
+     "why": "30s open timer elapsed"
+    },
+    {
+     "t": 154.4,
+     "dest": "openai/big",
+     "from": "open",
+     "to": "half_open",
+     "why": "30s open timer elapsed"
+    },
+    {
+     "t": 154.8,
+     "dest": "bedrock/big",
+     "from": "half_open",
+     "to": "open",
+     "why": "probe failed (429)"
+    },
+    {
+     "t": 155.2,
+     "dest": "openai/big",
+     "from": "half_open",
+     "to": "open",
+     "why": "probe failed (503)"
+    },
+    {
+     "t": 184.8,
+     "dest": "bedrock/big",
+     "from": "open",
+     "to": "half_open",
+     "why": "30s open timer elapsed"
+    },
+    {
+     "t": 185.2,
+     "dest": "openai/big",
+     "from": "open",
+     "to": "half_open",
+     "why": "30s open timer elapsed"
+    },
+    {
+     "t": 191.8,
+     "dest": "openai/big",
+     "from": "half_open",
+     "to": "closed",
+     "why": "3 probe successes"
+    },
+    {
+     "t": 192.8,
+     "dest": "bedrock/big",
+     "from": "half_open",
+     "to": "closed",
+     "why": "3 probe successes"
+    }
+   ]
+  },
+  {
+   "scenario": "D_all_throttled_with_sdk_retries",
+   "breaker": "ENABLED",
+   "requests": 1500,
+   "caller_ok": 908,
+   "caller_errors": 592,
+   "served_by": {
+    "bedrock/big": 860,
+    "ERROR": 592,
+    "bedrock/small": 48
+   },
+   "gateway_invocations_billed": 2718,
+   "gateway_cost_usd": 0.01359,
+   "attempts_skipped_by_breaker": 3656,
+   "model_cost_units": 872.0,
+   "latency_ms_p50": 1403.6,
+   "latency_ms_p95": 3680.0,
+   "latency_ms_max": 4100.0,
+   "served_off_primary_after_recovery": 40,
+   "schema_invalid_among_200s": 48,
+   "flagged_by_model_field": 48,
+   "breaker_transitions": [
+    {
+     "t": 60.6,
+     "dest": "bedrock/big",
+     "from": "closed",
+     "to": "open",
+     "why": "10/20 recent attempts failed (last: 429)"
+    },
+    {
+     "t": 60.6,
+     "dest": "openai/big",
+     "from": "closed",
+     "to": "open",
+     "why": "10/10 recent attempts failed (last: 429)"
+    },
+    {
+     "t": 60.6,
+     "dest": "bedrock/small",
+     "from": "closed",
+     "to": "open",
+     "why": "10/10 recent attempts failed (last: 429)"
+    },
+    {
+     "t": 90.62,
+     "dest": "bedrock/big",
+     "from": "open",
+     "to": "half_open",
+     "why": "30s open timer elapsed"
+    },
+    {
+     "t": 90.62,
+     "dest": "openai/big",
+     "from": "open",
+     "to": "half_open",
+     "why": "30s open timer elapsed"
+    },
+    {
+     "t": 90.62,
+     "dest": "bedrock/small",
+     "from": "open",
+     "to": "half_open",
+     "why": "30s open timer elapsed"
+    },
+    {
+     "t": 90.62,
+     "dest": "bedrock/small",
+     "from": "half_open",
+     "to": "open",
+     "why": "probe failed (429)"
+    },
+    {
+     "t": 91.22,
+     "dest": "bedrock/big",
+     "from": "half_open",
+     "to": "open",
+     "why": "probe failed (429)"
+    },
+    {
+     "t": 90.36,
+     "dest": "openai/big",
+     "from": "half_open",
+     "to": "open",
+     "why": "probe failed (429)"
+    },
+    {
+     "t": 120.42,
+     "dest": "openai/big",
+     "from": "open",
+     "to": "half_open",
+     "why": "30s open timer elapsed"
+    },
+    {
+     "t": 120.62,
+     "dest": "bedrock/small",
+     "from": "open",
+     "to": "half_open",
+     "why": "30s open timer elapsed"
+    },
+    {
+     "t": 120.62,
+     "dest": "openai/big",
+     "from": "half_open",
+     "to": "open",
+     "why": "probe failed (429)"
+    },
+    {
+     "t": 119.2,
+     "dest": "bedrock/small",
+     "from": "half_open",
+     "to": "open",
+     "why": "probe failed (429)"
+    },
+    {
+     "t": 121.22,
+     "dest": "bedrock/big",
+     "from": "open",
+     "to": "half_open",
+     "why": "30s open timer elapsed"
+    },
+    {
+     "t": 121.42,
+     "dest": "bedrock/big",
+     "from": "half_open",
+     "to": "open",
+     "why": "probe failed (429)"
+    },
+    {
+     "t": 149.22,
+     "dest": "bedrock/small",
+     "from": "open",
+     "to": "half_open",
+     "why": "30s open timer elapsed"
+    },
+    {
+     "t": 149.22,
+     "dest": "bedrock/small",
+     "from": "half_open",
+     "to": "open",
+     "why": "probe failed (429)"
+    },
+    {
+     "t": 150.62,
+     "dest": "openai/big",
+     "from": "open",
+     "to": "half_open",
+     "why": "30s open timer elapsed"
+    },
+    {
+     "t": 149.8,
+     "dest": "openai/big",
+     "from": "half_open",
+     "to": "open",
+     "why": "probe failed (429)"
+    },
+    {
+     "t": 151.44,
+     "dest": "bedrock/big",
+     "from": "open",
+     "to": "half_open",
+     "why": "30s open timer elapsed"
+    },
+    {
+     "t": 151.44,
+     "dest": "bedrock/big",
+     "from": "half_open",
+     "to": "open",
+     "why": "probe failed (429)"
+    },
+    {
+     "t": 179.22,
+     "dest": "bedrock/small",
+     "from": "open",
+     "to": "half_open",
+     "why": "30s open timer elapsed"
+    },
+    {
+     "t": 179.22,
+     "dest": "bedrock/small",
+     "from": "half_open",
+     "to": "open",
+     "why": "probe failed (429)"
+    },
+    {
+     "t": 179.82,
+     "dest": "openai/big",
+     "from": "open",
+     "to": "half_open",
+     "why": "30s open timer elapsed"
+    },
+    {
+     "t": 178.4,
+     "dest": "openai/big",
+     "from": "half_open",
+     "to": "open",
+     "why": "probe failed (429)"
+    },
+    {
+     "t": 181.6,
+     "dest": "bedrock/big",
+     "from": "open",
+     "to": "half_open",
+     "why": "30s open timer elapsed"
+    },
+    {
+     "t": 188.4,
+     "dest": "bedrock/big",
+     "from": "half_open",
+     "to": "closed",
+     "why": "3 probe successes"
+    },
+    {
+     "t": 208.4,
+     "dest": "openai/big",
+     "from": "open",
+     "to": "half_open",
+     "why": "30s open timer elapsed"
+    },
+    {
+     "t": 209.4,
+     "dest": "bedrock/small",
+     "from": "open",
+     "to": "half_open",
+     "why": "30s open timer elapsed"
+    }
+   ]
+  },
+  {
+   "scenario": "D_all_throttled_with_sdk_retries",
+   "breaker": "DISABLED",
+   "requests": 1500,
+   "caller_ok": 910,
+   "caller_errors": 590,
+   "served_by": {
+    "bedrock/big": 908,
+    "ERROR": 590,
+    "bedrock/small": 2
+   },
+   "gateway_invocations_billed": 6272,
+   "gateway_cost_usd": 0.03136,
+   "attempts_skipped_by_breaker": 0,
+   "model_cost_units": 908.5,
+   "latency_ms_p50": 1410.9,
+   "latency_ms_p95": 4100.0,
+   "latency_ms_max": 4100.0,
+   "served_off_primary_after_recovery": 0,
+   "schema_invalid_among_200s": 2,
+   "flagged_by_model_field": 2,
+   "breaker_transitions": []
+  },
+  {
+   "scenario": "E_cheap_flappy_primary",
+   "breaker": "ENABLED",
+   "requests": 1500,
+   "caller_ok": 1500,
+   "caller_errors": 0,
+   "served_by": {
+    "bedrock/small": 910,
+    "openai/big": 590
+   },
+   "gateway_invocations_billed": 1567,
+   "gateway_cost_usd": 0.007835,
+   "attempts_skipped_by_breaker": 523,
+   "model_cost_units": 817.5,
+   "latency_ms_p50": 820.7,
+   "latency_ms_p95": 1687.7,
+   "latency_ms_max": 1945.6,
+   "served_off_primary_after_recovery": 132,
+   "schema_invalid_among_200s": 590,
+   "flagged_by_model_field": 590,
+   "breaker_transitions": [
+    {
+     "t": 64.4,
+     "dest": "bedrock/small",
+     "from": "closed",
+     "to": "open",
+     "why": "10/20 recent attempts failed (last: 503)"
+    },
+    {
+     "t": 94.4,
+     "dest": "bedrock/small",
+     "from": "open",
+     "to": "half_open",
+     "why": "30s open timer elapsed"
+    },
+    {
+     "t": 94.6,
+     "dest": "bedrock/small",
+     "from": "half_open",
+     "to": "open",
+     "why": "probe failed (503)"
+    },
+    {
+     "t": 124.6,
+     "dest": "bedrock/small",
+     "from": "open",
+     "to": "half_open",
+     "why": "30s open timer elapsed"
+    },
+    {
+     "t": 133.4,
+     "dest": "bedrock/small",
+     "from": "half_open",
+     "to": "closed",
+     "why": "3 probe successes"
+    },
+    {
+     "t": 169.8,
+     "dest": "bedrock/small",
+     "from": "closed",
+     "to": "open",
+     "why": "10/20 recent attempts failed (last: 503)"
+    },
+    {
+     "t": 199.8,
+     "dest": "bedrock/small",
+     "from": "open",
+     "to": "half_open",
+     "why": "30s open timer elapsed"
+    },
+    {
+     "t": 206.8,
+     "dest": "bedrock/small",
+     "from": "half_open",
+     "to": "closed",
+     "why": "3 probe successes"
+    }
+   ]
+  },
+  {
+   "scenario": "E_cheap_flappy_primary",
+   "breaker": "DISABLED",
+   "requests": 1500,
+   "caller_ok": 1500,
+   "caller_errors": 0,
+   "served_by": {
+    "bedrock/small": 1300,
+    "openai/big": 200
+   },
+   "gateway_invocations_billed": 1700,
+   "gateway_cost_usd": 0.0085,
+   "attempts_skipped_by_breaker": 0,
+   "model_cost_units": 525.0,
+   "latency_ms_p50": 740.4,
+   "latency_ms_p95": 1712.3,
+   "latency_ms_max": 1945.6,
+   "served_off_primary_after_recovery": 0,
+   "schema_invalid_among_200s": 200,
+   "flagged_by_model_field": 200,
+   "breaker_transitions": []
+  },
+  {
+   "scenario": "F_unroutable_primary",
+   "breaker": "ENABLED",
+   "requests": 1500,
+   "caller_ok": 1500,
+   "caller_errors": 0,
+   "served_by": {
+    "openai/big": 1500
+   },
+   "gateway_invocations_billed": 1500,
+   "gateway_cost_usd": 0.0075,
+   "attempts_skipped_by_breaker": 0,
+   "model_cost_units": 1500.0,
+   "latency_ms_p50": 1421.7,
+   "latency_ms_p95": 1720.7,
+   "latency_ms_max": 1752.2,
+   "served_off_primary_after_recovery": 1500,
+   "schema_invalid_among_200s": 0,
+   "flagged_by_model_field": 0,
+   "breaker_transitions": []
+  },
+  {
+   "scenario": "G_midstream_failure",
+   "breaker": "ENABLED",
+   "requests": 1500,
+   "caller_ok": 900,
+   "caller_errors": 600,
+   "served_by": {
+    "bedrock/big": 1500
+   },
+   "gateway_invocations_billed": 1500,
+   "gateway_cost_usd": 0.0075,
+   "attempts_skipped_by_breaker": 0,
+   "model_cost_units": 1260.0,
+   "latency_ms_p50": 1041.5,
+   "latency_ms_p95": 1461.2,
+   "latency_ms_max": 1499.3,
+   "served_off_primary_after_recovery": 0,
+   "schema_invalid_among_200s": 0,
+   "flagged_by_model_field": 0,
+   "breaker_transitions": []
+  }
+ ],
+ "sweep_open_s_probe": [
+  {
+   "open_s": 5,
+   "probe_fraction": 0.05,
+   "A_off_primary_after_recovery": 59,
+   "A_billed": 1525,
+   "E_model_cost_units": 729.0,
+   "E_caller_errors": 0
+  },
+  {
+   "open_s": 5,
+   "probe_fraction": 0.1,
+   "A_off_primary_after_recovery": 26,
+   "A_billed": 1528,
+   "E_model_cost_units": 741.75,
+   "E_caller_errors": 0
+  },
+  {
+   "open_s": 5,
+   "probe_fraction": 0.25,
+   "A_off_primary_after_recovery": 28,
+   "A_billed": 1531,
+   "E_model_cost_units": 816.0,
+   "E_caller_errors": 0
+  },
+  {
+   "open_s": 15,
+   "probe_fraction": 0.05,
+   "A_off_primary_after_recovery": 13,
+   "A_billed": 1515,
+   "E_model_cost_units": 773.25,
+   "E_caller_errors": 0
+  },
+  {
+   "open_s": 15,
+   "probe_fraction": 0.1,
+   "A_off_primary_after_recovery": 19,
+   "A_billed": 1516,
+   "E_model_cost_units": 824.25,
+   "E_caller_errors": 0
+  },
+  {
+   "open_s": 15,
+   "probe_fraction": 0.25,
+   "A_off_primary_after_recovery": 43,
+   "A_billed": 1517,
+   "E_model_cost_units": 764.25,
+   "E_caller_errors": 0
+  },
+  {
+   "open_s": 30,
+   "probe_fraction": 0.05,
+   "A_off_primary_after_recovery": 144,
+   "A_billed": 1513,
+   "E_model_cost_units": 871.5,
+   "E_caller_errors": 0
+  },
+  {
+   "open_s": 30,
+   "probe_fraction": 0.1,
+   "A_off_primary_after_recovery": 47,
+   "A_billed": 1513,
+   "E_model_cost_units": 817.5,
+   "E_caller_errors": 0
+  },
+  {
+   "open_s": 30,
+   "probe_fraction": 0.25,
+   "A_off_primary_after_recovery": 24,
+   "A_billed": 1513,
+   "E_model_cost_units": 841.5,
+   "E_caller_errors": 0
+  },
+  {
+   "open_s": 60,
+   "probe_fraction": 0.05,
+   "A_off_primary_after_recovery": 66,
+   "A_billed": 1511,
+   "E_model_cost_units": 860.25,
+   "E_caller_errors": 0
+  },
+  {
+   "open_s": 60,
+   "probe_fraction": 0.1,
+   "A_off_primary_after_recovery": 32,
+   "A_billed": 1511,
+   "E_model_cost_units": 858.0,
+   "E_caller_errors": 0
+  },
+  {
+   "open_s": 60,
+   "probe_fraction": 0.25,
+   "A_off_primary_after_recovery": 13,
+   "A_billed": 1511,
+   "E_model_cost_units": 840.75,
+   "E_caller_errors": 0
+  }
+ ]
+}
