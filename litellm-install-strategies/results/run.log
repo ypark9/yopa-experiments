@@ -1,0 +1,19 @@
+== unpinned_pip
+  -> installed_tampered ver= 1.1.0 marker= True pth= True
+== pin_eq_bad
+  -> installed_tampered ver= 1.1.0 marker= True pth= True
+== pin_eq_clean
+  -> installed_clean ver= 1.0.0 marker= False pth= False
+== require_hashes_clean_only
+  -> installed_clean ver= 1.0.0 marker= False pth= False
+== require_hashes_bad_with_clean_hash
+  -> refused ver= None marker= False pth= False
+== uv_exclude_newer_before_incident
+  -> installed_clean ver= 1.0.0 marker= False pth= False
+== uv_exclude_newer_mid_window
+  -> installed_tampered ver= 1.1.0 marker= True pth= True
+== pip_uploaded_prior_to_before_incident
+  -> installed_clean ver= 1.0.0 marker= False pth= False
+== pip_uploaded_prior_to_mid_window
+  -> installed_tampered ver= 1.1.0 marker= True pth= True
+wrote /workspace/yopa-experiments/litellm-install-strategies/results/matrix.json

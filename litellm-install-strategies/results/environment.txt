@@ -1,0 +1,4 @@
+python Python 3.13.5
+pip in venv 26.2.2
+uv uv 0.13.0 (x86_64-unknown-linux-gnu)
+2026-10-23T09:35:50-04:00

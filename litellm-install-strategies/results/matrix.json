@@ -1,0 +1,248 @@
+[
+  {
+    "strategy": "unpinned_pip",
+    "exit_code": 0,
+    "outcome": "installed_tampered",
+    "site_packages": "/tmp/sd-unpinned_pip-wpn9mev1/venv/lib/python3.13/site-packages",
+    "cook_pth": true,
+    "marker_file": true,
+    "installed_version": "1.1.0",
+    "logs": [
+      {
+        "cmd": [
+          "/tmp/sd-unpinned_pip-wpn9mev1/venv/bin/pip",
+          "install",
+          "--no-cache-dir",
+          "--index-url",
+          "http://127.0.0.1:8765/simple",
+          "--trusted-host",
+          "127.0.0.1",
+          "supplydemo"
+        ],
+        "code": 0,
+        "stdout": "Looking in indexes: http://127.0.0.1:8765/simple\nCollecting supplydemo\n  Downloading supplydemo-1.1.0-py3-none-any.whl (1.4 kB)\nInstalling collected packages: supplydemo\nSuccessfully installed supplydemo-1.1.0\n",
+        "stderr": ""
+      }
+    ]
+  },
+  {
+    "strategy": "pin_eq_bad",
+    "exit_code": 0,
+    "outcome": "installed_tampered",
+    "site_packages": "/tmp/sd-pin_eq_bad-lj5_ezcq/venv/lib/python3.13/site-packages",
+    "cook_pth": true,
+    "marker_file": true,
+    "installed_version": "1.1.0",
+    "logs": [
+      {
+        "cmd": [
+          "/tmp/sd-pin_eq_bad-lj5_ezcq/venv/bin/pip",
+          "install",
+          "--no-cache-dir",
+          "--index-url",
+          "http://127.0.0.1:8765/simple",
+          "--trusted-host",
+          "127.0.0.1",
+          "supplydemo==1.1.0"
+        ],
+        "code": 0,
+        "stdout": "Looking in indexes: http://127.0.0.1:8765/simple\nCollecting supplydemo==1.1.0\n  Downloading supplydemo-1.1.0-py3-none-any.whl (1.4 kB)\nInstalling collected packages: supplydemo\nSuccessfully installed supplydemo-1.1.0\n",
+        "stderr": ""
+      }
+    ]
+  },
+  {
+    "strategy": "pin_eq_clean",
+    "exit_code": 0,
+    "outcome": "installed_clean",
+    "site_packages": "/tmp/sd-pin_eq_clean-3vvxfdvg/venv/lib/python3.13/site-packages",
+    "cook_pth": false,
+    "marker_file": false,
+    "installed_version": "1.0.0",
+    "logs": [
+      {
+        "cmd": [
+          "/tmp/sd-pin_eq_clean-3vvxfdvg/venv/bin/pip",
+          "install",
+          "--no-cache-dir",
+          "--index-url",
+          "http://127.0.0.1:8765/simple",
+          "--trusted-host",
+          "127.0.0.1",
+          "supplydemo==1.0.0"
+        ],
+        "code": 0,
+        "stdout": "Looking in indexes: http://127.0.0.1:8765/simple\nCollecting supplydemo==1.0.0\n  Downloading supplydemo-1.0.0-py3-none-any.whl (970 bytes)\nInstalling collected packages: supplydemo\nSuccessfully installed supplydemo-1.0.0\n",
+        "stderr": ""
+      }
+    ]
+  },
+  {
+    "strategy": "require_hashes_clean_only",
+    "exit_code": 0,
+    "outcome": "installed_clean",
+    "site_packages": "/tmp/sd-require_hashes_clean_only-1_ul4bur/venv/lib/python3.13/site-packages",
+    "cook_pth": false,
+    "marker_file": false,
+    "installed_version": "1.0.0",
+    "logs": [
+      {
+        "cmd": [
+          "/tmp/sd-require_hashes_clean_only-1_ul4bur/venv/bin/pip",
+          "install",
+          "--no-cache-dir",
+          "--index-url",
+          "http://127.0.0.1:8765/simple",
+          "--trusted-host",
+          "127.0.0.1",
+          "--require-hashes",
+          "-r",
+          "/workspace/yopa-experiments/litellm-install-strategies/results/requirements-hashed.txt"
+        ],
+        "code": 0,
+        "stdout": "Looking in indexes: http://127.0.0.1:8765/simple\nCollecting supplydemo==1.0.0 (from -r /workspace/yopa-experiments/litellm-install-strategies/results/requirements-hashed.txt (line 1))\n  Downloading supplydemo-1.0.0-py3-none-any.whl (970 bytes)\nInstalling collected packages: supplydemo\nSuccessfully installed supplydemo-1.0.0\n",
+        "stderr": ""
+      }
+    ]
+  },
+  {
+    "strategy": "require_hashes_bad_with_clean_hash",
+    "exit_code": 1,
+    "outcome": "refused",
+    "site_packages": null,
+    "cook_pth": false,
+    "marker_file": false,
+    "installed_version": null,
+    "logs": [
+      {
+        "cmd": [
+          "/tmp/sd-require_hashes_bad_with_clean_hash-1j8upcjh/venv/bin/pip",
+          "install",
+          "--no-cache-dir",
+          "--index-url",
+          "http://127.0.0.1:8765/simple",
+          "--trusted-host",
+          "127.0.0.1",
+          "--require-hashes",
+          "-r",
+          "/workspace/yopa-experiments/litellm-install-strategies/results/requirements-bad-wrong-hash.txt"
+        ],
+        "code": 1,
+        "stdout": "Looking in indexes: http://127.0.0.1:8765/simple\nCollecting supplydemo==1.1.0 (from -r /workspace/yopa-experiments/litellm-install-strategies/results/requirements-bad-wrong-hash.txt (line 1))\n  Downloading supplydemo-1.1.0-py3-none-any.whl (1.4 kB)\n",
+        "stderr": "ERROR: THESE PACKAGES DO NOT MATCH THE HASHES FROM THE REQUIREMENTS FILE. If you have updated the package versions, please update the hashes. Otherwise, examine the package contents carefully; someone may have tampered with them.\n    supplydemo==1.1.0 from http://127.0.0.1:8765/files/supplydemo-1.1.0-py3-none-any.whl (from -r /workspace/yopa-experiments/litellm-install-strategies/results/requirements-bad-wrong-hash.txt (line 1)):\n        Expected sha256 014b50edffdc2c6c4a3cfafc6378c699d711d6183158cb63db602d2894abce31\n             Got        5621a880165d0fbc5732485264945fc65483860bfded9837f08b7312297b7d70\n\n"
+      }
+    ]
+  },
+  {
+    "strategy": "uv_exclude_newer_before_incident",
+    "exit_code": 0,
+    "outcome": "installed_clean",
+    "site_packages": "/tmp/sd-uv_exclude_newer_before_incident-4k4687kl/venv/lib/python3.13/site-packages",
+    "cook_pth": false,
+    "marker_file": false,
+    "installed_version": "1.0.0",
+    "logs": [
+      {
+        "cmd": [
+          "uv",
+          "pip",
+          "install",
+          "--python",
+          "/tmp/sd-uv_exclude_newer_before_incident-4k4687kl/venv/bin/python",
+          "--index-url",
+          "http://127.0.0.1:8765/simple",
+          "--exclude-newer",
+          "2026-10-21T11:39:51Z",
+          "supplydemo"
+        ],
+        "code": 0,
+        "stdout": "",
+        "stderr": "Using Python 3.13.5 environment at: venv\nResolved 1 package in 6ms\nInstalled 1 package in 1ms\n + supplydemo==1.0.0\n"
+      }
+    ]
+  },
+  {
+    "strategy": "uv_exclude_newer_mid_window",
+    "exit_code": 0,
+    "outcome": "installed_tampered",
+    "site_packages": "/tmp/sd-uv_exclude_newer_mid_window-o0w4v7h7/venv/lib/python3.13/site-packages",
+    "cook_pth": true,
+    "marker_file": true,
+    "installed_version": "1.1.0",
+    "logs": [
+      {
+        "cmd": [
+          "uv",
+          "pip",
+          "install",
+          "--python",
+          "/tmp/sd-uv_exclude_newer_mid_window-o0w4v7h7/venv/bin/python",
+          "--index-url",
+          "http://127.0.0.1:8765/simple",
+          "--exclude-newer",
+          "2026-10-21T12:00:00Z",
+          "supplydemo"
+        ],
+        "code": 0,
+        "stdout": "",
+        "stderr": "Using Python 3.13.5 environment at: venv\nResolved 1 package in 7ms\nPrepared 1 package in 3ms\nInstalled 1 package in 1ms\n + supplydemo==1.1.0\n"
+      }
+    ]
+  },
+  {
+    "strategy": "pip_uploaded_prior_to_before_incident",
+    "exit_code": 0,
+    "outcome": "installed_clean",
+    "site_packages": "/tmp/sd-pip_uploaded_prior_to_before_incident-yisrlm3v/venv/lib/python3.13/site-packages",
+    "cook_pth": false,
+    "marker_file": false,
+    "installed_version": "1.0.0",
+    "logs": [
+      {
+        "cmd": [
+          "/tmp/sd-pip_uploaded_prior_to_before_incident-yisrlm3v/venv/bin/pip",
+          "install",
+          "--no-cache-dir",
+          "--index-url",
+          "http://127.0.0.1:8765/simple",
+          "--trusted-host",
+          "127.0.0.1",
+          "--uploaded-prior-to",
+          "2026-10-21T11:39:51Z",
+          "supplydemo"
+        ],
+        "code": 0,
+        "stdout": "Looking in indexes: http://127.0.0.1:8765/simple\nCollecting supplydemo\n  Downloading supplydemo-1.0.0-py3-none-any.whl (970 bytes)\nInstalling collected packages: supplydemo\nSuccessfully installed supplydemo-1.0.0\n",
+        "stderr": ""
+      }
+    ]
+  },
+  {
+    "strategy": "pip_uploaded_prior_to_mid_window",
+    "exit_code": 0,
+    "outcome": "installed_tampered",
+    "site_packages": "/tmp/sd-pip_uploaded_prior_to_mid_window-eclf3_3z/venv/lib/python3.13/site-packages",
+    "cook_pth": true,
+    "marker_file": true,
+    "installed_version": "1.1.0",
+    "logs": [
+      {
+        "cmd": [
+          "/tmp/sd-pip_uploaded_prior_to_mid_window-eclf3_3z/venv/bin/pip",
+          "install",
+          "--no-cache-dir",
+          "--index-url",
+          "http://127.0.0.1:8765/simple",
+          "--trusted-host",
+          "127.0.0.1",
+          "--uploaded-prior-to",
+          "2026-10-21T12:00:00Z",
+          "supplydemo"
+        ],
+        "code": 0,
+        "stdout": "Looking in indexes: http://127.0.0.1:8765/simple\nCollecting supplydemo\n  Downloading supplydemo-1.1.0-py3-none-any.whl (1.4 kB)\nInstalling collected packages: supplydemo\nSuccessfully installed supplydemo-1.1.0\n",
+        "stderr": ""
+      }
+    ]
+  }
+]
