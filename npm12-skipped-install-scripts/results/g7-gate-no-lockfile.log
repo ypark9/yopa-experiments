@@ -1,0 +1,3 @@
+$ gate npm
+no package-lock.json; refusing to install
+[exit 1]

@@ -2,5 +2,6 @@ g1-gate-unapproved	1
 g2-gate-approved	0
 g3-npmrc-strict-12.2.1	1
 g4-npm11-strict-flag	1
+g7-gate-no-lockfile	1
 g5-ls-before-install	0
 g6-strict-with-deny	0

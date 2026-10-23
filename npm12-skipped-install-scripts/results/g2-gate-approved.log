@@ -1,5 +1,6 @@
 $ gate npm
+npm 12.2.1
 
-added 2 packages in 675ms
+added 2 packages in 483ms
 loaded: nativedemo postdemo
 [exit 0]

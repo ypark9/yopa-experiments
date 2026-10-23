@@ -10,9 +10,10 @@ for i in $(seq 1 50); do curl -fs "$REG/nativedemo" >/dev/null && break; sleep 0
 : > "$res/gate.tsv"
 DEPS='{"nativedemo":"1.0.0","postdemo":"1.0.0"}'
 mk() { rm -rf "$1"; mkdir -p "$1"; printf '{"name":"app","version":"1.0.0","private":true,"dependencies":%s%s}\n' "$DEPS" "${2:-}" > "$1/package.json"; }
-gate() { # the exact snippet from the post, as a function: strict install, then load the native deps
-  "$1" ci --strict-allow-scripts $F --cache "$work/cache" &&
-  node -e 'for (const m of process.argv.slice(1)) require(m); console.log("loaded:", process.argv.slice(1).join(" "))' nativedemo postdemo
+gate() { # runs scripts/ci-gate.sh (the exact snippet from the post) with npm $1 first on PATH
+  local npmbin="$1"; mkdir -p "$work/bin-$$"; ln -sf "$npmbin" "$work/bin-$$/npm"
+  PATH="$work/bin-$$:$PATH" npm_config_registry="$REG" npm_config_cache="$work/cache" npm_config_audit=false npm_config_fund=false \
+    "$here/scripts/ci-gate.sh" nativedemo postdemo
 }
 run() { local id="$1"; shift; local log="$res/$id.log"; echo "\$ $*" > "$log"; set +e; "$@" >> "$log" 2>&1; RC=$?; set -e; echo "[exit $RC]" >> "$log"; printf '%s\t%s\n' "$id" "$RC" >> "$res/gate.tsv"; }
 
@@ -27,6 +28,8 @@ mk "$work/g3"; cp "$work/base/package-lock.json" "$work/g3/"; cd "$work/g3"; ech
 run g3-npmrc-strict-12.2.1 "$NPM12" ci $F --cache "$work/cache"
 # g4: npm 11.21.1 given the same flag (team still on npm 11 in CI)
 mk "$work/g4"; cp "$work/base/package-lock.json" "$work/g4/"; cd "$work/g4"; run g4-npm11-strict-flag "$NPM11" ci --strict-allow-scripts $F --cache "$work/cache"
+# g7: preflight refuses a checkout with no lockfile
+mk "$work/g7"; cd "$work/g7"; run g7-gate-no-lockfile gate "$NPM12"
 # g5: read-only listing before any install (fresh checkout, no node_modules)
 mk "$work/g5"; cp "$work/base/package-lock.json" "$work/g5/"; cd "$work/g5"; run g5-ls-before-install "$NPM12" install-scripts ls $F
 # g6: one approved, one explicitly denied, strict on -> install passes, denied package stays unbuilt

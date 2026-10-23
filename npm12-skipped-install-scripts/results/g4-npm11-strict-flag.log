@@ -4,5 +4,5 @@ npm error --strict-allow-scripts: 2 package(s) have install scripts not covered 
 npm error   nativedemo@1.0.0 (install: (install scripts present))
 npm error   postdemo@1.0.0 (install: (install scripts present))
 npm error Approve them with `npm install-scripts approve`, deny them with `npm install-scripts deny`, or bypass this check with `--dangerously-allow-all-scripts`.
-npm error A complete log of this run can be found in: $TMP/cache/_logs/2026-10-23T17_10_26_317Z-debug-0.log
+npm error A complete log of this run can be found in: $TMP/cache/_logs/2026-10-23T17_13_11_204Z-debug-0.log
 [exit 1]
