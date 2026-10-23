@@ -1,0 +1,12 @@
+b01	loopback	18001	http=200	curl_exit=0
+b01	netns	18001	http=000	curl_exit=7
+b02	loopback	18002	http=200	curl_exit=0
+b02	netns	18002	http=200	curl_exit=0
+b03	loopback	18003	http=000	curl_exit=56
+b03	netns	18003	http=000	curl_exit=28
+b04	loopback	18004	http=200	curl_exit=0
+b04	netns	18004	http=000	curl_exit=28
+b05	loopback	18005	http=200	curl_exit=0
+b05	netns	18005	http=000	curl_exit=7
+b06-host-process	netns	18002	http=000	curl_exit=28
+b06-container	netns	18004	http=000	curl_exit=28

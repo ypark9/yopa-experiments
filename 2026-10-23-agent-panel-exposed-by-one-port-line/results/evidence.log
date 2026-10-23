@@ -1,0 +1,79 @@
+## b01  input: python3 panel.py --host 127.0.0.1 --port 18001
+$ ss -H -ltnp "sport = :18001"
+LISTEN 0      5      127.0.0.1:18001 0.0.0.0:* users:(("python3",pid=N,fd=N))
+$ lsof -nP -iTCP:18001 -sTCP:LISTEN
+COMMAND TYPE NODE NAME 
+python3 IPv4 TCP 127.0.0.1:18001 (LISTEN)
+$ ./check-listeners.sh 18001
+ok       127.0.0.1:18001
+exit=0
+
+## b02  input: python3 panel.py --host 0.0.0.0 --port 18002
+$ ss -H -ltnp "sport = :18002"
+LISTEN 0      5      0.0.0.0:18002 0.0.0.0:* users:(("python3",pid=N,fd=N))
+$ lsof -nP -iTCP:18002 -sTCP:LISTEN
+COMMAND TYPE NODE NAME 
+python3 IPv4 TCP *:18002 (LISTEN)
+$ ./check-listeners.sh 18002
+EXPOSED  0.0.0.0:18002
+exit=1
+
+## p03  input: docker run -p 18003:8000 ... --host 127.0.0.1
+$ ss -H -ltnp "sport = :18003"
+LISTEN 0      4096   0.0.0.0:18003 0.0.0.0:* users:(("docker-proxy",pid=N,fd=N))
+LISTEN 0      4096      [::]:18003    [::]:* users:(("docker-proxy",pid=N,fd=N))
+$ lsof -nP -iTCP:18003 -sTCP:LISTEN
+COMMAND TYPE NODE NAME 
+docker-pr IPv4 TCP *:18003 (LISTEN)
+docker-pr IPv6 TCP *:18003 (LISTEN)
+$ docker port p03
+8000/tcp -> 0.0.0.0:18003
+8000/tcp -> [::]:18003
+$ iptables -t nat -S DOCKER | grep 18003
+-A DOCKER ! -i docker0 -p tcp -m tcp --dport 18003 -j DNAT --to-destination 172.17.0.2:8000
+$ ./check-listeners.sh 18003
+EXPOSED  0.0.0.0:18003
+EXPOSED  [::]:18003
+EXPOSED  docker p03 0.0.0.0:18003->8000/tcp
+EXPOSED  docker p03 :::18003->8000/tcp
+exit=1
+
+## p04  input: docker run -p 18004:8000 ... --host 0.0.0.0
+$ ss -H -ltnp "sport = :18004"
+LISTEN 0      4096   0.0.0.0:18004 0.0.0.0:* users:(("docker-proxy",pid=N,fd=N))
+LISTEN 0      4096      [::]:18004    [::]:* users:(("docker-proxy",pid=N,fd=N))
+$ lsof -nP -iTCP:18004 -sTCP:LISTEN
+COMMAND TYPE NODE NAME 
+docker-pr IPv4 TCP *:18004 (LISTEN)
+docker-pr IPv6 TCP *:18004 (LISTEN)
+$ docker port p04
+8000/tcp -> 0.0.0.0:18004
+8000/tcp -> [::]:18004
+$ iptables -t nat -S DOCKER | grep 18004
+-A DOCKER ! -i docker0 -p tcp -m tcp --dport 18004 -j DNAT --to-destination 172.17.0.3:8000
+$ ./check-listeners.sh 18004
+EXPOSED  0.0.0.0:18004
+EXPOSED  [::]:18004
+EXPOSED  docker p04 0.0.0.0:18004->8000/tcp
+EXPOSED  docker p04 :::18004->8000/tcp
+exit=1
+
+## p05  input: docker run -p 127.0.0.1:18005:8000 ... --host 0.0.0.0
+$ ss -H -ltnp "sport = :18005"
+LISTEN 0      4096   127.0.0.1:18005 0.0.0.0:* users:(("docker-proxy",pid=N,fd=N))
+$ lsof -nP -iTCP:18005 -sTCP:LISTEN
+COMMAND TYPE NODE NAME 
+docker-pr IPv4 TCP 127.0.0.1:18005 (LISTEN)
+$ docker port p05
+8000/tcp -> 127.0.0.1:18005
+$ iptables -t nat -S DOCKER | grep 18005
+-A DOCKER -d 127.0.0.1/32 ! -i docker0 -p tcp -m tcp --dport 18005 -j DNAT --to-destination 172.17.0.4:8000
+$ ./check-listeners.sh 18005
+ok       127.0.0.1:18005
+ok       docker p05 127.0.0.1:18005->8000/tcp
+exit=0
+
+## b06 input: iptables -I INPUT -p tcp --dport 18002 -j DROP; same for 18004
+-A INPUT -p tcp -m tcp --dport 18004 -j DROP
+-A INPUT -p tcp -m tcp --dport 18002 -j DROP
+
