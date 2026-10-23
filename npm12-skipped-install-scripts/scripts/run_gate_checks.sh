@@ -29,5 +29,9 @@ run g3-npmrc-strict-12.2.1 "$NPM12" ci $F --cache "$work/cache"
 mk "$work/g4"; cp "$work/base/package-lock.json" "$work/g4/"; cd "$work/g4"; run g4-npm11-strict-flag "$NPM11" ci --strict-allow-scripts $F --cache "$work/cache"
 # g5: read-only listing before any install (fresh checkout, no node_modules)
 mk "$work/g5"; cp "$work/base/package-lock.json" "$work/g5/"; cd "$work/g5"; run g5-ls-before-install "$NPM12" install-scripts ls $F
+# g6: one approved, one explicitly denied, strict on -> install passes, denied package stays unbuilt
+mk "$work/g6" ',"allowScripts":{"nativedemo@1.0.0":true,"postdemo":false}'; cp "$work/base/package-lock.json" "$work/g6/"; cd "$work/g6"
+run g6-strict-with-deny "$NPM12" ci --strict-allow-scripts $F --cache "$work/cache"
+node -e 'for (const m of ["nativedemo","postdemo"]) { try { require(m); console.log(m, "ok") } catch (e) { console.log(m, "FAIL:", e.message.split("\n")[0]) } }' >> "$res/g6-strict-with-deny.log" 2>&1
 for f in "$res"/g*.log "$res/gate.tsv"; do sed -i -E "s#$NPM11#npm#g; s#$NPM12#npm#g; s#$work#\$TMP#g; s#/tmp/tmp\.[A-Za-z0-9]+#\$TMP#g" "$f"; done
 cat "$res/gate.tsv"

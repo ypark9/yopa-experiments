@@ -1,0 +1,6 @@
+$ npm ci --strict-allow-scripts --registry http://127.0.0.1:4873/ --no-audit --no-fund --cache $TMP/cache
+
+added 2 packages in 461ms
+[exit 0]
+nativedemo ok
+postdemo FAIL: Cannot find module './generated.js'

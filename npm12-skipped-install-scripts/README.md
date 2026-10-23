@@ -16,7 +16,7 @@ says, and whether `require()` works afterwards.
 | `scripts/build_tarballs.sh` | Packs nativedemo 1.0.0, nativedemo 1.0.1, postdemo 1.0.0 into `registry/`. |
 | `scripts/registry_server.mjs` | Read-only npm registry on `127.0.0.1:4873` that serves only those tarballs. |
 | `scripts/run_matrix.sh` | 9 fixture cases + 4 real public packages on npm 11 and npm 12; writes `results/`. |
-| `scripts/run_gate_checks.sh` | 5 cases for the recommended CI gate; writes `results/gate.tsv`. |
+| `scripts/run_gate_checks.sh` | 6 cases for the recommended CI gate; writes `results/gate.tsv`. |
 
 Real packages (downloaded from the public npm registry, nothing published): `sqlite3@6.0.1`,
 `better-sqlite3@13.0.3`, `esbuild@0.28.2`, `bcrypt@6.0.0`.
@@ -72,6 +72,7 @@ The gate the post recommends is `npm ci --strict-allow-scripts` followed by `req
 | g3 | npm 12.2.1, `strict-allow-scripts=true` in project `.npmrc`, plain `npm ci` | 1 |
 | g4 | npm 11.21.1, `npm ci --strict-allow-scripts` | 1 (the flag already exists on 11.21.1) |
 | g5 | npm 12.2.1, `npm install-scripts ls` on a fresh checkout before any install | 0, prints `No packages with unreviewed install scripts.` |
+| g6 | npm 12.2.1, `nativedemo@1.0.0: true`, `postdemo: false`, `npm ci --strict-allow-scripts` | 0, no warning; `postdemo` then fails `require()` |
 
 g5 matters: the listing reads what is installed in `node_modules`, so on a clean CI checkout it reports nothing.
 
