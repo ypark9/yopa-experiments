@@ -1,0 +1,22 @@
+{
+  "host_a": "q3-budget-review-4d7a19e2.share.test",
+  "host_b": "share.test",
+  "path_b": "/s/q3-budget-review/4d7a19e2",
+  "queries": [
+    "q3-budget-review-4d7a19e2.share.test",
+    "share.test"
+  ],
+  "title_in_hostname_query": true,
+  "title_in_any_query": true,
+  "path_scheme_host_queries": [
+    "share.test"
+  ],
+  "curl_a": {
+    "code": 0,
+    "body": "ok host=q3-budget-review-4d7a19e2.share.test path=/"
+  },
+  "curl_b": {
+    "code": 0,
+    "body": "ok host=share.test path=/s/q3-budget-review/4d7a19e2"
+  }
+}
