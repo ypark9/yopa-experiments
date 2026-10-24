@@ -4,7 +4,7 @@ from botocore.stub import Stubber
 from botocore.exceptions import ParamValidationError
 c = boto3.client("dynamodbstreams", region_name="us-east-1", aws_access_key_id="x", aws_secret_access_key="x")
 s = Stubber(c); s.activate()
-arn = "arn:aws:dynamodb:us-east-1:000000000000:table/t/stream/2026-10-23T00:00:00.000"
+arn = "arn:aws:dynamodb:us-east-1:123456789012:table/t/stream/2026-10-23T00:00:00.000"
 shard = "shardId-00000000000000000000-00000000"
 try:
     s.add_response("get_shard_iterator", {"ShardIterator": "stub"})
