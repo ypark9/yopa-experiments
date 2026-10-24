@@ -10,12 +10,12 @@ def actions(fbt, extra=None):
     if extra: fb.update(extra)
     return [{"routeToTarget": {"staticRoute": {"targetName": "bedrock", "model": P, "fallback": fb}}}]
 cases = {
-    "create_gateway": ("CreateGateway", {"name": "yopa-agw-fallback-abcd1234", "roleArn": "arn:aws:iam::000000000000:role/x", "authorizerType": "AWS_IAM"}),
+    "create_gateway": ("CreateGateway", {"name": "yopa-agw-fallback-abcd1234", "roleArn": "arn:aws:iam::123456789012:role/x", "authorizerType": "AWS_IAM"}),
     "create_target": ("CreateGatewayTarget", {"gatewayIdentifier": "gw", "name": "bedrock",
         "targetConfiguration": {"inference": {"connector": {"source": {"connectorId": "bedrock-runtime"}}}},
         "credentialProviderConfigurations": [{"credentialProviderType": "GATEWAY_IAM_ROLE"}]}),
     "rule_fbt50": ("CreateGatewayRule", {"gatewayIdentifier": "gw", "priority": 100, "conditions": [{"matchModels": {"anyOf": [{"value": P}]}}], "actions": actions(50)}),
-    "rule_fbt30000": ("UpdateGatewayRule", {"gatewayIdentifier": "gw", "ruleId": "00000000-0000-0000-0000-000000000000", "priority": 100, "conditions": [{"matchModels": {"anyOf": [{"value": P}]}}], "actions": actions(30000)}),
+    "rule_fbt30000": ("UpdateGatewayRule", {"gatewayIdentifier": "gw", "ruleId": "11111111-2222-3333-4444-123456789012", "priority": 100, "conditions": [{"matchModels": {"anyOf": [{"value": P}]}}], "actions": actions(30000)}),
     "neg_fbt49": ("CreateGatewayRule", {"gatewayIdentifier": "gw", "priority": 100, "actions": actions(49)}),
     "neg_3_fallbacks_model_max_2": ("CreateGatewayRule", {"gatewayIdentifier": "gw", "priority": 100, "actions": actions(5000, {"targetFallback": [{"targetName": "a"}, {"targetName": "b"}, {"targetName": "c"}]})}),
     "neg_breaker_threshold": ("CreateGatewayRule", {"gatewayIdentifier": "gw", "priority": 100, "actions": actions(5000, {"circuitBreaker": {"mode": "ENABLED", "failureThreshold": 5}})}),
