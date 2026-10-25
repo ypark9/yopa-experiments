@@ -33,10 +33,11 @@ for name, n, dur, cpu, gb in EX:
     r["web_with_3_envs"] = round(web(n, cpu, gb, envs=3), 2)
     rows.append(r)
 # request-fee floor: Web charges $0.10/M more per request than Event, before any compute.
-floor = {f"{arch}_{int(gb*1000)}MB_ms": round(0.10e-6 / (EV[arch][0] * gb) * 1000, 1)
-         for arch in ("arm", "x86") for gb in (0.128, 0.5, 1.0)}
+# Memory sizes are MB / 1024 (binary GB), the conversion AWS bills with: 128 MB = 0.125 GB.
+floor = {f"{arch}_{mb}MB_ms": round(0.10e-6 / (EV[arch][0] * mb / 1024) * 1000, 1)
+         for arch in ("arm", "x86") for mb in (128, 512, 1024)}
 # break-even CPU share: Event(arm) wall-time cost vs Web CPU cost, per request, memory ignored
-be = {f"{int(gb*1000)}MB": round(gb * EV["arm"][0] / WEB_VCPU_S, 3) for gb in (0.128, 0.5, 1.0, 2.0)}
+be = {f"{mb}MB": round(mb / 1024 * EV["arm"][0] / WEB_VCPU_S, 3) for mb in (128, 512, 1024, 2048)}
 # one always-on environment's memory cost per month
 env_month = {f"{gb}GB": round(gb * MONTH * WEB_GB_S, 2) for gb in (0.25, 0.5, 1.0, 2.0)}
 out = {"examples": rows, "request_fee_floor_event_cheaper_if_duration_below": floor,

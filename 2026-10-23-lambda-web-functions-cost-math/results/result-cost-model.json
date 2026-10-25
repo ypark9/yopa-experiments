@@ -46,18 +46,18 @@
   }
  ],
  "request_fee_floor_event_cheaper_if_duration_below": {
-  "arm_128MB_ms": 58.6,
-  "arm_500MB_ms": 15.0,
-  "arm_1000MB_ms": 7.5,
-  "x86_128MB_ms": 46.9,
-  "x86_500MB_ms": 12.0,
-  "x86_1000MB_ms": 6.0
+  "arm_128MB_ms": 60.0,
+  "arm_512MB_ms": 15.0,
+  "arm_1024MB_ms": 7.5,
+  "x86_128MB_ms": 48.0,
+  "x86_512MB_ms": 12.0,
+  "x86_1024MB_ms": 6.0
  },
  "cpu_share_breakeven_web_cheaper_below__memory_ignored": {
-  "128MB": 0.062,
-  "500MB": 0.241,
-  "1000MB": 0.481,
-  "2000MB": 0.963
+  "128MB": 0.06,
+  "512MB": 0.241,
+  "1024MB": 0.481,
+  "2048MB": 0.963
  },
  "one_env_memory_per_month": {
   "0.25GB": 2.38,
