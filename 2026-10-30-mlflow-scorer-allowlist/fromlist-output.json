@@ -1,0 +1,17 @@
+{
+  "python": "3.13.5",
+  "rows": [
+    {
+      "metric_name": "Faithfulness",
+      "passes_isidentifier": true,
+      "caller_code_ran": false,
+      "error": null
+    },
+    {
+      "metric_name": "upload.probe",
+      "passes_isidentifier": false,
+      "caller_code_ran": true,
+      "error": null
+    }
+  ]
+}

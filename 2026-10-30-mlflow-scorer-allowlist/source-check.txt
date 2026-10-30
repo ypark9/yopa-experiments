@@ -1,0 +1,25 @@
+# Source check: MLflow sdists from PyPI (pip download --no-deps --no-binary :all:)
+
+## mlflow==3.16.1  mlflow/genai/scorers/base.py (allow-list check)
+580:                module_path == m or module_path.startswith(m + ".")
+## mlflow==3.16.1  allow-list size
+4 entries
+
+## mlflow==3.17.0  mlflow/genai/scorers/base.py (allow-list check)
+686:            if module_path not in THIRD_PARTY_SCORER_ALLOWED_MODULES:
+699:            if not metric_name.isidentifier():
+706:            if "metric_name" in (data.get("kwargs") or {}):
+## mlflow==3.17.0  allow-list size
+14 entries
+
+## mlflow==3.16.1 deepeval unknown-metric fallback
+    else:
+        # Attempt dynamic import for metrics not in registry
+        module_path = "deepeval.metrics"
+        class_name = f"{metric_name}Metric"
+
+    try:
+        module = __import__(module_path, fromlist=[class_name])
+        return getattr(module, class_name)
+044bd17d49ed216d3e38a537436622154daa5197ea41c1f3dedf155cbd8f40c0  mlflow-3.16.1.tar.gz
+7c1566b1aca61aec58520516df085948874c7956798dd6ae8ca17560ce06b089  mlflow-3.17.0.tar.gz

@@ -1,0 +1,53 @@
+{
+  "python": "3.13.5",
+  "rows": [
+    {
+      "case": "A real scorer module that ships with the package",
+      "check": "3.16.1 (prefix match)",
+      "module_path": "simml.genai.scorers.trulens.scorers.agent_trace",
+      "check_allowed": true,
+      "class_constructed": true,
+      "caller_code_ran": false
+    },
+    {
+      "case": "A real scorer module that ships with the package",
+      "check": "3.17.0 (exact match)",
+      "module_path": "simml.genai.scorers.trulens.scorers.agent_trace",
+      "check_allowed": true,
+      "class_constructed": true,
+      "caller_code_ran": false
+    },
+    {
+      "case": "A file the caller uploaded as a run artifact under an allowed package",
+      "check": "3.16.1 (prefix match)",
+      "module_path": "simml.genai.scorers.trulens.<run_id>.artifacts.audit_<token>",
+      "check_allowed": true,
+      "class_constructed": true,
+      "caller_code_ran": true
+    },
+    {
+      "case": "A file the caller uploaded as a run artifact under an allowed package",
+      "check": "3.17.0 (exact match)",
+      "module_path": "simml.genai.scorers.trulens.<run_id>.artifacts.audit_<token>",
+      "check_allowed": false,
+      "class_constructed": false,
+      "caller_code_ran": false
+    },
+    {
+      "case": "A module outside every allowed package",
+      "check": "3.16.1 (prefix match)",
+      "module_path": "json",
+      "check_allowed": false,
+      "class_constructed": false,
+      "caller_code_ran": false
+    },
+    {
+      "case": "A module outside every allowed package",
+      "check": "3.17.0 (exact match)",
+      "module_path": "json",
+      "check_allowed": false,
+      "class_constructed": false,
+      "caller_code_ran": false
+    }
+  ]
+}
