@@ -1,0 +1,13 @@
+Usage: agentcore status [options]
+
+inspect deployed project resources for an AWS target
+
+Options:
+  --target <target>  name of the aws-targets.json entry to report on (default:
+                     "default")
+  -h, --help         display help for command
+
+Global Options:
+  --region <region>  AWS region
+  --debug            debug logging (default: false)
+  --json             JSON output (default: false)

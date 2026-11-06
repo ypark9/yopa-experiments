@@ -1,0 +1,6 @@
+Error: Failed to deserialize file at "FIXTURE_ROOT/empty_obj/agentcore/agentcore.json":
+
+✖ Invalid input: expected string, received undefined
+  → at name
+✖ Invalid input: expected 2
+  → at version

@@ -1,0 +1,16 @@
+Usage: agentcore migrate [options]
+
+migrate an AgentCore CLI v0 project to the current project format, keeping its
+deployed resources
+
+Options:
+  --target <target>  the deployment target to migrate (required when the project
+                     is deployed to several)
+  --yes              apply the changes without asking, when they are ready
+                     (default: false)
+  -h, --help         display help for command
+
+Global Options:
+  --region <region>  AWS region
+  --debug            debug logging (default: false)
+  --json             JSON output (default: false)

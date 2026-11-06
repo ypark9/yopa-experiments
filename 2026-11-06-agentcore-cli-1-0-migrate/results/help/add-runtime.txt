@@ -1,0 +1,48 @@
+Usage: agentcore add runtime [options]
+
+add a Runtime to the current project
+
+Configuration:
+  --name <name>                                             the name of the Runtime (required)
+  --language <language>                                     language you will write the Runtime in: python or typescript (required unless --agent-id imports a Bedrock Agent)
+  --protocol <protocol>                                     protocol the Runtime serves: HTTP (default), MCP, A2A, or AGUI
+  --description <description>                               an optional description of the Runtime
+  --tags <tags...>                                          tags as repeated key=value entries or one JSON object
+
+Environment:
+  --environment-variables <environment-variables>           environment variables (JSON object of key/value strings)
+  --network-mode <network-mode>                             network mode for the Runtime environment (PUBLIC or VPC)
+  --network-config <network-config>                         VPC network configuration (JSON)
+  --lifecycle-configuration <lifecycle-configuration>       session idle timeout and instance lifetime configuration (JSON)
+  --filesystem-configurations <filesystem-configurations>   filesystem mount configurations (JSON)
+
+Access and permissions:
+  --role-arn <role-arn>                                     IAM role ARN that provides permissions for the Runtime
+  --additional-policies <additional-policies...>            additional IAM policy ARNs or policy document paths for the execution role
+  --authorizer-type <authorizer-type>                       inbound authorizer type (AWS_IAM or CUSTOM_JWT)
+  --authorizer-configuration <authorizer-configuration>     inbound authorizer configuration (JSON)
+  --request-header-allowlist <request-header-allowlist...>  request headers to pass through to the Runtime
+
+Bedrock Agent import:
+  --agent-id <agent-id>                                     Bedrock Agent ID to import; translates that agent version into runtime code instead of writing docs
+  --agent-alias-id <agent-alias-id>                         Bedrock Agent Alias ID selecting the version to import; must point at a prepared version, not DRAFT (requires --agent-id)
+  --framework <framework>                                   agent framework for an imported Bedrock Agent: strands or langgraph (requires --agent-id)
+
+Other options:
+  -h, --help                                                display help for command
+
+Global Options:
+  --region <region>                                         AWS region
+  --debug                                                   debug logging (default: false)
+  --json                                                    JSON output (default: false)
+
+Parameter details:
+
+  --tags (repeated key=value or JSON: map of string to string)
+      Tags to apply to the resource. Repeat --tags for key=value entries, or provide
+      one JSON object. Up to 50 entries; keys up to 128 characters, values up to 256.
+
+      Examples:
+        --tags team=ml-platform --tags env=dev
+        --tags '{"team":"ml-platform","env":"dev"}'
+

@@ -1,0 +1,1 @@
+{"name":"agentcore-cdk","version":"0.0.0","dependencies":{"aws-cdk-lib":"2.100.0","constructs":"^10.0.0"}}

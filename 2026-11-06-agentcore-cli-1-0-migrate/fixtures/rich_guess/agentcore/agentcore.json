@@ -1,0 +1,1 @@
+{"version":1,"name":"CustomerSupport","agents":[{"name":"Assistant","language":"Python","framework":"Strands","build":"CodeZip","protocol":"HTTP"}],"memories":[{"name":"Facts","eventExpiryDuration":30}],"gateways":[]}

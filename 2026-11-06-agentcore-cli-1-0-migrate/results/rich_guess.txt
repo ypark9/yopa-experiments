@@ -1,0 +1,3 @@
+Error: Failed to deserialize file at "FIXTURE_ROOT/rich_guess/agentcore/agentcore.json":
+
+✖ Unrecognized keys: "agents", "gateways"

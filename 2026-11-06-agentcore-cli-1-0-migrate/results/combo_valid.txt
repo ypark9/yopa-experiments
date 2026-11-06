@@ -1,0 +1,14 @@
+Checking the project
+
+Migration plan: demo → v1
+
+Not ready to migrate: 6 issues need fixing first.
+  ✖ git: agentcore migrate requires the project to be in a git repository so you can review and undo the changes.
+  ✖ cdk dependencies: Couldn't read agentcore/cdk/package.json: ENOENT: no such file or directory, open…
+  ✖ cdk app: Couldn't read the CDK app: ENOENT: no such file or directory, scandir…
+  ✖ agentcore/agentcore.json runtimes[Assistant].runtimeVersion: runtimeVersion is required for CodeZip builds
+  ✖ app/Helper/harness.json (file): Couldn't read it: ENOENT: no such file or directory, open…
+  ✖ agentcore/aws-targets.json (file): Couldn't read it: ENOENT: no such file or directory, open…
+
+Full plan: agentcore/.cli/migrate/plan-20261106T144216Z.md
+Please use `agentcore feedback` or raise a GitHub issue at https://github.com/aws/agentcore-cli.

@@ -1,0 +1,34 @@
+Usage: agentcore create [options]
+
+create a new project
+
+Options:
+  --name <name>          name of the project to create (required)
+  --template <template>  the template to scaffold the Runtime from (default:
+                         "empty")
+  --skip-install         skip installing dependencies (npm install, uv sync)
+                         (default: false)
+  --skip-git             skip initializing a git repository (default: false)
+  -h, --help             display help for command
+
+Global Options:
+  --region <region>      AWS region
+  --debug                debug logging (default: false)
+  --json                 JSON output (default: false)
+
+Parameter details:
+
+  --template (template name)
+      Available templates:
+        agent-python-strands            Strands agent with AgentCore Memory, Bedrock or another model provider
+        agent-python-strands-container  Strands agent with AgentCore Memory, Bedrock or another model provider, container-based deployment
+        agent-python-langchain          LangChain agent with Bedrock for inference
+        environment-python-bma          Execution environment for Bedrock Managed Agents
+        agent-python-minimal            minimal Python project, no agent framework
+        agent-typescript-strands        Strands agent in TypeScript with AgentCore Memory, Bedrock or another model provider
+        agent-typescript-vercel         Vercel AI SDK agent in TypeScript, Bedrock for inference
+        a2a-python-strands              Strands agent speaking the A2A protocol, Bedrock or another model provider
+        agui-python-strands             Strands agent speaking AG-UI, Bedrock or another model provider
+        mcp-python-fastmcp              MCP server exposing tools with FastMCP
+        empty                           empty project with no Runtime or harness
+

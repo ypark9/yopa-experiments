@@ -1,0 +1,3 @@
+Error: Failed to deserialize file at "FIXTURE_ROOT/language_framework_style/agentcore/agentcore.json":
+
+✖ Unrecognized keys: "language", "framework"

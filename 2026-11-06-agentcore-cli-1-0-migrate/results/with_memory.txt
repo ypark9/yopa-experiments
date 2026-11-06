@@ -1,0 +1,4 @@
+Error: Failed to deserialize file at "FIXTURE_ROOT/with_memory/agentcore/agentcore.json":
+
+✖ Invalid input: expected number, received undefined
+  → at memories[0].eventExpiryDuration

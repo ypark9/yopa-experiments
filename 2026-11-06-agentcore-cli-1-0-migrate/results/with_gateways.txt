@@ -1,0 +1,3 @@
+Error: Failed to deserialize file at "FIXTURE_ROOT/with_gateways/agentcore/agentcore.json":
+
+✖ Unrecognized key: "gateways"

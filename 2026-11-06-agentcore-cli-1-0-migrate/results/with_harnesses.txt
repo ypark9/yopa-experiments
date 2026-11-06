@@ -1,0 +1,4 @@
+Error: Failed to deserialize file at "FIXTURE_ROOT/with_harnesses/agentcore/agentcore.json":
+
+✖ Invalid input: expected string, received undefined
+  → at harnesses[0].path

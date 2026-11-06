@@ -1,0 +1,4 @@
+Error: Failed to deserialize file at "FIXTURE_ROOT/runtime_versioned/agentcore/agentcore.json":
+
+✖ Invalid input
+  → at runtimes[0].runtimeVersion

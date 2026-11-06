@@ -1,0 +1,8 @@
+Error: Failed to deserialize file at "FIXTURE_ROOT/with_runtimes/agentcore/agentcore.json":
+
+✖ Invalid option: expected one of "CodeZip"|"Container"
+  → at runtimes[0].build
+✖ Invalid input: expected string, received undefined
+  → at runtimes[0].entrypoint
+✖ Invalid input: expected string, received undefined
+  → at runtimes[0].codeLocation

@@ -1,0 +1,11 @@
+Checking the project
+
+Migration plan: demo → v1
+
+Not ready to migrate: 3 issues need fixing first.
+  ✖ cdk dependencies: This project's CDK dependencies are older than v0.24.2.
+  ✖ cdk app: Couldn't read the CDK app: agentcore/cdk/bin/cdk.ts and agentcore/cdk/lib/cdk-stack.ts are missing.
+  ✖ agentcore/agentcore.json runtimes[Assistant].runtimeVersion: runtimeVersion is required for CodeZip builds
+
+Full plan: agentcore/.cli/migrate/plan-20261106T144217Z.md
+Please use `agentcore feedback` or raise a GitHub issue at https://github.com/aws/agentcore-cli.

@@ -1,0 +1,5 @@
+.cli-prefix/
+*.tgz
+node_modules/
+fixtures/ready_local_minimal/.git/
+fixtures/**/agentcore/.cli/

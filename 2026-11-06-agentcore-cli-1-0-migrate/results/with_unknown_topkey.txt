@@ -1,0 +1,3 @@
+Error: Failed to deserialize file at "FIXTURE_ROOT/with_unknown_topkey/agentcore/agentcore.json":
+
+✖ Unrecognized key: "fooBar"

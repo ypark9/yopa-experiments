@@ -1,0 +1,255 @@
+[
+  {
+    "fixture": "already_v2",
+    "unrecognized": null,
+    "field_errors": [],
+    "reached_migrate_plan": false,
+    "already_v1": true,
+    "exit_hint": "already_v1"
+  },
+  {
+    "fixture": "combo_valid",
+    "unrecognized": null,
+    "field_errors": [],
+    "reached_migrate_plan": true,
+    "already_v1": false,
+    "exit_hint": "plan_not_ready"
+  },
+  {
+    "fixture": "empty_obj",
+    "unrecognized": null,
+    "field_errors": [
+      {
+        "msg": "Invalid input: expected string, received undefined",
+        "at": "name"
+      },
+      {
+        "msg": "Invalid input: expected 2",
+        "at": "version"
+      }
+    ],
+    "reached_migrate_plan": false,
+    "already_v1": false,
+    "exit_hint": "deserialize_fail"
+  },
+  {
+    "fixture": "environment",
+    "unrecognized": null,
+    "field_errors": [],
+    "reached_migrate_plan": false,
+    "already_v1": false,
+    "exit_hint": "other"
+  },
+  {
+    "fixture": "harnesses_valid",
+    "unrecognized": null,
+    "field_errors": [],
+    "reached_migrate_plan": true,
+    "already_v1": false,
+    "exit_hint": "plan_not_ready"
+  },
+  {
+    "fixture": "kb_typed",
+    "unrecognized": "\"name\"",
+    "field_errors": [
+      {
+        "msg": "Unrecognized key: \"name\"",
+        "at": "knowledgeBases[0].dataSources[0]"
+      },
+      {
+        "msg": "Invalid input: expected string, received undefined",
+        "at": "knowledgeBases[0].dataSources[0].uri"
+      }
+    ],
+    "reached_migrate_plan": false,
+    "already_v1": false,
+    "exit_hint": "deserialize_fail"
+  },
+  {
+    "fixture": "kb_valid",
+    "unrecognized": null,
+    "field_errors": [
+      {
+        "msg": "Invalid discriminator value. Expected 'S3' | 'WEB' | 'CONFLUENCE' | 'SHAREPOINT' | 'ONEDRIVE' | 'GOOGLEDRIVE'",
+        "at": "knowledgeBases[0].dataSources[0].type"
+      }
+    ],
+    "reached_migrate_plan": false,
+    "already_v1": false,
+    "exit_hint": "deserialize_fail"
+  },
+  {
+    "fixture": "language_framework_style",
+    "unrecognized": "\"language\", \"framework\"",
+    "field_errors": [],
+    "reached_migrate_plan": false,
+    "already_v1": false,
+    "exit_hint": "deserialize_fail"
+  },
+  {
+    "fixture": "memories_valid",
+    "unrecognized": null,
+    "field_errors": [],
+    "reached_migrate_plan": true,
+    "already_v1": false,
+    "exit_hint": "plan_not_ready"
+  },
+  {
+    "fixture": "only_version_name",
+    "unrecognized": null,
+    "field_errors": [],
+    "reached_migrate_plan": true,
+    "already_v1": false,
+    "exit_hint": "plan_not_ready"
+  },
+  {
+    "fixture": "ready_local_minimal",
+    "unrecognized": null,
+    "field_errors": [],
+    "reached_migrate_plan": true,
+    "already_v1": false,
+    "exit_hint": "plan_not_ready"
+  },
+  {
+    "fixture": "rich_guess",
+    "unrecognized": "\"agents\", \"gateways\"",
+    "field_errors": [],
+    "reached_migrate_plan": false,
+    "already_v1": false,
+    "exit_hint": "deserialize_fail"
+  },
+  {
+    "fixture": "runtime_versioned",
+    "unrecognized": null,
+    "field_errors": [
+      {
+        "msg": "Invalid input",
+        "at": "runtimes[0].runtimeVersion"
+      }
+    ],
+    "reached_migrate_plan": false,
+    "already_v1": false,
+    "exit_hint": "deserialize_fail"
+  },
+  {
+    "fixture": "runtimes_valid",
+    "unrecognized": null,
+    "field_errors": [],
+    "reached_migrate_plan": true,
+    "already_v1": false,
+    "exit_hint": "plan_not_ready"
+  },
+  {
+    "fixture": "version_only",
+    "unrecognized": null,
+    "field_errors": [
+      {
+        "msg": "Invalid input: expected string, received undefined",
+        "at": "name"
+      }
+    ],
+    "reached_migrate_plan": false,
+    "already_v1": false,
+    "exit_hint": "deserialize_fail"
+  },
+  {
+    "fixture": "with_agents",
+    "unrecognized": "\"agents\"",
+    "field_errors": [],
+    "reached_migrate_plan": false,
+    "already_v1": false,
+    "exit_hint": "deserialize_fail"
+  },
+  {
+    "fixture": "with_gateways",
+    "unrecognized": "\"gateways\"",
+    "field_errors": [],
+    "reached_migrate_plan": false,
+    "already_v1": false,
+    "exit_hint": "deserialize_fail"
+  },
+  {
+    "fixture": "with_harnesses",
+    "unrecognized": null,
+    "field_errors": [
+      {
+        "msg": "Invalid input: expected string, received undefined",
+        "at": "harnesses[0].path"
+      }
+    ],
+    "reached_migrate_plan": false,
+    "already_v1": false,
+    "exit_hint": "deserialize_fail"
+  },
+  {
+    "fixture": "with_knowledge_bases",
+    "unrecognized": null,
+    "field_errors": [
+      {
+        "msg": "Invalid input: expected array, received undefined",
+        "at": "knowledgeBases[0].dataSources"
+      }
+    ],
+    "reached_migrate_plan": false,
+    "already_v1": false,
+    "exit_hint": "deserialize_fail"
+  },
+  {
+    "fixture": "with_memory",
+    "unrecognized": null,
+    "field_errors": [
+      {
+        "msg": "Invalid input: expected number, received undefined",
+        "at": "memories[0].eventExpiryDuration"
+      }
+    ],
+    "reached_migrate_plan": false,
+    "already_v1": false,
+    "exit_hint": "deserialize_fail"
+  },
+  {
+    "fixture": "with_resources",
+    "unrecognized": "\"resources\"",
+    "field_errors": [],
+    "reached_migrate_plan": false,
+    "already_v1": false,
+    "exit_hint": "deserialize_fail"
+  },
+  {
+    "fixture": "with_runtimes",
+    "unrecognized": null,
+    "field_errors": [
+      {
+        "msg": "Invalid option: expected one of \"CodeZip\"|\"Container\"",
+        "at": "runtimes[0].build"
+      },
+      {
+        "msg": "Invalid input: expected string, received undefined",
+        "at": "runtimes[0].entrypoint"
+      },
+      {
+        "msg": "Invalid input: expected string, received undefined",
+        "at": "runtimes[0].codeLocation"
+      }
+    ],
+    "reached_migrate_plan": false,
+    "already_v1": false,
+    "exit_hint": "deserialize_fail"
+  },
+  {
+    "fixture": "with_targets_and_agents",
+    "unrecognized": "\"targets\", \"agents\"",
+    "field_errors": [],
+    "reached_migrate_plan": false,
+    "already_v1": false,
+    "exit_hint": "deserialize_fail"
+  },
+  {
+    "fixture": "with_unknown_topkey",
+    "unrecognized": "\"fooBar\"",
+    "field_errors": [],
+    "reached_migrate_plan": false,
+    "already_v1": false,
+    "exit_hint": "deserialize_fail"
+  }
+]

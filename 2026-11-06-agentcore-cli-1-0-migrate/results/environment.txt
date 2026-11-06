@@ -1,0 +1,6 @@
+CLI package: @aws/agentcore@1.0.1 (npm pack; binary --version prints 1.0.1)
+Node: Linux version 6.12.94+ (root@576a0f263133) (gcc (Debian 12.2.0-14+deb12u1) 12.2.0, GNU ld (GNU Binutils for Debian) 2.40) #1 SMP PREEMPT_DYNAMIC Mon Oct 26 15:07:58 UTC 2026
+Node runtime: see `node -v` / `npm -v` on the box when re-run.
+AWS credentials: unset; AWS_EC2_METADATA_DISABLED=true; AWS_CONFIG_FILE=/dev/null; AWS_SHARED_CREDENTIALS_FILE=/dev/null
+No deploy / invoke / terraform.
+Placeholder account in aws-targets.json: 123456789012

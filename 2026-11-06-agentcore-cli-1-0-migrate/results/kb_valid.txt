@@ -1,0 +1,4 @@
+Error: Failed to deserialize file at "FIXTURE_ROOT/kb_valid/agentcore/agentcore.json":
+
+✖ Invalid discriminator value. Expected 'S3' | 'WEB' | 'CONFLUENCE' | 'SHAREPOINT' | 'ONEDRIVE' | 'GOOGLEDRIVE'
+  → at knowledgeBases[0].dataSources[0].type

@@ -1,0 +1,3 @@
+Error: Failed to deserialize file at "FIXTURE_ROOT/with_targets_and_agents/agentcore/agentcore.json":
+
+✖ Unrecognized keys: "targets", "agents"

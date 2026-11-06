@@ -1,0 +1,39 @@
+Usage: agentcore add [options] [command]
+
+add project resources
+
+Options:
+  -h, --help         display help for command
+
+Global Options:
+  --region <region>  AWS region
+  --debug            debug logging (default: false)
+  --json             JSON output (default: false)
+
+Commands:
+  harness            add a harness to the current project (not available in
+                     China regions)
+  runtime            add a Runtime to the current project
+  runtime-endpoint   add a named endpoint (version alias) to a runtime
+  gateway            add a Gateway to the current project
+  gateway-target     add a Target to a project Gateway
+  gateway-connector  add a connector-backed Target to a project Gateway (not
+                     available in China regions)
+  policy-engine      add a Policy Engine to the current project (not available
+                     in China regions)
+  policy             add a Cedar Policy to a project Policy Engine (not
+                     available in China regions)
+  credentials        add AgentCore Identity credential providers to the current
+                     project
+  memory             add a Memory to the current project (not available in China
+                     regions)
+  evaluator          add a custom evaluator to the current project (not
+                     available in China regions)
+  online-eval        add an online evaluation config to the current project (not
+                     available in China regions)
+  config-bundle      add a configuration bundle to the current project (not
+                     available in China regions)
+  payment-manager    add a payment manager to the current project (not available
+                     in China regions)
+  payment-connector  add a connector to a project payment manager (not available
+                     in China regions)

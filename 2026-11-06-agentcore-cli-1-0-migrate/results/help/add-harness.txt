@@ -1,0 +1,61 @@
+Usage: agentcore add harness [options]
+
+add a harness to the current project (not available in China regions)
+
+Configuration:
+  --name <name>                                          the name of the harness
+  --model <model>                                        model configuration (JSON)
+  --api-key <api-key>                                    API key for a non-Bedrock --model; '-' for stdin, 'file://path' for file
+  --system-prompt <system-prompt>                        the agent's system prompt
+  --tags <tags...>                                       tags as repeated key=value entries or one JSON object
+
+Tools and skills:
+  --tools <tools>                                        tools available to the agent (JSON)
+  --allowed-tools <allowed-tools...>                     tool allowlist patterns (e.g. * or @serverName/toolName)
+  --skills <skills>                                      skills available to the agent (JSON)
+
+Memory and context:
+  --memory <memory>                                      memory configuration (JSON)
+  --truncation <truncation>                              context truncation configuration (JSON)
+
+Invocation limits:
+  --max-iterations <max-iterations>                      max agent loop iterations per invocation
+  --max-tokens <max-tokens>                              max total output tokens per invocation
+  --timeout-seconds <timeout-seconds>                    max duration in seconds per invocation
+
+Environment:
+  --container-uri <container-uri>                        ECR container image URI; alternative to --dockerfile
+  --dockerfile <dockerfile>                              path to local Dockerfile to build the harness image; alternative to --container-uri
+  --environment-variables <environment-variables>        environment variables (JSON object of key/value strings)
+  --network-mode <network-mode>                          network mode for the harness environment (PUBLIC or VPC)
+  --network-config <network-config>                      VPC network configuration (JSON)
+  --lifecycle-config <lifecycle-config>                  session idle timeout and instance lifetime configuration (JSON)
+
+Filesystem storage:
+  --session-storage-path <session-storage-path>          mount path for session storage
+  --efs-access-points <efs-access-points>                EFS access point configurations (JSON; requires VPC)
+  --s3-access-points <s3-access-points>                  S3 access point configurations (JSON; requires VPC)
+
+Access and permissions:
+  --execution-role-arn <execution-role-arn>              IAM role the harness assumes; a default role is created when omitted
+  --authorizer-type <authorizer-type>                    inbound authorizer type (AWS_IAM or CUSTOM_JWT)
+  --authorizer-configuration <authorizer-configuration>  inbound authorizer configuration (JSON)
+
+Other options:
+  -h, --help                                             display help for command
+
+Global Options:
+  --region <region>                                      AWS region
+  --debug                                                debug logging (default: false)
+  --json                                                 JSON output (default: false)
+
+Parameter details:
+
+  --tags (repeated key=value or JSON: map of string to string)
+      Tags to apply to the resource. Repeat --tags for key=value entries, or provide
+      one JSON object. Up to 50 entries; keys up to 128 characters, values up to 256.
+
+      Examples:
+        --tags team=ml-platform --tags env=dev
+        --tags '{"team":"ml-platform","env":"dev"}'
+

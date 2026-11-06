@@ -1,0 +1,1 @@
+{"version":1,"name":"demo","runtimes":[{"name":"Assistant","build":"CodeZip","entrypoint":"app.py","codeLocation":"app/Assistant","runtimeVersion":"1.0.0"}]}

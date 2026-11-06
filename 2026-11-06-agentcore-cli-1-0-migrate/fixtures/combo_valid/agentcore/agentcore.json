@@ -1,0 +1,1 @@
+{"version":1,"name":"demo","runtimes":[{"name":"Assistant","build":"CodeZip","entrypoint":"app.py","codeLocation":"app/Assistant"}],"memories":[{"name":"Facts","eventExpiryDuration":30}],"harnesses":[{"name":"Helper","path":"app/Helper"}]}

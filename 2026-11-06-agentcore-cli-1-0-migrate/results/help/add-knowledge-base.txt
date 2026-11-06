@@ -1,0 +1,1 @@
+Error: unknown command 'knowledge-base' for 'add'. Available commands: harness, runtime, runtime-endpoint, gateway, gateway-target, gateway-connector, policy-engine, policy, credentials, memory, evaluator, online-eval, config-bundle, payment-manager, payment-connector

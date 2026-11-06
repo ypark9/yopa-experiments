@@ -1,0 +1,6 @@
+Error: Failed to deserialize file at "FIXTURE_ROOT/kb_typed/agentcore/agentcore.json":
+
+✖ Unrecognized key: "name"
+  → at knowledgeBases[0].dataSources[0]
+✖ Invalid input: expected string, received undefined
+  → at knowledgeBases[0].dataSources[0].uri

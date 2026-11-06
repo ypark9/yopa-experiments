@@ -1,0 +1,4 @@
+Error: Failed to deserialize file at "FIXTURE_ROOT/with_knowledge_bases/agentcore/agentcore.json":
+
+✖ Invalid input: expected array, received undefined
+  → at knowledgeBases[0].dataSources

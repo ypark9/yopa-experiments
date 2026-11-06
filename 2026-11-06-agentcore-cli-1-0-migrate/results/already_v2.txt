@@ -1,0 +1,2 @@
+Error: This project is already in the v1 format; there's nothing to migrate.
+Please use `agentcore feedback` or raise a GitHub issue at https://github.com/aws/agentcore-cli.
