@@ -1,0 +1,51 @@
+[
+ {
+  "case": "DynamoDB: second insert of the same order id with attribute_not_exists",
+  "expected_on_aws": "ConditionalCheckFailedException",
+  "observed_in_emulator": "ConditionalCheckFailedException (HTTP 400): The conditional request failed",
+  "verdict": "SAME",
+  "note": ""
+ },
+ {
+  "case": "S3: second create-only write (If-None-Match: *) to the same key",
+  "expected_on_aws": "PreconditionFailed (HTTP 412)",
+  "observed_in_emulator": "PreconditionFailed (HTTP 412): At least one of the pre-conditions you specified did not hold",
+  "verdict": "SAME",
+  "note": ""
+ },
+ {
+  "case": "IAM: user whose own policy explicitly denies s3:GetObject reads the object",
+  "expected_on_aws": "AccessDenied (explicit deny wins)",
+  "observed_in_emulator": "AccessDenied (HTTP 403): User: arn:aws:iam::123456789012:user/reader is not authorized to perform: s3:GetObject on resource: \"arn:aws:s3:::ci-artifacts/lock.json\" with an explicit deny ",
+  "verdict": "SAME",
+  "note": ""
+ },
+ {
+  "case": "S3: bucket policy denies s3:GetObject to every principal; read with the default (emulator) key",
+  "expected_on_aws": "AccessDenied for IAM principals",
+  "observed_in_emulator": "AccessDenied (HTTP 403): User: arn:aws:iam::123456789012:user/emulator is not authorized to perform: s3:GetObject on resource: \"arn:aws:s3:::ci-artifacts/lock.json\" with an explicit den",
+  "verdict": "SAME",
+  "note": ""
+ },
+ {
+  "case": "SQS: message hidden for 2 s after receive, then visible again",
+  "expected_on_aws": "first receive=1, immediate second receive=0, after 3 s=1",
+  "observed_in_emulator": "first receive=1, immediate second receive=0, after 3 s=1",
+  "verdict": "SAME",
+  "note": ""
+ },
+ {
+  "case": "Bedrock Runtime: Converse call",
+  "expected_on_aws": "a model response (billed)",
+  "observed_in_emulator": "returned a response: {'message': {'role': 'assistant', 'content': [{'text': 'No language model runs in this emulator. anthropic.claude-sonnet",
+  "verdict": "N/A",
+  "note": ""
+ },
+ {
+  "case": "AgentCore: InvokeAgentRuntime on a runtime that was never created",
+  "expected_on_aws": "ResourceNotFoundException",
+  "observed_in_emulator": "NotImplemented (HTTP 501): operation InvokeAgentRuntime is scaffolded but not implemented in this emulator",
+  "verdict": "N/A",
+  "note": ""
+ }
+]

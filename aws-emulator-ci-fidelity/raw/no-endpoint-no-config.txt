@@ -1,0 +1,2 @@
+ENDPOINT_USED https://sts.us-east-1.amazonaws.com
+RESULT error EndpointConnectionError Could not connect to the endpoint URL: "https://sts.us-east-1.amazonaws.com/"

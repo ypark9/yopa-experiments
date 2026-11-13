@@ -1,0 +1,44 @@
+[
+ {
+  "case": "IAM: brand-new user with no policies reads an object",
+  "expected_on_aws": "AccessDenied (no allow = implicit deny)",
+  "observed_in_emulator": "AccessDenied (HTTP 403): User: arn:aws:iam::123456789012:user/nopolicy is not authorized to perform: s3:GetObject on resource: \"arn:aws:s3:::b2-bucket/k\" because no identity-based polic",
+  "verdict": "SAME",
+  "note": ""
+ },
+ {
+  "case": "KMS: key policy explicitly denies Decrypt to user 'app'; app decrypts",
+  "expected_on_aws": "AccessDeniedException (key policy deny wins)",
+  "observed_in_emulator": "AccessDeniedException (HTTP 400): User: arn:aws:iam::123456789012:user/app is not authorized to perform: kms:Decrypt on resource: arn:aws:kms:us-east-1:123456789012:key/c20d2973-a040-4062-b30f-d",
+  "verdict": "SAME",
+  "note": ""
+ },
+ {
+  "case": "DynamoDB: query a GSI immediately after each of 200 writes",
+  "expected_on_aws": "eventually consistent; an immediate read can miss the item (docs-based, not run)",
+  "observed_in_emulator": "found 200 of 200 immediately",
+  "verdict": "N/A",
+  "note": "A test that expects the item on the very next GSI read passes locally every time; on AWS it can flake."
+ },
+ {
+  "case": "DynamoDB: ConsistentRead=True on a GSI query",
+  "expected_on_aws": "ValidationException (GSIs don't support strongly consistent reads)",
+  "observed_in_emulator": "ValidationException (HTTP 400): Consistent reads are not supported on global secondary indexes",
+  "verdict": "SAME",
+  "note": ""
+ },
+ {
+  "case": "Bedrock Runtime: Converse asking for JSON",
+  "expected_on_aws": "model text (billed per token)",
+  "observed_in_emulator": "{\"text\": \"No language model runs in this emulator. anthropic.claude-sonnet-5-5 generated no text for this request. The request carried 1 message(s) and 11 input token(s).\", \"stopReason\": \"end_turn\", \"usage\": {\"inputTokens\": 11, \"outputTokens\": 55, \"totalTokens\": 66}}",
+  "verdict": "N/A",
+  "note": "A test that only checks 'got a non-empty reply' passes against a placeholder."
+ },
+ {
+  "case": "Bedrock Runtime: Converse with a model id that does not exist",
+  "expected_on_aws": "ValidationException / ResourceNotFound",
+  "observed_in_emulator": "ValidationException (HTTP 400): The provided model identifier is invalid.",
+  "verdict": "SAME",
+  "note": ""
+ }
+]

@@ -1,0 +1,1418 @@
+{
+ "bedrockagentcorecontrol": {
+  "fail": 130,
+  "pass": 68
+ },
+ "accessanalyzer": {
+  "pass": 27,
+  "fail": 11
+ },
+ "account": {
+  "pass": 28,
+  "fail": 2
+ },
+ "acm": {
+  "pass": 295,
+  "fail": 54
+ },
+ "acmpca": {
+  "fail": 34,
+  "pass": 105
+ },
+ "agentregistry": {
+  "pass": 5,
+  "fail": 13
+ },
+ "agentregistrycontrol": {
+  "fail": 24,
+  "pass": 6
+ },
+ "aiops": {
+  "pass": 28,
+  "fail": 1
+ },
+ "amp": {
+  "pass": 29,
+  "fail": 2
+ },
+ "amplify": {
+  "pass": 38,
+  "fail": 27
+ },
+ "amplifybackend": {
+  "pass": 17,
+  "fail": 2
+ },
+ "amplifyuibuilder": {
+  "pass": 25,
+  "fail": 2
+ },
+ "ecr": {
+  "fail": 153,
+  "pass": 316,
+  "skipped": 18
+ },
+ "sagemaker": {
+  "pass": 341,
+  "fail": 230,
+  "skipped": 1
+ },
+ "ecrpublic": {
+  "fail": 17,
+  "pass": 87
+ },
+ "apigateway": {
+  "pass": 834,
+  "fail": 383,
+  "skipped": 2
+ },
+ "apigatewaymanagementapi": {
+  "fail": 16,
+  "pass": 36
+ },
+ "apigatewayv2": {
+  "pass": 217,
+  "fail": 183,
+  "skipped": 2
+ },
+ "appconfig": {
+  "pass": 257,
+  "fail": 36
+ },
+ "appconfigdata": {
+  "pass": 58,
+  "fail": 1
+ },
+ "appfabric": {
+  "fail": 5,
+  "pass": 23
+ },
+ "appflow": {
+  "fail": 13,
+  "pass": 21
+ },
+ "appintegrations": {
+  "pass": 22,
+  "fail": 8
+ },
+ "applicationautoscaling": {
+  "pass": 143,
+  "fail": 21
+ },
+ "applicationinsights": {
+  "fail": 12,
+  "pass": 1
+ },
+ "applicationsignals": {
+  "pass": 29,
+  "fail": 8
+ },
+ "appstream": {
+  "fail": 35,
+  "pass": 26
+ },
+ "appsync": {
+  "fail": 298,
+  "pass": 217
+ },
+ "arcregionswitch": {
+  "pass": 22,
+  "fail": 3
+ },
+ "arczonalshift": {
+  "pass": 12,
+  "fail": 20
+ },
+ "artifact": {
+  "pass": 31,
+  "fail": 3
+ },
+ "autoscaling": {
+  "fail": 374,
+  "pass": 156
+ },
+ "athena": {
+  "fail": 300,
+  "pass": 157,
+  "skipped": 8
+ },
+ "autoscalingplans": {
+  "pass": 10,
+  "fail": 7
+ },
+ "databasemigrationservice": {
+  "fail": 13,
+  "pass": 2
+ },
+ "b2bi": {
+  "pass": 50,
+  "fail": 4
+ },
+ "backup": {
+  "fail": 125,
+  "pass": 94
+ },
+ "backupgateway": {
+  "pass": 30,
+  "fail": 2
+ },
+ "backupsearch": {
+  "fail": 2,
+  "pass": 29
+ },
+ "batch": {
+  "fail": 122,
+  "pass": 171,
+  "skipped": 1
+ },
+ "bcmdashboards": {
+  "fail": 7,
+  "pass": 31
+ },
+ "bcmdataexports": {
+  "fail": 1,
+  "pass": 29
+ },
+ "bcmpricingcalculator": {
+  "fail": 2,
+  "pass": 18
+ },
+ "bcmrecommendedactions": {
+  "fail": 4,
+  "pass": 49
+ },
+ "bedrock": {
+  "pass": 172,
+  "fail": 63
+ },
+ "bedrockagent": {
+  "fail": 85,
+  "pass": 47
+ },
+ "bedrockagentruntime": {
+  "pass": 125,
+  "fail": 80
+ },
+ "bedrockagentcore": {
+  "pass": 32,
+  "fail": 68
+ },
+ "bedrockdataautomation": {
+  "pass": 42,
+  "fail": 18
+ },
+ "bedrockdataautomationruntime": {
+  "fail": 2,
+  "pass": 24
+ },
+ "bedrockruntime": {
+  "pass": 102,
+  "fail": 81
+ },
+ "billing": {
+  "pass": 19,
+  "fail": 1
+ },
+ "billingconductor": {
+  "pass": 25
+ },
+ "braket": {
+  "pass": 21,
+  "fail": 4,
+  "skipped": 2
+ },
+ "budgets": {
+  "pass": 33,
+  "fail": 6
+ },
+ "cloudfront": {
+  "pass": 471,
+  "fail": 350,
+  "skipped": 1
+ },
+ "cloudformation": {
+  "pass": 866,
+  "fail": 3395,
+  "skipped": 21
+ },
+ "chatbot": {
+  "pass": 47,
+  "fail": 5
+ },
+ "chimesdkidentity": {
+  "pass": 27,
+  "fail": 1
+ },
+ "chimesdkmediapipelines": {
+  "pass": 17,
+  "fail": 8
+ },
+ "chimesdkmeetings": {
+  "pass": 22,
+  "fail": 7
+ },
+ "chimesdkmessaging": {
+  "fail": 7,
+  "pass": 13
+ },
+ "chimesdkvoice": {
+  "fail": 6
+ },
+ "cognitoidentityprovider": {
+  "pass": 722,
+  "fail": 254
+ },
+ "cleanrooms": {
+  "pass": 15,
+  "fail": 17
+ },
+ "cleanroomsml": {
+  "fail": 8,
+  "pass": 5
+ },
+ "cloudcontrol": {
+  "pass": 117,
+  "fail": 73
+ },
+ "cloudfrontkeyvaluestore": {
+  "fail": 56
+ },
+ "cloudhsmv2": {
+  "fail": 9
+ },
+ "cloudtrail": {
+  "pass": 137,
+  "fail": 48
+ },
+ "cloudtraildata": {
+  "pass": 23,
+  "fail": 1
+ },
+ "cloudwatch": {
+  "fail": 456,
+  "pass": 911,
+  "skipped": 11
+ },
+ "cloudwatchevents": {
+  "pass": 1
+ },
+ "cloudwatchomni": {
+  "fail": 47,
+  "pass": 3
+ },
+ "codeartifact": {
+  "fail": 48,
+  "pass": 84
+ },
+ "codebuild": {
+  "fail": 92,
+  "pass": 130
+ },
+ "codecommit": {
+  "pass": 165,
+  "fail": 52
+ },
+ "codeconnections": {
+  "fail": 11,
+  "pass": 46
+ },
+ "codedeploy": {
+  "fail": 33,
+  "pass": 128
+ },
+ "codeguruprofiler": {
+  "fail": 5,
+  "pass": 87
+ },
+ "codepipeline": {
+  "pass": 224,
+  "fail": 51
+ },
+ "codestarconnections": {
+  "pass": 47,
+  "fail": 13
+ },
+ "codestarnotifications": {
+  "pass": 28,
+  "fail": 6
+ },
+ "cognitoidentity": {
+  "fail": 73,
+  "pass": 324
+ },
+ "comprehend": {
+  "fail": 16,
+  "pass": 64
+ },
+ "comprehendmedical": {
+  "fail": 19,
+  "pass": 13
+ },
+ "computeoptimizer": {
+  "pass": 36,
+  "fail": 1
+ },
+ "computeoptimizerautomation": {
+  "pass": 20,
+  "fail": 2
+ },
+ "configservice": {
+  "pass": 181,
+  "fail": 56
+ },
+ "connect": {
+  "fail": 6
+ },
+ "connectcampaigns": {
+  "pass": 40,
+  "fail": 27
+ },
+ "connectcampaignsv2": {
+  "fail": 22,
+  "pass": 10
+ },
+ "connectcases": {
+  "fail": 24,
+  "pass": 14
+ },
+ "connecthealth": {
+  "fail": 15,
+  "pass": 18
+ },
+ "connectparticipant": {
+  "fail": 12,
+  "pass": 7
+ },
+ "controlcatalog": {
+  "fail": 10,
+  "pass": 65
+ },
+ "controltower": {
+  "fail": 4,
+  "pass": 19
+ },
+ "costexplorer": {
+  "fail": 5,
+  "pass": 4
+ },
+ "costoptimizationhub": {
+  "pass": 23,
+  "fail": 2
+ },
+ "lambda": {
+  "fail": 1253,
+  "pass": 1744,
+  "skipped": 24
+ },
+ "dynamodb": {
+  "fail": 670,
+  "pass": 1464,
+  "skipped": 8
+ },
+ "costandusagereportservice": {
+  "fail": 3,
+  "pass": 8
+ },
+ "customerprofiles": {
+  "pass": 29,
+  "fail": 42
+ },
+ "databrew": {
+  "pass": 9,
+  "fail": 5
+ },
+ "dataexchange": {
+  "pass": 23,
+  "fail": 12
+ },
+ "datasync": {
+  "fail": 18,
+  "pass": 11
+ },
+ "datazone": {
+  "fail": 22,
+  "pass": 19
+ },
+ "dax": {
+  "pass": 8,
+  "fail": 22
+ },
+ "deadline": {
+  "fail": 22,
+  "pass": 14
+ },
+ "sfn": {
+  "pass": 752,
+  "fail": 230,
+  "skipped": 5
+ },
+ "firehose": {
+  "pass": 262,
+  "fail": 55
+ },
+ "elasticloadbalancingv2": {
+  "fail": 306,
+  "pass": 410,
+  "skipped": 8
+ },
+ "detective": {
+  "pass": 42,
+  "fail": 4
+ },
+ "devicefarm": {
+  "fail": 10,
+  "pass": 7
+ },
+ "devopsagent": {
+  "fail": 6,
+  "pass": 15
+ },
+ "directconnect": {
+  "fail": 10
+ },
+ "directoryservice": {
+  "pass": 147,
+  "fail": 51
+ },
+ "dlm": {
+  "pass": 30,
+  "fail": 5
+ },
+ "docdb": {
+  "pass": 9,
+  "fail": 18
+ },
+ "docdbelastic": {
+  "pass": 33,
+  "fail": 11
+ },
+ "drs": {
+  "fail": 23
+ },
+ "directoryservicedata": {
+  "pass": 20,
+  "fail": 2
+ },
+ "dsql": {
+  "fail": 20,
+  "pass": 43
+ },
+ "dynamodbstreams": {
+  "fail": 15,
+  "pass": 27
+ },
+ "ebs": {
+  "pass": 34,
+  "fail": 4
+ },
+ "ec2": {
+  "pass": 1070,
+  "fail": 1426,
+  "skipped": 3
+ },
+ "ec2instanceconnect": {
+  "fail": 1,
+  "pass": 7
+ },
+ "ecs": {
+  "pass": 503,
+  "fail": 431,
+  "skipped": 31
+ },
+ "efs": {
+  "pass": 27,
+  "fail": 19
+ },
+ "eks": {
+  "pass": 269,
+  "fail": 138
+ },
+ "eksauth": {
+  "pass": 15,
+  "fail": 11
+ },
+ "elasticache": {
+  "pass": 114,
+  "fail": 99
+ },
+ "elasticbeanstalk": {
+  "pass": 128,
+  "fail": 73
+ },
+ "emr": {
+  "fail": 158,
+  "pass": 160
+ },
+ "elasticsearchservice": {
+  "fail": 10,
+  "pass": 9
+ },
+ "elasticloadbalancing": {
+  "fail": 17,
+  "pass": 12
+ },
+ "elementalinference": {
+  "pass": 31,
+  "fail": 7
+ },
+ "ses": {
+  "pass": 123,
+  "fail": 31
+ },
+ "sesv2": {
+  "fail": 109,
+  "pass": 146
+ },
+ "emrcontainers": {
+  "fail": 10,
+  "pass": 20
+ },
+ "emrserverless": {
+  "pass": 41,
+  "fail": 15
+ },
+ "endusermessaging": {
+  "fail": 60,
+  "pass": 2
+ },
+ "entityresolution": {
+  "fail": 10,
+  "pass": 25
+ },
+ "opensearch": {
+  "pass": 270,
+  "fail": 178,
+  "skipped": 1
+ },
+ "eventbridgev2": {
+  "fail": 57,
+  "pass": 2
+ },
+ "eventbridge": {
+  "pass": 734,
+  "fail": 232,
+  "skipped": 2
+ },
+ "evs": {
+  "pass": 28,
+  "fail": 2
+ },
+ "fis": {
+  "pass": 95,
+  "fail": 7
+ },
+ "fms": {
+  "fail": 4,
+  "pass": 25
+ },
+ "freetier": {
+  "pass": 35
+ },
+ "fsx": {
+  "fail": 11,
+  "pass": 5
+ },
+ "gamelift": {
+  "pass": 34,
+  "fail": 36
+ },
+ "gameliftstreams": {
+  "fail": 13,
+  "pass": 29
+ },
+ "geomaps": {
+  "fail": 10,
+  "pass": 18
+ },
+ "geoplaces": {
+  "fail": 4,
+  "pass": 23
+ },
+ "georoutes": {
+  "fail": 12,
+  "pass": 62
+ },
+ "globalaccelerator": {
+  "fail": 17,
+  "pass": 2
+ },
+ "glue": {
+  "pass": 479,
+  "fail": 328,
+  "skipped": 2
+ },
+ "grafana": {
+  "fail": 3,
+  "pass": 21
+ },
+ "greengrassv2": {
+  "pass": 38,
+  "fail": 43
+ },
+ "groundstation": {
+  "pass": 25,
+  "fail": 9
+ },
+ "guardduty": {
+  "pass": 138,
+  "fail": 27
+ },
+ "healthlake": {
+  "pass": 19,
+  "fail": 12
+ },
+ "iam": {
+  "fail": 489,
+  "pass": 747,
+  "skipped": 2
+ },
+ "identitystore": {
+  "pass": 83,
+  "fail": 11
+ },
+ "imagebuilder": {
+  "pass": 49,
+  "fail": 70
+ },
+ "inspectorscan": {
+  "pass": 22,
+  "fail": 8
+ },
+ "inspector2": {
+  "fail": 25,
+  "pass": 10
+ },
+ "interconnect": {
+  "pass": 24
+ },
+ "internetmonitor": {
+  "fail": 8,
+  "pass": 23
+ },
+ "invoicing": {
+  "fail": 2,
+  "pass": 27
+ },
+ "iot": {
+  "fail": 411,
+  "pass": 59
+ },
+ "iotmanagedintegrations": {
+  "fail": 19,
+  "pass": 18
+ },
+ "iotwireless": {
+  "fail": 8,
+  "pass": 9
+ },
+ "iotdataplane": {
+  "pass": 39,
+  "fail": 48
+ },
+ "iotdeviceadvisor": {
+  "pass": 15,
+  "fail": 11
+ },
+ "iotjobsdataplane": {
+  "pass": 26,
+  "fail": 2
+ },
+ "iotsecuretunneling": {
+  "pass": 27
+ },
+ "iotsitewise": {
+  "pass": 76,
+  "fail": 34
+ },
+ "iottwinmaker": {
+  "pass": 25,
+  "fail": 3
+ },
+ "ivs": {
+  "fail": 30,
+  "pass": 67
+ },
+ "ivsrealtime": {
+  "pass": 78,
+  "fail": 7
+ },
+ "ivschat": {
+  "fail": 4,
+  "pass": 18
+ },
+ "kafka": {
+  "fail": 132,
+  "pass": 148
+ },
+ "kafkaconnect": {
+  "pass": 17,
+  "fail": 9
+ },
+ "keyspaces": {
+  "pass": 25,
+  "fail": 7
+ },
+ "keyspacesstreams": {
+  "fail": 10,
+  "pass": 14
+ },
+ "kinesis": {
+  "pass": 262,
+  "fail": 146
+ },
+ "kinesisvideomedia": {
+  "pass": 8,
+  "fail": 9
+ },
+ "kinesisvideo": {
+  "pass": 30,
+  "fail": 12
+ },
+ "kinesisvideosignaling": {
+  "fail": 1,
+  "pass": 15
+ },
+ "kinesisanalyticsv2": {
+  "fail": 23,
+  "pass": 20
+ },
+ "kinesisvideoarchivedmedia": {
+  "pass": 25,
+  "fail": 2
+ },
+ "kms": {
+  "pass": 395,
+  "fail": 110,
+  "skipped": 5
+ },
+ "lakeformation": {
+  "fail": 33,
+  "pass": 13
+ },
+ "lambdacore": {
+  "pass": 30,
+  "fail": 12
+ },
+ "lambdamicrovms": {
+  "fail": 26,
+  "pass": 31
+ },
+ "lambdaweb": {
+  "fail": 8,
+  "pass": 11
+ },
+ "launchwizard": {
+  "fail": 3,
+  "pass": 25
+ },
+ "lexmodelsv2": {
+  "fail": 11,
+  "pass": 10
+ },
+ "lexruntimev2": {
+  "fail": 3,
+  "pass": 14
+ },
+ "licensemanager": {
+  "fail": 2,
+  "pass": 7
+ },
+ "licensemanagerlinuxsubscriptions": {
+  "pass": 27
+ },
+ "licensemanagerusersubscriptions": {
+  "fail": 7,
+  "pass": 20
+ },
+ "lightsail": {
+  "fail": 16,
+  "pass": 24
+ },
+ "location": {
+  "fail": 21,
+  "pass": 9
+ },
+ "cloudwatchlogs": {
+  "pass": 776,
+  "fail": 439,
+  "skipped": 20
+ },
+ "macie2": {
+  "fail": 16,
+  "pass": 8
+ },
+ "mailmanager": {
+  "fail": 12,
+  "pass": 3
+ },
+ "marketplaceagreement": {
+  "pass": 26,
+  "fail": 3
+ },
+ "marketplacecatalog": {
+  "pass": 43
+ },
+ "marketplacedeployment": {
+  "pass": 3,
+  "fail": 4
+ },
+ "marketplacediscovery": {
+  "pass": 80,
+  "fail": 6
+ },
+ "mediaconnect": {
+  "fail": 16,
+  "pass": 20
+ },
+ "mediaconvert": {
+  "fail": 13,
+  "pass": 26
+ },
+ "medialive": {
+  "fail": 39,
+  "pass": 46
+ },
+ "mediapackage": {
+  "fail": 14,
+  "pass": 53
+ },
+ "mediapackagevod": {
+  "pass": 25,
+  "fail": 8
+ },
+ "mediapackagev2": {
+  "pass": 73,
+  "fail": 5
+ },
+ "mediatailor": {
+  "fail": 12,
+  "pass": 6
+ },
+ "medicalimaging": {
+  "pass": 22,
+  "fail": 3
+ },
+ "memorydb": {
+  "pass": 25,
+  "fail": 15
+ },
+ "mgn": {
+  "fail": 15,
+  "pass": 12
+ },
+ "mpa": {
+  "pass": 27,
+  "fail": 3
+ },
+ "mq": {
+  "fail": 24,
+  "pass": 13
+ },
+ "mwaa": {
+  "pass": 26,
+  "fail": 7
+ },
+ "mwaaserverless": {
+  "pass": 17,
+  "fail": 12
+ },
+ "neptune": {
+  "fail": 25,
+  "pass": 5
+ },
+ "neptunegraph": {
+  "fail": 18,
+  "pass": 28
+ },
+ "neptunedata": {
+  "fail": 20
+ },
+ "networkfirewall": {
+  "pass": 31,
+  "fail": 25
+ },
+ "networksecuritymanager": {
+  "fail": 14
+ },
+ "networkflowmonitor": {
+  "fail": 2,
+  "pass": 25
+ },
+ "networkmanager": {
+  "pass": 30,
+  "fail": 5
+ },
+ "networkmonitor": {
+  "pass": 43,
+  "fail": 3
+ },
+ "notifications": {
+  "fail": 4,
+  "pass": 24
+ },
+ "notificationscontacts": {
+  "pass": 23,
+  "fail": 5
+ },
+ "novaact": {
+  "fail": 12,
+  "pass": 18
+ },
+ "oam": {
+  "pass": 26,
+  "fail": 2
+ },
+ "observabilityadmin": {
+  "fail": 10,
+  "pass": 17
+ },
+ "omics": {
+  "fail": 26,
+  "pass": 8
+ },
+ "opensearchserverless": {
+  "pass": 86,
+  "fail": 56
+ },
+ "osis": {
+  "fail": 14,
+  "pass": 14
+ },
+ "outposts": {
+  "fail": 10,
+  "pass": 31
+ },
+ "partnercentralaccount": {
+  "fail": 27,
+  "pass": 5
+ },
+ "partnercentralbenefits": {
+  "pass": 22
+ },
+ "partnercentralchannel": {
+  "fail": 21
+ },
+ "paymentcryptography": {
+  "fail": 20,
+  "pass": 14
+ },
+ "paymentcryptographydata": {
+  "fail": 18,
+  "pass": 9
+ },
+ "pcaconnectorad": {
+  "pass": 9,
+  "fail": 15
+ },
+ "pcaconnectorscep": {
+  "pass": 18,
+  "fail": 6
+ },
+ "pcs": {
+  "fail": 6,
+  "pass": 11
+ },
+ "personalize": {
+  "fail": 10,
+  "pass": 5
+ },
+ "personalizeevents": {
+  "pass": 11,
+  "fail": 12
+ },
+ "personalizeruntime": {
+  "pass": 20,
+  "fail": 2
+ },
+ "pi": {
+  "pass": 23,
+  "fail": 7
+ },
+ "pinpoint": {
+  "fail": 13,
+  "pass": 1
+ },
+ "pinpointsmsvoice": {
+  "pass": 19,
+  "fail": 1
+ },
+ "pinpointsmsvoicev2": {
+  "fail": 22
+ },
+ "pipes": {
+  "fail": 48,
+  "pass": 141
+ },
+ "polly": {
+  "pass": 62,
+  "fail": 4
+ },
+ "pricing": {
+  "fail": 17,
+  "pass": 38
+ },
+ "pricingplanmanager": {
+  "fail": 20
+ },
+ "qconnect": {
+  "fail": 21,
+  "pass": 21
+ },
+ "quicksight": {
+  "fail": 17,
+  "pass": 9
+ },
+ "ram": {
+  "fail": 19,
+  "pass": 10
+ },
+ "rbin": {
+  "pass": 26,
+  "fail": 3
+ },
+ "rds": {
+  "fail": 436,
+  "pass": 337,
+  "skipped": 2
+ },
+ "rdsdata": {
+  "fail": 50,
+  "pass": 39
+ },
+ "redshift": {
+  "pass": 157,
+  "fail": 134,
+  "skipped": 3
+ },
+ "redshiftdata": {
+  "pass": 36,
+  "fail": 38,
+  "skipped": 3
+ },
+ "redshiftserverless": {
+  "fail": 10,
+  "pass": 5
+ },
+ "rekognition": {
+  "fail": 18,
+  "pass": 34
+ },
+ "resiliencehub": {
+  "fail": 7,
+  "pass": 11
+ },
+ "resiliencehubv2": {
+  "fail": 49,
+  "pass": 5
+ },
+ "resourceexplorer2": {
+  "fail": 6,
+  "pass": 21
+ },
+ "resourcegroups": {
+  "pass": 21,
+  "fail": 12
+ },
+ "resourcegroupstaggingapi": {
+  "fail": 9,
+  "pass": 48
+ },
+ "rolesanywhere": {
+  "fail": 21,
+  "pass": 17
+ },
+ "route53": {
+  "pass": 130,
+  "fail": 49
+ },
+ "route53recoverycluster": {
+  "fail": 18
+ },
+ "route53recoverycontrolconfig": {
+  "fail": 6,
+  "pass": 18
+ },
+ "route53domains": {
+  "fail": 17
+ },
+ "route53globalresolver": {
+  "fail": 13
+ },
+ "route53profiles": {
+  "fail": 9,
+  "pass": 14
+ },
+ "route53resolver": {
+  "fail": 59,
+  "pass": 111
+ },
+ "rtbfabric": {
+  "fail": 7,
+  "pass": 4
+ },
+ "rum": {
+  "pass": 116,
+  "fail": 12
+ },
+ "s3": {
+  "fail": 882,
+  "pass": 1946,
+  "skipped": 17
+ },
+ "s3control": {
+  "fail": 35,
+  "pass": 42
+ },
+ "s3files": {
+  "pass": 15,
+  "fail": 16
+ },
+ "s3outposts": {
+  "pass": 18,
+  "fail": 4
+ },
+ "s3tables": {
+  "pass": 92,
+  "fail": 124
+ },
+ "s3vectors": {
+  "pass": 171,
+  "fail": 46
+ },
+ "sagemakerfeaturestoreruntime": {
+  "pass": 39
+ },
+ "sagemakermetrics": {
+  "fail": 8,
+  "pass": 16
+ },
+ "sagemakerruntime": {
+  "pass": 22,
+  "fail": 18
+ },
+ "sagemakerjobruntime": {
+  "pass": 18
+ },
+ "sagemakertrainingsessionruntime": {
+  "fail": 20
+ },
+ "savingsplans": {
+  "fail": 4,
+  "pass": 23
+ },
+ "scheduler": {
+  "fail": 57,
+  "pass": 132
+ },
+ "schemas": {
+  "pass": 33,
+  "fail": 10
+ },
+ "secretsmanager": {
+  "pass": 314,
+  "fail": 129,
+  "skipped": 1
+ },
+ "securityir": {
+  "fail": 2
+ },
+ "securityagent": {
+  "pass": 23,
+  "fail": 21
+ },
+ "securityhub": {
+  "fail": 8,
+  "pass": 22
+ },
+ "securitylake": {
+  "fail": 2,
+  "pass": 3
+ },
+ "serverlessapplicationrepository": {
+  "fail": 7,
+  "pass": 17
+ },
+ "servicequotas": {
+  "pass": 51,
+  "fail": 238
+ },
+ "servicecatalog": {
+  "pass": 6,
+  "fail": 20
+ },
+ "servicediscovery": {
+  "pass": 84,
+  "fail": 29,
+  "skipped": 1
+ },
+ "shield": {
+  "fail": 10,
+  "pass": 15
+ },
+ "signer": {
+  "fail": 20,
+  "pass": 34
+ },
+ "signerdata": {
+  "fail": 5,
+  "pass": 1
+ },
+ "signin": {
+  "fail": 13,
+  "pass": 10
+ },
+ "simpledbv2": {
+  "fail": 12,
+  "pass": 5
+ },
+ "sns": {
+  "pass": 498,
+  "fail": 142,
+  "skipped": 1
+ },
+ "socialmessaging": {
+  "pass": 28,
+  "fail": 5
+ },
+ "sqs": {
+  "pass": 1098,
+  "fail": 428,
+  "skipped": 10
+ },
+ "ssm": {
+  "fail": 531,
+  "pass": 222,
+  "skipped": 7
+ },
+ "ssmguiconnect": {
+  "fail": 10,
+  "pass": 9
+ },
+ "ssmquicksetup": {
+  "pass": 15,
+  "fail": 14
+ },
+ "ssmsap": {
+  "pass": 30,
+  "fail": 1
+ },
+ "ssoadmin": {
+  "pass": 34,
+  "fail": 5
+ },
+ "sso": {
+  "pass": 21
+ },
+ "ssooidc": {
+  "pass": 20,
+  "fail": 3
+ },
+ "storagegateway": {
+  "fail": 5
+ },
+ "sts": {
+  "fail": 123,
+  "pass": 131,
+  "skipped": 7
+ },
+ "supplychain": {
+  "fail": 28,
+  "pass": 4
+ },
+ "supportapp": {
+  "pass": 28
+ },
+ "sustainability": {
+  "fail": 33
+ },
+ "swf": {
+  "pass": 114,
+  "fail": 10
+ },
+ "synthetics": {
+  "fail": 16,
+  "pass": 18
+ },
+ "taxsettings": {
+  "pass": 21,
+  "fail": 3
+ },
+ "textract": {
+  "pass": 18,
+  "fail": 14
+ },
+ "timestreaminfluxdb": {
+  "pass": 14,
+  "fail": 11
+ },
+ "transcribe": {
+  "pass": 21,
+  "fail": 19
+ },
+ "transfer": {
+  "pass": 153,
+  "fail": 35
+ },
+ "translate": {
+  "fail": 18,
+  "pass": 15
+ },
+ "trustedadvisor": {
+  "pass": 22
+ },
+ "uxc": {
+  "pass": 26,
+  "fail": 2
+ },
+ "verifiedpermissions": {
+  "pass": 36,
+  "fail": 3
+ },
+ "vpclattice": {
+  "fail": 22,
+  "pass": 7
+ },
+ "wafv2": {
+  "fail": 71,
+  "pass": 198
+ },
+ "wellarchitected": {
+  "fail": 8,
+  "pass": 16
+ },
+ "wickr": {
+  "fail": 13
+ },
+ "wisdom": {
+  "fail": 11,
+  "pass": 52
+ },
+ "workspaces": {
+  "pass": 12,
+  "fail": 11
+ },
+ "workspacesinstances": {
+  "pass": 18,
+  "fail": 16
+ },
+ "xray": {
+  "fail": 40,
+  "pass": 157
+ },
+ "supportauthz": {
+  "fail": 2
+ },
+ "connectcontactlens": {
+  "pass": 14
+ },
+ "kinesisvideowebrtcstorage": {
+  "fail": 15,
+  "pass": 4
+ },
+ "marketplacereporting": {
+  "pass": 17
+ },
+ "transcribestreaming": {
+  "fail": 14
+ }
+}
