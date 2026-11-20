@@ -46,6 +46,16 @@
       "sub": "repo:acme@1111111/deploy-infra@2222222:ref:refs/heads/main"
     },
     {
+      "id": "immutable_feature",
+      "description": "Push to another branch, same repo, immutable format",
+      "sub": "repo:acme@1111111/deploy-infra@2222222:ref:refs/heads/try-something"
+    },
+    {
+      "id": "immutable_other_repo",
+      "description": "Push to main in another repo of the same owner, immutable format (website@3333333)",
+      "sub": "repo:acme@1111111/website@3333333:ref:refs/heads/main"
+    },
+    {
       "id": "immutable_lookalike",
       "description": "Lookalike owner on the immutable format (acme-labs@9999999/x@8888888)",
       "sub": "repo:acme-labs@9999999/x@8888888:ref:refs/heads/main"
@@ -68,6 +78,8 @@
         "other_repo": false,
         "lookalike_org": false,
         "immutable_main": false,
+        "immutable_feature": false,
+        "immutable_other_repo": false,
         "immutable_lookalike": false
       }
     },
@@ -87,6 +99,8 @@
         "other_repo": false,
         "lookalike_org": false,
         "immutable_main": false,
+        "immutable_feature": false,
+        "immutable_other_repo": false,
         "immutable_lookalike": false
       }
     },
@@ -106,6 +120,8 @@
         "other_repo": true,
         "lookalike_org": false,
         "immutable_main": false,
+        "immutable_feature": false,
+        "immutable_other_repo": false,
         "immutable_lookalike": false
       }
     },
@@ -125,6 +141,8 @@
         "other_repo": true,
         "lookalike_org": true,
         "immutable_main": true,
+        "immutable_feature": true,
+        "immutable_other_repo": true,
         "immutable_lookalike": true
       }
     },
@@ -144,6 +162,8 @@
         "other_repo": false,
         "lookalike_org": false,
         "immutable_main": false,
+        "immutable_feature": false,
+        "immutable_other_repo": false,
         "immutable_lookalike": false
       }
     },
@@ -163,6 +183,8 @@
         "other_repo": false,
         "lookalike_org": false,
         "immutable_main": true,
+        "immutable_feature": false,
+        "immutable_other_repo": false,
         "immutable_lookalike": false
       }
     },
@@ -182,6 +204,8 @@
         "other_repo": false,
         "lookalike_org": false,
         "immutable_main": true,
+        "immutable_feature": true,
+        "immutable_other_repo": true,
         "immutable_lookalike": false
       }
     }

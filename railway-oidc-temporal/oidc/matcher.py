@@ -39,6 +39,8 @@ TOKENS = [
  ("other_repo",       "Push to main in another repo of the same org (acme/website)", f"repo:{ORG}/website:ref:refs/heads/main"),
  ("lookalike_org",    "Push to main in a different owner whose name starts with acme (acme-labs/x)", "repo:acme-labs/x:ref:refs/heads/main"),
  ("immutable_main",   "Push to main, repo on the immutable sub format (created after 2026-07-15 or opted in)", f"{immut}:ref:refs/heads/main"),
+ ("immutable_feature", "Push to another branch, same repo, immutable format", f"{immut}:ref:refs/heads/try-something"),
+ ("immutable_other_repo", "Push to main in another repo of the same owner, immutable format (website@3333333)", f"repo:{ORG}@{OID}/website@3333333:ref:refs/heads/main"),
  ("immutable_lookalike", "Lookalike owner on the immutable format (acme-labs@9999999/x@8888888)", "repo:acme-labs@9999999/x@8888888:ref:refs/heads/main"),
 ]
 POLICIES = [
