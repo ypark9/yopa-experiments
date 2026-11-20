@@ -1,0 +1,7 @@
+exact_branch	exit=0	ok   StringEquals repo:acme/deploy-infra:ref:refs/heads/main
+repo_any	exit=1	WIDE StringLike repo:acme/deploy-infra:*  <- wildcard, any branch/PR/tag or any repo
+org_any	exit=1	WIDE StringLike repo:acme/*  <- wildcard, any branch/PR/tag or any repo
+org_prefix_typo	exit=1	WIDE StringLike repo:acme*  <- wildcard, owner not closed by / (other owners can match)
+env_exact	exit=0	ok   StringEquals repo:acme/deploy-infra:environment:production
+immutable_exact	exit=0	ok   StringEquals repo:acme@1111111/deploy-infra@2222222:ref:refs/heads/main
+immutable_org	exit=1	WIDE StringLike repo:acme@1111111/*  <- wildcard, any branch/PR/tag or any repo
