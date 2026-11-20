@@ -1,0 +1,5 @@
+temporal version 1.10.1 (Server 1.32.2, UI 2.56.4)
+Name: temporalio
+Version: 1.36.1
+Name: cryptography
+Version: 50.0.2

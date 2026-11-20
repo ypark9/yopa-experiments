@@ -1,0 +1,189 @@
+{
+  "tokens": [
+    {
+      "id": "main_push",
+      "description": "Push to main in acme/deploy-infra",
+      "sub": "repo:acme/deploy-infra:ref:refs/heads/main"
+    },
+    {
+      "id": "feature_push",
+      "description": "Push to any other branch in the same repo",
+      "sub": "repo:acme/deploy-infra:ref:refs/heads/try-something"
+    },
+    {
+      "id": "pull_request",
+      "description": "A pull_request run in the same repo",
+      "sub": "repo:acme/deploy-infra:pull_request"
+    },
+    {
+      "id": "tag_push",
+      "description": "A tag push in the same repo",
+      "sub": "repo:acme/deploy-infra:ref:refs/tags/v1.2.3"
+    },
+    {
+      "id": "env_prod_main",
+      "description": "Job with environment: production, run from main",
+      "sub": "repo:acme/deploy-infra:environment:production"
+    },
+    {
+      "id": "env_prod_feature",
+      "description": "Job with environment: production, run from a feature branch (same sub)",
+      "sub": "repo:acme/deploy-infra:environment:production"
+    },
+    {
+      "id": "other_repo",
+      "description": "Push to main in another repo of the same org (acme/website)",
+      "sub": "repo:acme/website:ref:refs/heads/main"
+    },
+    {
+      "id": "lookalike_org",
+      "description": "Push to main in a different owner whose name starts with acme (acme-labs/x)",
+      "sub": "repo:acme-labs/x:ref:refs/heads/main"
+    },
+    {
+      "id": "immutable_main",
+      "description": "Push to main, repo on the immutable sub format (created after 2026-07-15 or opted in)",
+      "sub": "repo:acme@1111111/deploy-infra@2222222:ref:refs/heads/main"
+    },
+    {
+      "id": "immutable_lookalike",
+      "description": "Lookalike owner on the immutable format (acme-labs@9999999/x@8888888)",
+      "sub": "repo:acme-labs@9999999/x@8888888:ref:refs/heads/main"
+    }
+  ],
+  "matrix": [
+    {
+      "policy": "exact_branch",
+      "description": "StringEquals, exact branch (AWS docs first example)",
+      "operator": "StringEquals",
+      "sub_condition": "repo:acme/deploy-infra:ref:refs/heads/main",
+      "passes_iam_create_time_guard_by_docs": true,
+      "accepts": {
+        "main_push": true,
+        "feature_push": false,
+        "pull_request": false,
+        "tag_push": false,
+        "env_prod_main": false,
+        "env_prod_feature": false,
+        "other_repo": false,
+        "lookalike_org": false,
+        "immutable_main": false,
+        "immutable_lookalike": false
+      }
+    },
+    {
+      "policy": "repo_any",
+      "description": "StringLike repo:acme/deploy-infra:* (AWS docs 'any branch' example)",
+      "operator": "StringLike",
+      "sub_condition": "repo:acme/deploy-infra:*",
+      "passes_iam_create_time_guard_by_docs": true,
+      "accepts": {
+        "main_push": true,
+        "feature_push": true,
+        "pull_request": true,
+        "tag_push": true,
+        "env_prod_main": true,
+        "env_prod_feature": true,
+        "other_repo": false,
+        "lookalike_org": false,
+        "immutable_main": false,
+        "immutable_lookalike": false
+      }
+    },
+    {
+      "policy": "org_any",
+      "description": "StringLike repo:acme/* (AWS docs org-wide example)",
+      "operator": "StringLike",
+      "sub_condition": "repo:acme/*",
+      "passes_iam_create_time_guard_by_docs": true,
+      "accepts": {
+        "main_push": true,
+        "feature_push": true,
+        "pull_request": true,
+        "tag_push": true,
+        "env_prod_main": true,
+        "env_prod_feature": true,
+        "other_repo": true,
+        "lookalike_org": false,
+        "immutable_main": false,
+        "immutable_lookalike": false
+      }
+    },
+    {
+      "policy": "org_prefix_typo",
+      "description": "StringLike repo:acme* (slash forgotten)",
+      "operator": "StringLike",
+      "sub_condition": "repo:acme*",
+      "passes_iam_create_time_guard_by_docs": true,
+      "accepts": {
+        "main_push": true,
+        "feature_push": true,
+        "pull_request": true,
+        "tag_push": true,
+        "env_prod_main": true,
+        "env_prod_feature": true,
+        "other_repo": true,
+        "lookalike_org": true,
+        "immutable_main": true,
+        "immutable_lookalike": true
+      }
+    },
+    {
+      "policy": "env_exact",
+      "description": "StringEquals repo:acme/deploy-infra:environment:production",
+      "operator": "StringEquals",
+      "sub_condition": "repo:acme/deploy-infra:environment:production",
+      "passes_iam_create_time_guard_by_docs": true,
+      "accepts": {
+        "main_push": false,
+        "feature_push": false,
+        "pull_request": false,
+        "tag_push": false,
+        "env_prod_main": true,
+        "env_prod_feature": true,
+        "other_repo": false,
+        "lookalike_org": false,
+        "immutable_main": false,
+        "immutable_lookalike": false
+      }
+    },
+    {
+      "policy": "immutable_exact",
+      "description": "StringEquals on the immutable format, exact branch",
+      "operator": "StringEquals",
+      "sub_condition": "repo:acme@1111111/deploy-infra@2222222:ref:refs/heads/main",
+      "passes_iam_create_time_guard_by_docs": true,
+      "accepts": {
+        "main_push": false,
+        "feature_push": false,
+        "pull_request": false,
+        "tag_push": false,
+        "env_prod_main": false,
+        "env_prod_feature": false,
+        "other_repo": false,
+        "lookalike_org": false,
+        "immutable_main": true,
+        "immutable_lookalike": false
+      }
+    },
+    {
+      "policy": "immutable_org",
+      "description": "StringLike repo:acme@1111111/* (immutable, org pinned by ID)",
+      "operator": "StringLike",
+      "sub_condition": "repo:acme@1111111/*",
+      "passes_iam_create_time_guard_by_docs": true,
+      "accepts": {
+        "main_push": false,
+        "feature_push": false,
+        "pull_request": false,
+        "tag_push": false,
+        "env_prod_main": false,
+        "env_prod_feature": false,
+        "other_repo": false,
+        "lookalike_org": false,
+        "immutable_main": true,
+        "immutable_lookalike": false
+      }
+    }
+  ]
+}

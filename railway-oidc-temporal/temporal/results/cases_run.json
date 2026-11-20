@@ -1,0 +1,58 @@
+[
+  {
+    "case": "t1",
+    "description": "secret inside workflow input, no codec",
+    "codec": false,
+    "encoded_failures": false,
+    "marker": "FAKE-t1-sk-0000000000000000",
+    "workflow_result_seen_by_owner": "built with 2 variables"
+  },
+  {
+    "case": "t2",
+    "description": "only a secret name in workflow input; activity reads the value itself, no codec",
+    "codec": false,
+    "encoded_failures": false,
+    "marker": "FAKE-t2-sk-0000000000000000",
+    "workflow_result_seen_by_owner": "built, used OPENAI_API_KEY (27 chars)"
+  },
+  {
+    "case": "t3",
+    "description": "secret inside workflow input, encryption codec on",
+    "codec": true,
+    "encoded_failures": false,
+    "marker": "FAKE-t3-sk-0000000000000000",
+    "workflow_result_seen_by_owner": "built with 2 variables"
+  },
+  {
+    "case": "t4",
+    "description": "codec on, activity error message echoes the secret (default failure converter)",
+    "codec": true,
+    "encoded_failures": false,
+    "marker": "FAKE-t4-sk-0000000000000000",
+    "workflow_result_seen_by_owner": "build failed"
+  },
+  {
+    "case": "t5",
+    "description": "codec on plus encoded failure attributes, same failing activity",
+    "codec": true,
+    "encoded_failures": true,
+    "marker": "FAKE-t5-sk-0000000000000000",
+    "workflow_result_seen_by_owner": "build failed"
+  },
+  {
+    "case": "t6",
+    "description": "codec on, secret placed in workflow memo",
+    "codec": true,
+    "encoded_failures": false,
+    "marker": "FAKE-t6-sk-0000000000000000",
+    "workflow_result_seen_by_owner": "noop"
+  },
+  {
+    "case": "t7",
+    "description": "codec on, secret placed in a custom search attribute",
+    "codec": true,
+    "encoded_failures": false,
+    "marker": "FAKE-t7-sk-0000000000000000",
+    "workflow_result_seen_by_owner": "noop"
+  }
+]

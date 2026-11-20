@@ -1,0 +1,41 @@
+t1 built with 2 variables
+t2 built, used OPENAI_API_KEY (27 chars)
+t3 built with 2 variables
+Completing activity as failed ({'activity_id': '1', 'activity_type': 'build_that_fails', 'attempt': 1, 'namespace': 'default', 'task_queue': 'tq-t4', 'workflow_id': 'build-t4', 'workflow_run_id': '01a1f96d-e666-734b-a7d2-dea57b3aa433', 'workflow_type': 'Build'})
+Traceback (most recent call last):
+  File "/workspace/rw20/.venv/lib/python3.13/site-packages/temporalio/worker/_activity.py", line 398, in _handle_start_activity_task
+    result = await self._execute_activity(
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<6 lines>...
+    )
+    ^
+  File "/workspace/rw20/.venv/lib/python3.13/site-packages/temporalio/worker/_activity.py", line 739, in _execute_activity
+    return await impl.execute_activity(input)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/workspace/rw20/.venv/lib/python3.13/site-packages/temporalio/worker/_activity.py", line 948, in execute_activity
+    return await input.fn(*input.args)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/workspace/rw20/exp/temporal/cases.py", line 45, in build_that_fails
+    raise ApplicationError(f"provider rejected key {env['OPENAI_API_KEY']}", non_retryable=True)
+temporalio.exceptions.ApplicationError: provider rejected key FAKE-t4-sk-0000000000000000
+t4 build failed
+Completing activity as failed ({'activity_id': '1', 'activity_type': 'build_that_fails', 'attempt': 1, 'namespace': 'default', 'task_queue': 'tq-t5', 'workflow_id': 'build-t5', 'workflow_run_id': '01a1f96d-e69b-7e22-9914-a4dca69fdbeb', 'workflow_type': 'Build'})
+Traceback (most recent call last):
+  File "/workspace/rw20/.venv/lib/python3.13/site-packages/temporalio/worker/_activity.py", line 398, in _handle_start_activity_task
+    result = await self._execute_activity(
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<6 lines>...
+    )
+    ^
+  File "/workspace/rw20/.venv/lib/python3.13/site-packages/temporalio/worker/_activity.py", line 739, in _execute_activity
+    return await impl.execute_activity(input)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/workspace/rw20/.venv/lib/python3.13/site-packages/temporalio/worker/_activity.py", line 948, in execute_activity
+    return await input.fn(*input.args)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/workspace/rw20/exp/temporal/cases.py", line 45, in build_that_fails
+    raise ApplicationError(f"provider rejected key {env['OPENAI_API_KEY']}", non_retryable=True)
+temporalio.exceptions.ApplicationError: provider rejected key FAKE-t5-sk-0000000000000000
+t5 build failed
+t6 noop
+t7 noop

@@ -1,0 +1,148 @@
+{
+  "workflows_listed_by_other_client": 7,
+  "cases": [
+    {
+      "case": "t1",
+      "description": "secret inside workflow input, no codec",
+      "codec": false,
+      "encoded_failures": false,
+      "secret_readable_without_key": true,
+      "leaking_fields": [
+        "history.events[].activityTaskScheduledEventAttributes.input.payloads[].data",
+        "history.events[].workflowExecutionStartedEventAttributes.input.payloads[].data"
+      ],
+      "event_types": [
+        "EVENT_TYPE_WORKFLOW_EXECUTION_STARTED",
+        "EVENT_TYPE_WORKFLOW_TASK_SCHEDULED",
+        "EVENT_TYPE_WORKFLOW_TASK_STARTED",
+        "EVENT_TYPE_WORKFLOW_TASK_COMPLETED",
+        "EVENT_TYPE_ACTIVITY_TASK_SCHEDULED",
+        "EVENT_TYPE_ACTIVITY_TASK_STARTED",
+        "EVENT_TYPE_ACTIVITY_TASK_COMPLETED",
+        "EVENT_TYPE_WORKFLOW_TASK_SCHEDULED",
+        "EVENT_TYPE_WORKFLOW_TASK_STARTED",
+        "EVENT_TYPE_WORKFLOW_TASK_COMPLETED",
+        "EVENT_TYPE_WORKFLOW_EXECUTION_COMPLETED"
+      ]
+    },
+    {
+      "case": "t2",
+      "description": "only a secret name in workflow input; activity reads the value itself, no codec",
+      "codec": false,
+      "encoded_failures": false,
+      "secret_readable_without_key": false,
+      "leaking_fields": [],
+      "event_types": [
+        "EVENT_TYPE_WORKFLOW_EXECUTION_STARTED",
+        "EVENT_TYPE_WORKFLOW_TASK_SCHEDULED",
+        "EVENT_TYPE_WORKFLOW_TASK_STARTED",
+        "EVENT_TYPE_WORKFLOW_TASK_COMPLETED",
+        "EVENT_TYPE_ACTIVITY_TASK_SCHEDULED",
+        "EVENT_TYPE_ACTIVITY_TASK_STARTED",
+        "EVENT_TYPE_ACTIVITY_TASK_COMPLETED",
+        "EVENT_TYPE_WORKFLOW_TASK_SCHEDULED",
+        "EVENT_TYPE_WORKFLOW_TASK_STARTED",
+        "EVENT_TYPE_WORKFLOW_TASK_COMPLETED",
+        "EVENT_TYPE_WORKFLOW_EXECUTION_COMPLETED"
+      ]
+    },
+    {
+      "case": "t3",
+      "description": "secret inside workflow input, encryption codec on",
+      "codec": true,
+      "encoded_failures": false,
+      "secret_readable_without_key": false,
+      "leaking_fields": [],
+      "event_types": [
+        "EVENT_TYPE_WORKFLOW_EXECUTION_STARTED",
+        "EVENT_TYPE_WORKFLOW_TASK_SCHEDULED",
+        "EVENT_TYPE_WORKFLOW_TASK_STARTED",
+        "EVENT_TYPE_WORKFLOW_TASK_COMPLETED",
+        "EVENT_TYPE_ACTIVITY_TASK_SCHEDULED",
+        "EVENT_TYPE_ACTIVITY_TASK_STARTED",
+        "EVENT_TYPE_ACTIVITY_TASK_COMPLETED",
+        "EVENT_TYPE_WORKFLOW_TASK_SCHEDULED",
+        "EVENT_TYPE_WORKFLOW_TASK_STARTED",
+        "EVENT_TYPE_WORKFLOW_TASK_COMPLETED",
+        "EVENT_TYPE_WORKFLOW_EXECUTION_COMPLETED"
+      ]
+    },
+    {
+      "case": "t4",
+      "description": "codec on, activity error message echoes the secret (default failure converter)",
+      "codec": true,
+      "encoded_failures": false,
+      "secret_readable_without_key": true,
+      "leaking_fields": [
+        "history.events[].activityTaskFailedEventAttributes.failure.message"
+      ],
+      "event_types": [
+        "EVENT_TYPE_WORKFLOW_EXECUTION_STARTED",
+        "EVENT_TYPE_WORKFLOW_TASK_SCHEDULED",
+        "EVENT_TYPE_WORKFLOW_TASK_STARTED",
+        "EVENT_TYPE_WORKFLOW_TASK_COMPLETED",
+        "EVENT_TYPE_ACTIVITY_TASK_SCHEDULED",
+        "EVENT_TYPE_ACTIVITY_TASK_STARTED",
+        "EVENT_TYPE_ACTIVITY_TASK_FAILED",
+        "EVENT_TYPE_WORKFLOW_TASK_SCHEDULED",
+        "EVENT_TYPE_WORKFLOW_TASK_STARTED",
+        "EVENT_TYPE_WORKFLOW_TASK_COMPLETED",
+        "EVENT_TYPE_WORKFLOW_EXECUTION_COMPLETED"
+      ]
+    },
+    {
+      "case": "t5",
+      "description": "codec on plus encoded failure attributes, same failing activity",
+      "codec": true,
+      "encoded_failures": true,
+      "secret_readable_without_key": false,
+      "leaking_fields": [],
+      "event_types": [
+        "EVENT_TYPE_WORKFLOW_EXECUTION_STARTED",
+        "EVENT_TYPE_WORKFLOW_TASK_SCHEDULED",
+        "EVENT_TYPE_WORKFLOW_TASK_STARTED",
+        "EVENT_TYPE_WORKFLOW_TASK_COMPLETED",
+        "EVENT_TYPE_ACTIVITY_TASK_SCHEDULED",
+        "EVENT_TYPE_ACTIVITY_TASK_STARTED",
+        "EVENT_TYPE_ACTIVITY_TASK_FAILED",
+        "EVENT_TYPE_WORKFLOW_TASK_SCHEDULED",
+        "EVENT_TYPE_WORKFLOW_TASK_STARTED",
+        "EVENT_TYPE_WORKFLOW_TASK_COMPLETED",
+        "EVENT_TYPE_WORKFLOW_EXECUTION_COMPLETED"
+      ]
+    },
+    {
+      "case": "t6",
+      "description": "codec on, secret placed in workflow memo",
+      "codec": true,
+      "encoded_failures": false,
+      "secret_readable_without_key": false,
+      "leaking_fields": [],
+      "event_types": [
+        "EVENT_TYPE_WORKFLOW_EXECUTION_STARTED",
+        "EVENT_TYPE_WORKFLOW_TASK_SCHEDULED",
+        "EVENT_TYPE_WORKFLOW_TASK_STARTED",
+        "EVENT_TYPE_WORKFLOW_TASK_COMPLETED",
+        "EVENT_TYPE_WORKFLOW_EXECUTION_COMPLETED"
+      ]
+    },
+    {
+      "case": "t7",
+      "description": "codec on, secret placed in a custom search attribute",
+      "codec": true,
+      "encoded_failures": false,
+      "secret_readable_without_key": true,
+      "leaking_fields": [
+        "describe.workflowExecutionInfo.searchAttributes.indexedFields.BuildNote.data",
+        "history.events[].workflowExecutionStartedEventAttributes.searchAttributes.indexedFields.BuildNote.data"
+      ],
+      "event_types": [
+        "EVENT_TYPE_WORKFLOW_EXECUTION_STARTED",
+        "EVENT_TYPE_WORKFLOW_TASK_SCHEDULED",
+        "EVENT_TYPE_WORKFLOW_TASK_STARTED",
+        "EVENT_TYPE_WORKFLOW_TASK_COMPLETED",
+        "EVENT_TYPE_WORKFLOW_EXECUTION_COMPLETED"
+      ]
+    }
+  ]
+}

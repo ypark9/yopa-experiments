@@ -1,0 +1,8 @@
+t1 LEAK ['history.events[].activityTaskScheduledEventAttributes.input.payloads[].data', 'history.events[].workflowExecutionStartedEventAttributes.input.payloads[].data']
+t2 clean []
+t3 clean []
+t4 LEAK ['history.events[].activityTaskFailedEventAttributes.failure.message']
+t5 clean []
+t6 clean []
+t7 LEAK ['describe.workflowExecutionInfo.searchAttributes.indexedFields.BuildNote.data', 'history.events[].workflowExecutionStartedEventAttributes.searchAttributes.indexedFields.BuildNote.data']
+workflows visible to the other client: 7

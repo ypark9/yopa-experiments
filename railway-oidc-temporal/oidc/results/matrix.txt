@@ -1,0 +1,8 @@
+policy           guard main_pus feature_ pull_req tag_push env_prod env_prod other_re lookalik immutabl immutabl
+exact_branch     True  YES      -        -        -        -        -        -        -        -        -       
+repo_any         True  YES      YES      YES      YES      YES      YES      -        -        -        -       
+org_any          True  YES      YES      YES      YES      YES      YES      YES      -        -        -       
+org_prefix_typo  True  YES      YES      YES      YES      YES      YES      YES      YES      YES      YES     
+env_exact        True  -        -        -        -        YES      YES      -        -        -        -       
+immutable_exact  True  -        -        -        -        -        -        -        -        YES      -       
+immutable_org    True  -        -        -        -        -        -        -        -        YES      -       
