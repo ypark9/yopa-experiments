@@ -48,7 +48,7 @@ role.addToPolicy(new iam.PolicyStatement({
   resources: [memory.memoryArn]
 }));
 role.addToPolicy(new iam.PolicyStatement({
-  // PutItem only because a boss bot can create bots.
+  // PutItem only because a lead bot can create bots.
   actions: ['dynamodb:GetItem', 'dynamodb:BatchGetItem', 'dynamodb:Query', 'dynamodb:PutItem'],
   resources: [table.tableArn, `${table.tableArn}/index/GSI1`]
 }));

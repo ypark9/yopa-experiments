@@ -12,8 +12,8 @@ RUN_IN, RUN_OUT = 326_029, 68_813          # agent-run spans (32 runs); a little
 VCPU_HOURS, GB_HOURS = 0.048827, 3.31473   # CloudWatch CPUUsed-vCPUHours, MemoryUsed-GBHours
 MEMORY_EVENTS = 112                        # AgentCore Memory CreateEvent
 
-# One chain: a boss bot and three specialists, 121 seconds end to end
-CHAIN = [("boss", 21_194, 2_945), ("monitor", 9_267, 4_185),
+# One chain: a lead bot and three specialists, 121 seconds end to end
+CHAIN = [("lead", 21_194, 2_945), ("monitor", 9_267, 4_185),
          ("root-cause 1", 22_976, 4_363), ("root-cause 2", 21_245, 4_556)]
 
 # Public prices, 2026-11-22
@@ -43,7 +43,7 @@ low, high = model_low + runtime + mem_low, model_high + runtime + mem_high
 print(f"total          ${low:.2f} to ${high:.2f}; model share {model_low / low:.1%} to {model_high / high:.1%}")
 
 print()
-print("## One chain (boss + 3 specialists, Opus 5.5)")
+print("## One chain (lead + 3 specialists, Opus 5.5)")
 total_in = total_out = 0
 for name, i, o in CHAIN:
     total_in, total_out = total_in + i, total_out + o

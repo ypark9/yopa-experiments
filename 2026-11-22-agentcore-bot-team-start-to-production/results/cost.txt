@@ -6,8 +6,8 @@ runtime        $0.036  (0.048827 vCPU-h x $0.0895 + 3.31473 GB-h x $0.00945)
 memory         $0.001 to $0.007  (112 events)
 total          $2.60 to $2.98; model share 98.6% to 98.6%
 
-## One chain (boss + 3 specialists, Opus 5.5)
-boss           21,194 in  2,945 out  $0.144 to $0.158
+## One chain (lead + 3 specialists, Opus 5.5)
+lead           21,194 in  2,945 out  $0.144 to $0.158
 monitor         9,267 in  4,185 out  $0.121 to $0.133
 root-cause 1   22,976 in  4,363 out  $0.179 to $0.197
 root-cause 2   21,245 in  4,556 out  $0.176 to $0.194
