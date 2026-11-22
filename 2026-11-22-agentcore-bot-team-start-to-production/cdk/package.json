@@ -1,0 +1,12 @@
+{
+  "name": "bot-team-minimal-stack",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "synth": "node app.mjs && node count-resources.mjs"
+  },
+  "dependencies": {
+    "aws-cdk-lib": "2.275.0",
+    "constructs": "10.8.1"
+  }
+}

@@ -1,0 +1,25 @@
+node v26.10.0, 2026-11-22T16:47Z
+
+## 1. GET /ping
+HTTP/1.1 200 OK
+content-type: application/json
+{"status":"Healthy"}
+
+## 2. POST /invocations with the session header and a custom user header
+HTTP/1.1 200 OK
+content-type: text/event-stream
+data: {"type":"start","sessionId":"3f6c2b1e-0d9a-4c55-9a51-7b2f0e8c1d42","requestId":"932a0ec8-ed5b-479c-8c32-b83ab0a10c37","user":"user-1"}
+data: {"type":"text","text":"You "}
+data: {"type":"text","text":"said: "}
+data: {"type":"text","text":"hello "}
+data: {"type":"text","text":"bot "}
+data: {"type":"text","text":"team "}
+data: {"type":"end"}
+
+## 3. POST /invocations without the session header
+HTTP/1.1 400 Bad Request
+{"error":"missing header x-amzn-bedrock-agentcore-runtime-session-id"}
+
+## 4. POST /invocations with a body that is not JSON
+HTTP/1.1 400 Bad Request
+{"error":"body must be JSON"}

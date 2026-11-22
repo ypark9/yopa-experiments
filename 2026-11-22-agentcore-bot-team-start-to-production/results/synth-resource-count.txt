@@ -1,0 +1,18 @@
+aws-cdk-lib 2.275.0, node v26.10.0, 2026-11-22T16:47Z
+
+  3 AWS::IAM::Role
+  2 AWS::ApiGateway::Resource
+  2 AWS::IAM::Policy
+  2 AWS::Lambda::Permission
+  1 AWS::ApiGateway::Authorizer
+  1 AWS::ApiGateway::Deployment
+  1 AWS::ApiGateway::Method
+  1 AWS::ApiGateway::RestApi
+  1 AWS::ApiGateway::Stage
+  1 AWS::BedrockAgentCore::Memory
+  1 AWS::BedrockAgentCore::Runtime
+  1 AWS::Cognito::UserPool
+  1 AWS::Cognito::UserPoolClient
+  1 AWS::DynamoDB::Table
+  1 AWS::Lambda::Function
+ 20 TOTAL (AWS::CDK::Metadata excluded)
